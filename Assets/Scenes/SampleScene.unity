@@ -3573,7 +3573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 529472296918264751, guid: 3da022fd77b79254296d5670b6413c97, type: 3}
       propertyPath: unitEnergy
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4134728028690924314, guid: 3da022fd77b79254296d5670b6413c97, type: 3}
       propertyPath: m_SortingOrder
