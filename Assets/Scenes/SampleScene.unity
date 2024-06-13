@@ -2277,8 +2277,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 828437651}
-  - {fileID: 1365332682}
   - {fileID: 1806311104}
+  - {fileID: 1365332682}
   - {fileID: 577242602}
   m_Father: {fileID: 1099966185}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2692,8 +2692,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -25.77, y: 30.6}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -25.768, y: 32.698}
+  m_SizeDelta: {x: 160, y: 34.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1806311105
 MonoBehaviour:
@@ -2728,7 +2728,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nombre
+  m_Text: Default
 --- !u!222 &1806311106
 CanvasRenderer:
   m_ObjectHideFlags: 0
