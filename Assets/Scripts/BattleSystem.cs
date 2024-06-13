@@ -20,6 +20,7 @@ public class BattleSystem : MonoBehaviour
 
     public BattleHUD playerHUD;
     public BattleHUD enemyHUD;
+    public DrawHand drawHand;
 
 
     public BattleState state;
@@ -110,6 +111,7 @@ public class BattleSystem : MonoBehaviour
 
     void PlayerTurn()
     {
+        drawHand.draw5();
         playerUnit.unitEnergy = 3;
         playerHUD.SetEnergy(playerUnit.unitEnergy);
         dialogueText.text = "Your Turn";

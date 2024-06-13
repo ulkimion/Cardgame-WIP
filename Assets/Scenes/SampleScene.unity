@@ -3001,7 +3001,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4469211609452308565, guid: 44660f8eec77c9b49af2bf984fb0bd75, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -260.47
+      value: -215.68
       objectReference: {fileID: 0}
     - target: {fileID: 4469211609452308565, guid: 44660f8eec77c9b49af2bf984fb0bd75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3015,9 +3015,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4659477117660673821, guid: 44660f8eec77c9b49af2bf984fb0bd75, type: 3}
+      propertyPath: Card
+      value: 
+      objectReference: {fileID: 7003530851262981509, guid: 810e9570d98c30c4c9f24e3951d597fa, type: 3}
     - target: {fileID: 7656593755489540875, guid: 44660f8eec77c9b49af2bf984fb0bd75, type: 3}
       propertyPath: m_Name
-      value: Player Hand
+      value: PlayerHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 7656593755489540875, guid: 44660f8eec77c9b49af2bf984fb0bd75, type: 3}
+      propertyPath: m_TagString
+      value: Hand
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
