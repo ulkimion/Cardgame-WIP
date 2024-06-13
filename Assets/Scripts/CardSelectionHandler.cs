@@ -33,6 +33,7 @@ public class CardSelectionHandler : MonoBehaviour , IPointerEnterHandler, IPoint
             {
                 endPosition = _startPos + new Vector3(0f, _verticalMoveAmount, 0f);
                 endScale = _startScale * _scaleAmount;
+                gameObject.transform.SetAsLastSibling();
             }
 
             else

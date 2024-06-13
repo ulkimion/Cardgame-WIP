@@ -56,12 +56,12 @@ public class BattleSystem : MonoBehaviour
     {
         bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
 
+        playerUnit.LoseEnergy(1);
+        playerHUD.SetEnergy(playerUnit.unitEnergy);
         enemyHUD.SetHP(enemyUnit.currentHP);
         dialogueText.text = "Hit!";
         yield return new WaitForSeconds(1f);
         dialogueText.text = "Your Turn";
-        playerUnit.LoseEnergy(1);
-        //playerHUD.SetEnergy(playerUnit.)
 
 
         yield return new WaitForSeconds(2f);
@@ -71,11 +71,6 @@ public class BattleSystem : MonoBehaviour
             state = BattleState.WON;
             EndBattle();
         }
-        /* else
-        {
-            state = BattleState.ENEMYTURN;
-            StartCoroutine(EnemyTurn());
-        } */
     }
 
     IEnumerator EnemyTurn() 
@@ -103,6 +98,7 @@ public class BattleSystem : MonoBehaviour
         if(state == BattleState.WON)
         {
             dialogueText.text = "YOU WON!";
+            Destroy(enemyPrefab);
         }
         else if (state == BattleState.LOSS)
         {
@@ -114,6 +110,8 @@ public class BattleSystem : MonoBehaviour
 
     void PlayerTurn()
     {
+        playerUnit.unitEnergy = 3;
+        playerHUD.SetEnergy(playerUnit.unitEnergy);
         dialogueText.text = "Your Turn";
     }
 
@@ -123,6 +121,13 @@ public class BattleSystem : MonoBehaviour
         {
             return;
         }
+
+        if (playerUnit.unitEnergy == 0)
+        {
+            dialogueText.text = "Not enough energy";
+            return;
+        }
+
         StartCoroutine(PlayerAttack());
     }
 
