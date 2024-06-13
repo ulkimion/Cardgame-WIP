@@ -131,6 +131,25 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(PlayerAttack());
     }
 
+    /*
+        public bool PlayCard()
+        {
+            if (state != BattleState.PLAYERTURN)
+            {
+                return;
+            }
+
+            if (playerUnit.unitEnergy == 0)
+            {
+                dialogueText.text = "Not enough energy";
+                return;
+            }
+
+            StartCoroutine(PlayerAttack());
+        }
+
+    */
+
     public void OnEndTurnButton()
     {
         if(state == BattleState.PLAYERTURN)
