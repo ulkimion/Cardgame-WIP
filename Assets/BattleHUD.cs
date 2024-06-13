@@ -24,9 +24,10 @@ public class BattleHUD : MonoBehaviour
     {
         hpSlider.value = hp;
     }
-
+    /*
     public void SetEnergy(int energy)
     {
         energyText.text = energy + "/3";
     }
+    */
 }
