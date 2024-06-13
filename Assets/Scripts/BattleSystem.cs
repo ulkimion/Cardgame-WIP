@@ -98,7 +98,7 @@ public class BattleSystem : MonoBehaviour
         if(state == BattleState.WON)
         {
             dialogueText.text = "YOU WON!";
-            Destroy(enemyHUD);
+            Destroy(enemyPrefab);
         }
         else if (state == BattleState.LOSS)
         {

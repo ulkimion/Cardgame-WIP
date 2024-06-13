@@ -138,7 +138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 192866216}
   m_Layer: 5
-  m_Name: Cartas
+  m_Name: Mano
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1143,6 +1143,11 @@ MonoBehaviour:
   levelText: {fileID: 376020801}
   hpSlider: {fileID: 1810317367}
   energyText: {fileID: 2008678431}
+--- !u!1 &746382061 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7003530851262981509, guid: 6ce47d2cdcd272340a6c6291f68c1491, type: 3}
+  m_PrefabInstance: {fileID: 897161897}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &764379694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,12 +1518,52 @@ PrefabInstance:
     m_TransformParent: {fileID: 192866216}
     m_Modifications:
     - target: {fileID: 2892048061583668490, guid: 6ce47d2cdcd272340a6c6291f68c1491, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2892048061583668490, guid: 6ce47d2cdcd272340a6c6291f68c1491, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2892048061583668490, guid: 6ce47d2cdcd272340a6c6291f68c1491, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2892048061583668490, guid: 6ce47d2cdcd272340a6c6291f68c1491, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1939771545}
+      objectReference: {fileID: 746382061}
+    - target: {fileID: 2892048061583668490, guid: 6ce47d2cdcd272340a6c6291f68c1491, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 746382061}
+    - target: {fileID: 2892048061583668490, guid: 6ce47d2cdcd272340a6c6291f68c1491, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2892048061583668490, guid: 6ce47d2cdcd272340a6c6291f68c1491, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnAttackButton
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 2892048061583668490, guid: 6ce47d2cdcd272340a6c6291f68c1491, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 2892048061583668490, guid: 6ce47d2cdcd272340a6c6291f68c1491, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2892048061583668490, guid: 6ce47d2cdcd272340a6c6291f68c1491, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2892048061583668490, guid: 6ce47d2cdcd272340a6c6291f68c1491, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2892048061583668490, guid: 6ce47d2cdcd272340a6c6291f68c1491, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3107701408520076068, guid: 6ce47d2cdcd272340a6c6291f68c1491, type: 3}
       propertyPath: m_Pivot.x
@@ -2396,8 +2441,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -30, y: 35}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -23.993, y: 17.22}
+  m_SizeDelta: {x: 172.02, y: 65.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1777815878
 MonoBehaviour:
@@ -2728,7 +2773,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Default
+  m_Text: Protagonista
 --- !u!222 &1806311106
 CanvasRenderer:
   m_ObjectHideFlags: 0
