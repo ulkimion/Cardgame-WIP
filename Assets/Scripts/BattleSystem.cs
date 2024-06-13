@@ -109,6 +109,8 @@ public class BattleSystem : MonoBehaviour
 
     void PlayerTurn()
     {
+        playerUnit.unitEnergy = 3;
+        playerHUD.SetEnergy(playerUnit.unitEnergy);
         dialogueText.text = "Your Turn";
     }
 
