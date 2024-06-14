@@ -6,7 +6,6 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject Enemy;
 
-    [SerializeField] private GameObject _combatSystem;
     public void spawnEnemy()
     {
         GameObject Enemy1 = Instantiate(Enemy, new Vector3(4, -1.5f, 0), Quaternion.identity);

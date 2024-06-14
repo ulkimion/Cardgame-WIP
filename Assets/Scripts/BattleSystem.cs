@@ -12,12 +12,12 @@ public class BattleSystem : MonoBehaviour
     public GameObject enemyPrefab;
 
     Unit playerUnit;
-    Unit enemyUnit;
+    EnemyAITemplate enemyUnit;
 
     public Text dialogueText;
 
     public BattleHUD playerHUD;
-    public BattleHUD enemyHUD;
+    public EnemyHUD enemyHUD1;
     public DrawHand drawHand;
     public EnemySpawner enemySpawner;
     public Text TurnCounter;
@@ -47,12 +47,12 @@ public class BattleSystem : MonoBehaviour
 
         //GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation);
         GameObject enemyGO = GameObject.FindGameObjectWithTag("Enemy1");
-        enemyUnit = enemyGO.GetComponent<Unit>();
+        enemyUnit = enemyGO.GetComponent<EnemyAITemplate>();
 
         dialogueText.text = "A " + enemyUnit.unitName + " wants to fight";
 
         playerHUD.SetHUD(playerUnit);
-        enemyHUD.SetHUD(enemyUnit);
+        enemyHUD1.SetEnemyHUD(enemyUnit);
 
         currentTurn = 0;
 
