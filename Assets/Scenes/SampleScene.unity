@@ -1750,6 +1750,17 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1503287663 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4659477117660673821, guid: 44660f8eec77c9b49af2bf984fb0bd75, type: 3}
+  m_PrefabInstance: {fileID: 7445041415269436305}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e797e1bca7ec2444841d416e7a321f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1536779412
 GameObject:
   m_ObjectHideFlags: 0
@@ -2479,6 +2490,7 @@ MonoBehaviour:
   dialogueText: {fileID: 969589190}
   playerHUD: {fileID: 1099966187}
   enemyHUD: {fileID: 625149700}
+  drawHand: {fileID: 1503287663}
   state: 0
 --- !u!4 &1939771546
 Transform:

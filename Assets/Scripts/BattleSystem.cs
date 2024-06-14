@@ -117,6 +117,7 @@ public class BattleSystem : MonoBehaviour
         dialogueText.text = "Your Turn";
     }
 
+ /*
     public void OnAttackButton()
     {
         if (state != BattleState.PLAYERTURN)
@@ -132,23 +133,6 @@ public class BattleSystem : MonoBehaviour
 
         StartCoroutine(PlayerAttack());
     }
-
-    /*
-        public bool PlayCard()
-        {
-            if (state != BattleState.PLAYERTURN)
-            {
-                return;
-            }
-
-            if (playerUnit.unitEnergy == 0)
-            {
-                dialogueText.text = "Not enough energy";
-                return;
-            }
-
-            StartCoroutine(PlayerAttack());
-        }
 
     */
 
