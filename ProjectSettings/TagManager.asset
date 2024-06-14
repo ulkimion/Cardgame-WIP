@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Hand
+  - CombatSystem
+  - Enemy1
   layers:
   - Default
   - TransparentFX

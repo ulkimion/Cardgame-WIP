@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 529472296918264751}
   m_Layer: 0
   m_Name: Jugador
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,3 +102,4 @@ MonoBehaviour:
   damage: 10
   maxHP: 40
   currentHP: 28
+  unitEnergy: 0

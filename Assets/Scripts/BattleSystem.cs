@@ -36,10 +36,12 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator SetupBattle()
     {
-        GameObject playerGO = Instantiate(playerPrefab, playerBattleStation);
+        //GameObject playerGO = Instantiate(playerPrefab, playerBattleStation);
+        GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
         playerUnit = playerGO.GetComponent<Unit>();
-        
-        GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation);
+
+        //GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation);
+        GameObject enemyGO = GameObject.FindGameObjectWithTag("Enemy1");
         enemyUnit = enemyGO.GetComponent<Unit>();
 
         dialogueText.text = "A " + enemyUnit.unitName + " wants to fight";
@@ -117,7 +119,7 @@ public class BattleSystem : MonoBehaviour
         dialogueText.text = "Your Turn";
     }
 
- /*
+
     public void OnAttackButton()
     {
         if (state != BattleState.PLAYERTURN)
@@ -125,16 +127,19 @@ public class BattleSystem : MonoBehaviour
             return;
         }
 
-        if (playerUnit.unitEnergy == 0)
+        if (playerUnit.unitEnergy <= 0)
         {
             dialogueText.text = "Not enough energy";
             return;
         }
+        else
+        {
+            StartCoroutine(PlayerAttack());
 
-        StartCoroutine(PlayerAttack());
+        }
+
     }
 
-    */
 
     public void OnEndTurnButton()
     {
