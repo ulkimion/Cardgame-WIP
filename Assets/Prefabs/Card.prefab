@@ -190,4 +190,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _combatSystem: {fileID: 0}
+  _player: {fileID: 0}
   _button: {fileID: 2892048061583668490}

@@ -10,8 +10,6 @@ public class BattleSystem : MonoBehaviour
     
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
-    public Transform playerBattleStation;
-    public Transform enemyBattleStation;
 
     Unit playerUnit;
     Unit enemyUnit;
@@ -21,9 +19,12 @@ public class BattleSystem : MonoBehaviour
     public BattleHUD playerHUD;
     public BattleHUD enemyHUD;
     public DrawHand drawHand;
+    public Text TurnCounter;
 
 
     public BattleState state;
+
+    public int currentTurn = 0;
 
     
 
@@ -49,6 +50,8 @@ public class BattleSystem : MonoBehaviour
         playerHUD.SetHUD(playerUnit);
         enemyHUD.SetHUD(enemyUnit);
 
+        currentTurn = 0;
+
         yield return new WaitForSeconds(2f);
 
         state = BattleState.PLAYERTURN;
@@ -58,7 +61,6 @@ public class BattleSystem : MonoBehaviour
     IEnumerator PlayerAttack()
     {
         bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
-
         playerUnit.LoseEnergy(1);
         playerHUD.SetEnergy(playerUnit.unitEnergy);
         enemyHUD.SetHP(enemyUnit.currentHP);
@@ -113,10 +115,12 @@ public class BattleSystem : MonoBehaviour
 
     void PlayerTurn()
     {
+        currentTurn++;
         drawHand.draw5();
         playerUnit.unitEnergy = 3;
         playerHUD.SetEnergy(playerUnit.unitEnergy);
         dialogueText.text = "Your Turn";
+        TurnCounter.text = "Turn " + currentTurn;
     }
 
 
