@@ -19,6 +19,7 @@ public class BattleSystem : MonoBehaviour
     public BattleHUD playerHUD;
     public BattleHUD enemyHUD;
     public DrawHand drawHand;
+    public EnemySpawner enemySpawner;
     public Text TurnCounter;
     public EnemyAITemplate enemyAI;
     public Text enemyIntent;
@@ -120,6 +121,7 @@ public class BattleSystem : MonoBehaviour
     {
         currentTurn++;
         drawHand.draw5();
+        enemySpawner.spawnEnemy();
         playerUnit.unitEnergy = 3;
         playerHUD.SetEnergy(playerUnit.unitEnergy);
         dialogueText.text = "Your Turn";
