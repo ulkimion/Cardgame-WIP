@@ -20,6 +20,9 @@ public class BattleSystem : MonoBehaviour
     public BattleHUD enemyHUD;
     public DrawHand drawHand;
     public Text TurnCounter;
+    public EnemyAITemplate enemyAI;
+    public Text enemyIntent;
+    public int enemyDamage;
 
 
     public BattleState state;
@@ -121,6 +124,7 @@ public class BattleSystem : MonoBehaviour
         playerHUD.SetEnergy(playerUnit.unitEnergy);
         dialogueText.text = "Your Turn";
         TurnCounter.text = "Turn " + currentTurn;
+        enemyIntent.text = "Enemy will do: " + enemyDamage + " Damage ";
     }
 
 
