@@ -12,18 +12,20 @@ public class BattleSystem : MonoBehaviour
     public GameObject enemyPrefab;
 
     Unit playerUnit;
-    EnemyAITemplate enemyUnit;
+    Unit enemyUnit;
+    //EnemyAITemplate enemyUnit;
 
     public Text dialogueText;
 
     public BattleHUD playerHUD;
-    public EnemyHUD enemyHUD1;
+    public BattleHUD enemyHUD;
+    //public EnemyHUD enemyHUD1;
     public DrawHand drawHand;
-    public EnemySpawner enemySpawner;
     public Text TurnCounter;
     public EnemyAITemplate enemyAI;
     public Text enemyIntent;
     public int enemyDamage;
+    public EnemySpawner enemySpawner;
 
 
     public BattleState state;
@@ -37,6 +39,7 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.START;
         StartCoroutine(SetupBattle());
+        enemySpawner.spawnEnemy();
     }
 
     IEnumerator SetupBattle()
@@ -47,12 +50,13 @@ public class BattleSystem : MonoBehaviour
 
         //GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation);
         GameObject enemyGO = GameObject.FindGameObjectWithTag("Enemy1");
-        enemyUnit = enemyGO.GetComponent<EnemyAITemplate>();
+        //enemyUnit = enemyGO.GetComponent<EnemyAITemplate>();
+        enemyUnit = enemyGO.GetComponent<Unit>();
 
         dialogueText.text = "A " + enemyUnit.unitName + " wants to fight";
 
         playerHUD.SetHUD(playerUnit);
-        enemyHUD1.SetEnemyHUD(enemyUnit);
+        enemyHUD.SetHUD(enemyUnit);
 
         currentTurn = 0;
 
@@ -86,7 +90,7 @@ public class BattleSystem : MonoBehaviour
     {
         dialogueText.text = enemyUnit.unitName + " attacks!";
         yield return new WaitForSeconds(1f);
-        bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
+        bool isDead = playerUnit.TakeDamage(enemyDamage);
         playerHUD.SetHP(playerUnit.currentHP);
         yield return new WaitForSeconds(1f);
 
@@ -121,11 +125,11 @@ public class BattleSystem : MonoBehaviour
     {
         currentTurn++;
         drawHand.draw5();
-        enemySpawner.spawnEnemy();
         playerUnit.unitEnergy = 3;
         playerHUD.SetEnergy(playerUnit.unitEnergy);
         dialogueText.text = "Your Turn";
         TurnCounter.text = "Turn " + currentTurn;
+        enemyDamage = enemyAI.enemyAction();
         enemyIntent.text = "Enemy will do: " + enemyDamage + " Damage ";
     }
 
