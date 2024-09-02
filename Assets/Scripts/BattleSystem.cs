@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOSS }
+
 public class BattleSystem : MonoBehaviour
 {
     

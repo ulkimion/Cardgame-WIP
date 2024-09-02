@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Delinquent_1 : EnemyAITemplate
 {
-    public string unitName = "Delinquent 1";
-    maxHP = 40;
-    currentHP = 40;
+    private void Start()
+    {
+        unitName = "Delinquent_1";
+        currentHP = 40;
+        maxHP = 40;
+    }
 
     public int enemyAction()
     {
@@ -15,6 +18,10 @@ public class Delinquent_1 : EnemyAITemplate
             EnemyAttack = 7;
             enemyActionSymbol = Action.Attack;
             return EnemyAttack;
+        }
+        else
+        {
+            return 0;
         }
     }
 }
