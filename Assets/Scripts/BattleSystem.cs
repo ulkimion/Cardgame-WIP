@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum BattleState {START, PLAYERTURN, ENEMYTURN, WON, LOSS}
-
 public class BattleSystem : MonoBehaviour
 {
     
@@ -22,7 +20,7 @@ public class BattleSystem : MonoBehaviour
     //public EnemyHUD enemyHUD1;
     public DrawHand drawHand;
     public Text TurnCounter;
-    public EnemyAITemplate enemyAI;
+    public Delinquent_1 enemyAI;
     public Text enemyIntent;
     public int enemyDamage;
     public EnemySpawner enemySpawner;
