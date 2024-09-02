@@ -5,11 +5,16 @@ using UnityEngine;
 
 public class EnemyAITemplate : MonoBehaviour
 {
+    public enum Action {Attack, Defend, Debuff, Stunned}
     public string unitName = "enemigo";
     public int maxHP = 80;
     public int currentHP = 80;
     public int CurrentStep = 1;
     public int EnemyAttack = 0;
+    public int Burn = 0;
+    public int Paralysis = 0;
+    public int Poison = 0;
+
 
     public bool TakeDamage(int dmg)
     {
