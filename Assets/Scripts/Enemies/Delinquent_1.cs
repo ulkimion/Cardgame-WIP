@@ -13,7 +13,7 @@ public class Delinquent_1 : EnemyAITemplate
         if (CurrentStep == 1)
         {
             EnemyAttack = 7;
-            enemyAction = Action.Attack;
+            enemyActionSymbol = Action.Attack;
             return EnemyAttack;
         }
     }

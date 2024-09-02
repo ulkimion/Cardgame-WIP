@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyAITemplate : MonoBehaviour
 {
     public enum Action {Attack, Attack_Debuff, Debuff, Waiting}
-    public Action enemyAction;
+    public Action enemyActionSymbol;
     public string unitName = "enemigo";
     public int maxHP;
     public int currentHP;
@@ -29,23 +29,6 @@ public class EnemyAITemplate : MonoBehaviour
     }
 }
 
-public class Delinquent_1 : EnemyAITemplate
-{
-    public string unitName = "Delinquent 1";
-    maxHP = 40;
-    currentHP = 40;
-
-    public int enemyAction()
-    {
-        if (CurrentStep == 1)
-        {
-            EnemyAttack = 7;
-            enemyAction = Action.Attack;
-            return EnemyAttack;
-        }
-    }
-}
-
 public class Delinquent_2 : EnemyAITemplate
 {
     public string unitName = "Delinquent_2";
@@ -57,14 +40,14 @@ public class Delinquent_2 : EnemyAITemplate
         if (CurrentStep == 1)
         {
             EnemyAttack = 0;
-            enemyAction = Action.Waiting;
-            CurrentStep = 2
+            enemyActionSymbol = Action.Waiting;
+            CurrentStep = 2;
         }
         if (CurrentStep == 2)
         {
             EnemyAttack = 8;
-            enemyAction = Action.Attack_Debuff;
-            CurrentStep = 1
+            enemyActionSymbol = Action.Attack_Debuff;
+            CurrentStep = 1;
             return EnemyAttack;
             //inflingir 2 de fuego
         }
@@ -82,7 +65,7 @@ public class Police_1 : EnemyAITemplate
         if (CurrentStep == 1)
         {
             EnemyAttack = 6;
-            enemyAction = Action.Waiting;
+            enemyActionSymbol = Action.Waiting;
         }
     }
 }
@@ -100,7 +83,7 @@ public class Police_2 : EnemyAITemplate
             //agregar un if, if player has debuff, enemyAttack = 15, enemyAction = Action.Attack, return EnemyAttack.
             //gain 8 defense
             EnemyAttack = 0;
-            enemyAction = Action.Waiting;
+            enemyActionSymbol = Action.Waiting;
         }
     }
 }
