@@ -5,7 +5,7 @@ using UnityEngine;
 public class Police_2 : EnemyAITemplate
 {
     
-    private void Start()
+    private Police_2()
     {
         unitName = "Police 2";
         maxHP = 30;

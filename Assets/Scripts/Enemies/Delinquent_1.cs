@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Delinquent_1 : EnemyAITemplate
 {
-    private void Start()
+    public Delinquent_1()
     {
         unitName = "Delinquent_1";
         currentHP = 40;

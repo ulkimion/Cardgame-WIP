@@ -2356,23 +2356,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8614910550858333484, guid: 0fb921256b52a33458e60e361be32d8c, type: 3}
   m_PrefabInstance: {fileID: 7043984888811368393}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1823586355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1823586350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48abf87ef96930c449b2fec968aca54f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unitName: enemigo
-  maxHP: 80
-  currentHP: 80
-  CurrentStep: 1
-  EnemyAttack: 0
 --- !u!1 &1939771544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2409,7 +2392,6 @@ MonoBehaviour:
   enemyHUD: {fileID: 625149700}
   drawHand: {fileID: 1503287663}
   TurnCounter: {fileID: 182181157}
-  enemyAI: {fileID: 1823586355}
   enemyIntent: {fileID: 1969728080}
   enemyDamage: 0
   enemySpawner: {fileID: 2003052733}
@@ -2972,10 +2954,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 504712039118398500, guid: 0fb921256b52a33458e60e361be32d8c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1823586355}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fb921256b52a33458e60e361be32d8c, type: 3}
 --- !u!1001 &7445041415269436305
 PrefabInstance:

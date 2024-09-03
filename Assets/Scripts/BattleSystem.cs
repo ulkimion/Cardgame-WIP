@@ -40,6 +40,7 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.START;
         StartCoroutine(SetupBattle());
         enemySpawner.spawnEnemy();
+        enemyAI = new Delinquent_1();
     }
 
     IEnumerator SetupBattle()

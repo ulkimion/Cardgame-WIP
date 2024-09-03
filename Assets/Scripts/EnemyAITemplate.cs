@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyAITemplate : MonoBehaviour
+public class EnemyAITemplate 
 {
     public enum Action {Attack, Attack_Debuff, Debuff, Waiting}
     public Action enemyActionSymbol;
