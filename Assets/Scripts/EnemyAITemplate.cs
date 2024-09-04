@@ -17,11 +17,13 @@ public class EnemyAITemplate
     public int Paralysis = 0;
     public int Poison = 0;
 
+    public HpBar HpBar;
+
 
     public bool TakeDamage(int dmg)
     {
         currentHP -= dmg;
-
+        HpBar.UpdateHPBar(currentHP,maxHP);
         if (currentHP <= 0)
             return true;
         else
