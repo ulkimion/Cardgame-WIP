@@ -69,7 +69,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator PlayerAttack()
     {
-        bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
+        bool enemyDied = enemyUnit.TakeDamage(playerUnit.damage);
         playerUnit.LoseEnergy(1);
         playerHUD.SetEnergy(playerUnit.unitEnergy);
         enemyHUD.SetHP(enemyUnit.currentHP);
@@ -80,7 +80,7 @@ public class BattleSystem : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        if(isDead)
+        if(enemyDied)
         {
             state = BattleState.WON;
             EndBattle();
@@ -91,11 +91,11 @@ public class BattleSystem : MonoBehaviour
     {
         dialogueText.text = enemyUnit.unitName + " attacks!";
         yield return new WaitForSeconds(1f);
-        bool isDead = playerUnit.TakeDamage(enemyDamage);
+        bool playerDied = playerUnit.TakeDamage(enemyDamage);
         playerHUD.SetHP(playerUnit.currentHP);
         yield return new WaitForSeconds(1f);
 
-        if(isDead)
+        if(playerDied)
         {
             state = BattleState.LOSS;
             EndBattle();

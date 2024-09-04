@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyAITemplate 
 {
     public enum Action {Attack, Attack_Debuff, Debuff, Waiting}
+    public bool currentlyAlive = true;
     public Action enemyActionSymbol;
     public string unitName = "enemigo";
     public int maxHP;
