@@ -22,7 +22,9 @@ public class BattleSystem : MonoBehaviour
     //public EnemyHUD enemyHUD1;
     public DrawHand drawHand;
     public Text TurnCounter;
-    public Delinquent_1 enemyAI;
+    public Delinquent_1 enemyAI1;
+    public Delinquent_2 enemyAI2;
+    public Police_1 enemyAI3;
     public Text enemyIntent;
     public int enemyDamage;
     public EnemySpawner enemySpawner;
@@ -40,7 +42,9 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.START;
         StartCoroutine(SetupBattle());
         enemySpawner.spawnEnemy();
-        enemyAI = new Delinquent_1();
+        enemyAI1 = new Delinquent_1();
+        enemyAI2 = new Delinquent_2();
+        enemyAI3 = new Police_1();
     }
 
     IEnumerator SetupBattle()
@@ -87,9 +91,37 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    IEnumerator EnemyTurn() 
+    IEnumerator EnemiesTurn()
     {
-        dialogueText.text = enemyUnit.unitName + " attacks!";
+        if (enemyAI1.currentlyAlive)
+            {
+            StartCoroutine(EnemyTurn(enemyAI1.unitName, enemyAI1.EnemyAttack));
+            yield return new WaitForSeconds(1f);
+        }
+        if (enemyAI2.currentlyAlive) 
+            {
+            StartCoroutine(EnemyTurn(enemyAI2.unitName, enemyAI2.EnemyAttack));
+            yield return new WaitForSeconds(1f);
+        }
+        if (enemyAI3.currentlyAlive) 
+            {
+              StartCoroutine(EnemyTurn(enemyAI3.unitName, enemyAI3.EnemyAttack));
+            yield return new WaitForSeconds(1f);
+        }
+
+        if (enemyAI1.currentlyAlive == false && enemyAI2.currentlyAlive == false && enemyAI3.currentlyAlive == false)
+        {
+            EndBattle();
+            yield break;
+        }
+
+        state = BattleState.PLAYERTURN;
+        PlayerTurn();
+    }
+
+    IEnumerator EnemyTurn(string unitName, int EnemyAttack) 
+    {
+        dialogueText.text = unitName + " attacks!";
         yield return new WaitForSeconds(1f);
         bool playerDied = playerUnit.TakeDamage(enemyDamage);
         playerHUD.SetHP(playerUnit.currentHP);
@@ -102,8 +134,7 @@ public class BattleSystem : MonoBehaviour
         }
         else
         {
-            state = BattleState.PLAYERTURN;
-            PlayerTurn();
+            yield break;
         }
     }
 
@@ -130,7 +161,7 @@ public class BattleSystem : MonoBehaviour
         playerHUD.SetEnergy(playerUnit.unitEnergy);
         dialogueText.text = "Your Turn";
         TurnCounter.text = "Turn " + currentTurn;
-        enemyDamage = enemyAI.enemyAction();
+        enemyDamage = enemyAI1.enemyAction();
         enemyIntent.text = "Enemy will do: " + enemyDamage + " Damage ";
     }
 
@@ -161,7 +192,7 @@ public class BattleSystem : MonoBehaviour
         if(state == BattleState.PLAYERTURN)
         {
             state = BattleState.ENEMYTURN;
-            StartCoroutine(EnemyTurn());
+            StartCoroutine(EnemiesTurn());
         }
     }
 }

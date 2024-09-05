@@ -6,7 +6,7 @@ public class Delinquent_1 : EnemyAITemplate
 {
     public Delinquent_1()
     {
-        unitName = "Delinquent_1";
+        unitName = "Delinquent 1";
         currentHP = 40;
         maxHP = 40;
     }

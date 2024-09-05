@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Delinquent_2 : EnemyAITemplate
 {
-    
+    public Delinquent_2()
+    {
+        unitName = "Delinquent 2";
+        currentHP = 40;
+        maxHP = 40;
+    }
 
     public int enemyAction()
     {
@@ -13,6 +18,7 @@ public class Delinquent_2 : EnemyAITemplate
             EnemyAttack = 0;
             enemyActionSymbol = Action.Waiting;
             CurrentStep = 2;
+            return 0;
         }
         if (CurrentStep == 2)
         {

@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Police_1 : EnemyAITemplate
 {
-    
+    public Police_1()
+    {
+        unitName = "Police 1";
+        currentHP = 40;
+        maxHP = 40;
+    }
 
     public int enemyAction()
     {
