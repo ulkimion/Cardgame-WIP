@@ -189,10 +189,55 @@ public class BattleSystem : MonoBehaviour
 
     public void OnEndTurnButton()
     {
-        if(state == BattleState.PLAYERTURN)
+        GameObject[] Cards = GameObject.FindGameObjectsWithTag("Card");
+        StartCoroutine(SlideAndDestroyCards(Cards));
+       
+        if (state == BattleState.PLAYERTURN)
         {
             state = BattleState.ENEMYTURN;
             StartCoroutine(EnemiesTurn());
         }
     }
+
+    private IEnumerator SlideAndDestroyCards(GameObject[] Cards)
+    {
+        float staggerTime = 0.03f; // Tiempo de espera entre que cada carta empieza a moverse
+        float duration = 0.3f; // Duración del deslizamiento
+
+        foreach (GameObject Card in Cards)
+        {
+            // Inicia el deslizamiento de la carta, pero no espera a que termine
+            StartCoroutine(SlideCardDown(Card, duration));
+
+            // Espera un tiempo antes de iniciar la siguiente carta
+            yield return new WaitForSeconds(staggerTime);
+        }
+
+        // Espera a que todas las cartas terminen de deslizarse antes de continuar
+        yield return new WaitForSeconds(duration + staggerTime);
+    }
+
+    private IEnumerator SlideCardDown(GameObject Card, float duration)
+    {
+        Vector3 startPosition = Card.transform.position;
+        Vector3 endPosition = startPosition - new Vector3(0, 3, 0); // Ajusta 10 según cuánto quieres que se mueva hacia abajo
+        float elapsedTime = 0;
+
+        while (elapsedTime < duration)
+        {
+            Card.transform.position = Vector3.Lerp(startPosition, endPosition, (elapsedTime / duration));
+            elapsedTime += Time.deltaTime;
+            yield return null; // Espera un frame antes de continuar
+        }
+
+        // Asegúrate de que la carta llegue exactamente a la posición final
+        Card.transform.position = endPosition;
+
+        // Destruye la carta después del deslizamiento
+        GameObject.Destroy(Card);
+    }
+
+
+
+
 }

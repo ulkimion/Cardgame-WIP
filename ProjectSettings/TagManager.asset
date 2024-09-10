@@ -8,6 +8,7 @@ TagManager:
   - CombatSystem
   - Enemy1
   - EnemySpawner1
+  - Card
   layers:
   - Default
   - TransparentFX

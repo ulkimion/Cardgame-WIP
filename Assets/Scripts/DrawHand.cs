@@ -8,7 +8,7 @@ public class DrawHand : MonoBehaviour
 
     public void draw5()
     {
-        GameObject Card1 = Instantiate(Card, new Vector3(0,-3.5f,0), Quaternion.identity);
+        GameObject Card1 = Instantiate(Card, new Vector3(-4, -3.5f, 0), Quaternion.identity);
         Card1.transform.SetParent(GameObject.FindGameObjectWithTag("Hand").transform);
         Card1.name = "Card 1";
 
@@ -16,7 +16,7 @@ public class DrawHand : MonoBehaviour
         Card2.transform.SetParent(GameObject.FindGameObjectWithTag("Hand").transform);
         Card2.name = "Card 2";
 
-        GameObject Card3 = Instantiate(Card, new Vector3(-4, -3.5f, 0), Quaternion.identity);
+        GameObject Card3 = Instantiate(Card, new Vector3(0, -3.5f, 0), Quaternion.identity);
         Card3.transform.SetParent(GameObject.FindGameObjectWithTag("Hand").transform);
         Card3.name = "Card 3";
 
