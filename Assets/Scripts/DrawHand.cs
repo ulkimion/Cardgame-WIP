@@ -5,6 +5,7 @@ using UnityEngine;
 public class DrawHand : MonoBehaviour
 {
     public GameObject Card;
+    public BattleSystem battleSystem;
 
     public void draw5()
     {

@@ -7,6 +7,15 @@ public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOSS }
 
 public class BattleSystem : MonoBehaviour
 {
+    public List<Card> deck = new List<Card>();
+    public List<Card> discardPile = new List<Card>();
+    public List<Card> hand = new List<Card>();
+    public Transform[] cardSlots;
+    public bool[] availableCardSlots;
+
+    public Text deckSizeText;
+    public Text discardPileSizeText;
+
     
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
@@ -34,7 +43,38 @@ public class BattleSystem : MonoBehaviour
 
     public int currentTurn = 0;
 
-    
+
+
+    public void drawCard()
+    {
+        if (deck.Count < 1)
+        {
+            Shuffle();
+        }
+
+        if (deck.Count >= 1)
+        {
+            Card randCard = deck[Random.Range(0, deck.Count)];
+            deck.Remove(randCard);
+            deckSizeText.text = deck.ToString();
+            discardPileSizeText.text = deck.ToString();           
+        }
+
+    }
+
+    public void Shuffle()
+    {
+        if(discardPile.Count >= 1)
+        {
+            foreach(Card card in discardPile)
+            {
+                deck.Add(card);
+
+            }
+            discardPile.Clear();
+        }
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +85,8 @@ public class BattleSystem : MonoBehaviour
         enemyAI1 = new Delinquent_1();
         enemyAI2 = new Delinquent_2();
         enemyAI3 = new Police_1();
+        deckSizeText.text = deck.Count.ToString();
+        discardPileSizeText.text = deck.Count.ToString();
     }
 
     IEnumerator SetupBattle()
@@ -93,19 +135,69 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator EnemiesTurn()
     {
+        int playerEffectDamage = playerUnit.AffectedbyStatus();
+        bool playerDied = playerUnit.TakeDamage(playerEffectDamage);
+        playerHUD.SetHP(playerUnit.currentHP);
+        if (playerDied)
+        {
+            state = BattleState.LOSS;
+            EndBattle();
+        }
+        yield return new WaitForSeconds(1f);
+
+        Debug.Log("enemigos van a atacar");
+
         if (enemyAI1.currentlyAlive)
-            {
-            StartCoroutine(EnemyTurn(enemyAI1.unitName, enemyAI1.EnemyAttack));
+        {
+            int enemyEffectDamage = enemyAI1.AffectedbyStatus();
+            bool currentlyAlive = enemyAI1.TakeDamage(enemyEffectDamage);
+            //playerHUD.SetHP(enemyAI1.currentHP);
+                if (enemyAI1.currentlyAlive)
+                {
+                    StartCoroutine(EnemyTurn(enemyAI1.unitName, enemyAI1.EnemyAttack));
+
+                    Debug.Log("enemigo 1 ataco");
+                }
+                else
+                {
+                    enemyAI1.enemyDies();
+                }
             yield return new WaitForSeconds(1f);
         }
-        if (enemyAI2.currentlyAlive) 
+
+
+        if (enemyAI2.currentlyAlive)
+        {
+            int enemyEffectDamage = enemyAI2.AffectedbyStatus();
+            bool currentlyAlive = enemyAI2.TakeDamage(enemyEffectDamage);
+            //playerHUD.SetHP(enemyAI2.currentHP);
+            if (enemyAI2.currentlyAlive)
             {
-            StartCoroutine(EnemyTurn(enemyAI2.unitName, enemyAI2.EnemyAttack));
+                StartCoroutine(EnemyTurn(enemyAI2.unitName, enemyAI2.EnemyAttack));
+                Debug.Log("enemigo 2 ataco");
+            }
+            else
+            {
+                enemyAI2.enemyDies();
+            }
             yield return new WaitForSeconds(1f);
         }
-        if (enemyAI3.currentlyAlive) 
+
+
+        if (enemyAI3.currentlyAlive)
+        {
+            int enemyEffectDamage = enemyAI3.AffectedbyStatus();
+            bool currentlyAlive = enemyAI3.TakeDamage(enemyEffectDamage);
+            //playerHUD.SetHP(enemyAI3.currentHP);
+            if (enemyAI3.currentlyAlive)
             {
-              StartCoroutine(EnemyTurn(enemyAI3.unitName, enemyAI3.EnemyAttack));
+                StartCoroutine(EnemyTurn(enemyAI3.unitName, enemyAI3.EnemyAttack));
+                Debug.Log("enemigo 3 ataco");
+            }
+            else
+            {
+                enemyAI3.enemyDies();
+            }
             yield return new WaitForSeconds(1f);
         }
 
@@ -234,6 +326,9 @@ public class BattleSystem : MonoBehaviour
         Card.transform.position = endPosition;
 
         // Destruye la carta después del deslizamiento
+
+        Card cardComponent = Card.GetComponent<Card>();
+        discardPile.Add(cardComponent);
         GameObject.Destroy(Card);
     }
 
