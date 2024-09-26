@@ -9,6 +9,7 @@ public class PlayAttackCard : MonoBehaviour
     [SerializeField] private GameObject _combatSystem;
     [SerializeField] private GameObject _player;
     [SerializeField] private Button _button;
+    private BattleSystem battleSystem;
     private void Start()
     {
         _combatSystem = GameObject.FindGameObjectWithTag("CombatSystem");

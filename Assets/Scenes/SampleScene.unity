@@ -1176,17 +1176,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3107701408520076068, guid: 810e9570d98c30c4c9f24e3951d597fa, type: 3}
   m_PrefabInstance: {fileID: 1441526115}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &744925980 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1850235255314229029, guid: 810e9570d98c30c4c9f24e3951d597fa, type: 3}
-  m_PrefabInstance: {fileID: 1441526115}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 455ce4c0ae5d76a4fb6fc1e4f384ed69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &764379694
 GameObject:
   m_ObjectHideFlags: 0
@@ -2844,22 +2833,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deck:
-  - {fileID: 744925980}
   - {fileID: 1850235255314229029, guid: e00a6d6add548c543af07c173d24ca3c, type: 3}
   - {fileID: 1850235255314229029, guid: e00a6d6add548c543af07c173d24ca3c, type: 3}
-  - {fileID: 744925980}
-  discardPile:
-  - {fileID: 744925980}
-  - {fileID: 744925980}
-  - {fileID: 744925980}
-  - {fileID: 744925980}
+  - {fileID: 1850235255314229029, guid: e00a6d6add548c543af07c173d24ca3c, type: 3}
+  - {fileID: 1850235255314229029, guid: e00a6d6add548c543af07c173d24ca3c, type: 3}
+  - {fileID: 1850235255314229029, guid: e00a6d6add548c543af07c173d24ca3c, type: 3}
+  discardPile: []
   hand: []
-  cardSlots:
-  - {fileID: 235988938}
-  - {fileID: 377570873}
-  - {fileID: 1863299446}
-  - {fileID: 65952078}
-  - {fileID: 1394176524}
   availableCardSlots: 00000000000000000000
   deckSizeText: {fileID: 1758215775}
   discardPileSizeText: {fileID: 33950029}

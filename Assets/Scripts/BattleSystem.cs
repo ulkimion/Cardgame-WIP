@@ -10,7 +10,6 @@ public class BattleSystem : MonoBehaviour
     public List<Card> deck = new List<Card>();
     public List<Card> discardPile = new List<Card>();
     public List<Card> hand = new List<Card>();
-    public Transform[] cardSlots;
     public bool[] availableCardSlots;
 
     public Text deckSizeText;
@@ -69,7 +68,6 @@ public class BattleSystem : MonoBehaviour
             foreach(Card card in discardPile)
             {
                 deck.Add(card);
-
             }
             discardPile.Clear();
         }
