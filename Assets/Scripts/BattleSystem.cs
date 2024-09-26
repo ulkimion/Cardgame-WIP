@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,8 +8,8 @@ public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOSS }
 
 public class BattleSystem : MonoBehaviour
 {
-    public List<Card> deck = new List<Card>();
-    public List<Card> discardPile = new List<Card>();
+    public List<GameObject> deck = new List<GameObject>();
+    public List<GameObject> discardPile = new List<GameObject>();
     public List<Card> hand = new List<Card>();
     public bool[] availableCardSlots;
 
@@ -53,7 +54,7 @@ public class BattleSystem : MonoBehaviour
 
         if (deck.Count >= 1)
         {
-            Card randCard = deck[Random.Range(0, deck.Count)];
+            var randCard = deck[Random.Range(0, deck.Count)];
             deck.Remove(randCard);
             deckSizeText.text = deck.ToString();
             discardPileSizeText.text = deck.ToString();           
@@ -65,7 +66,7 @@ public class BattleSystem : MonoBehaviour
     {
         if(discardPile.Count >= 1)
         {
-            foreach(Card card in discardPile)
+            foreach(var card in discardPile)
             {
                 deck.Add(card);
             }
@@ -325,8 +326,8 @@ public class BattleSystem : MonoBehaviour
 
         // Destruye la carta después del deslizamiento
 
-        Card cardComponent = card.GetComponent<Card>();
-        discardPile.Add(cardComponent);
+        //var cardComponent = card;
+        discardPile.Add(card);
         GameObject.Destroy(card);
     }
 

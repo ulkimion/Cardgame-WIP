@@ -15,6 +15,6 @@ public class Card : MonoBehaviour
 
     void MoveToDiscardPile()
     {
-        battleSystem.discardPile.Add(this);
+        battleSystem.discardPile.Add(this.gameObject);
     }
 }
