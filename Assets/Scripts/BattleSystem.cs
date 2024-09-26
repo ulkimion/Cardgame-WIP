@@ -307,27 +307,27 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(duration + staggerTime);
     }
 
-    private IEnumerator SlideCardDown(GameObject Card, float duration)
+    private IEnumerator SlideCardDown(GameObject card, float duration)
     {
-        Vector3 startPosition = Card.transform.position;
+        Vector3 startPosition = card.transform.position;
         Vector3 endPosition = startPosition - new Vector3(0, 3, 0); // Ajusta 10 según cuánto quieres que se mueva hacia abajo
         float elapsedTime = 0;
 
         while (elapsedTime < duration)
         {
-            Card.transform.position = Vector3.Lerp(startPosition, endPosition, (elapsedTime / duration));
+            card.transform.position = Vector3.Lerp(startPosition, endPosition, (elapsedTime / duration));
             elapsedTime += Time.deltaTime;
             yield return null; // Espera un frame antes de continuar
         }
 
         // Asegúrate de que la carta llegue exactamente a la posición final
-        Card.transform.position = endPosition;
+        card.transform.position = endPosition;
 
         // Destruye la carta después del deslizamiento
 
-        Card cardComponent = Card.GetComponent<Card>();
+        Card cardComponent = card.GetComponent<Card>();
         discardPile.Add(cardComponent);
-        GameObject.Destroy(Card);
+        GameObject.Destroy(card);
     }
 
 

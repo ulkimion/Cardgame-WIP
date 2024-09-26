@@ -6,6 +6,7 @@ public class DrawHand : MonoBehaviour
 {
     public GameObject Card;
     public BattleSystem battleSystem;
+    public List<Vector3> cardPositions;
 
     void Start()
     {
@@ -14,40 +15,29 @@ public class DrawHand : MonoBehaviour
         {
             battleSystem = FindObjectOfType<BattleSystem>();
         }
+        cardPositions = new List<Vector3>();
+        for (int i = 0; i < 5; i++) cardPositions.Add(new Vector3(-4f + (i*2),-3.5f,0f));
     }
 
 
     public void draw5()
     {
-        ifDeckEmpty();
-        GameObject Card1 = Instantiate(battleSystem.deck[0].gameObject, new Vector3(-4, -3.5f, 0), Quaternion.identity);
-        Card1.transform.SetParent(GameObject.FindGameObjectWithTag("Hand").transform);
-        Card1.name = "Card 1";
-        battleSystem.deck.RemoveAt(0);
+        for (int i = 0; i < 5; i++)
+        {
+            ifDeckEmpty();
+            if (battleSystem.deck[0] != null)
+            {
+                GameObject Card1 = Instantiate(battleSystem.deck[0].gameObject, cardPositions[i], Quaternion.identity);
+                Card1.transform.SetParent(GameObject.FindGameObjectWithTag("Hand").transform);
+                Card1.name = "Card " + i + 1;
+                battleSystem.deck.RemoveAt(0);
+            }
+            else
+            {
+                Debug.Log("Deck vacío");
+            }
+        }
 
-        ifDeckEmpty();
-        GameObject Card2 = Instantiate(battleSystem.deck[0].gameObject, new Vector3(-2, -3.5f, 0), Quaternion.identity);
-        Card2.transform.SetParent(GameObject.FindGameObjectWithTag("Hand").transform);
-        Card2.name = "Card 2";
-        battleSystem.deck.RemoveAt(0);
-
-        ifDeckEmpty();
-        GameObject Card3 = Instantiate(battleSystem.deck[0].gameObject, new Vector3(0, -3.5f, 0), Quaternion.identity);
-        Card3.transform.SetParent(GameObject.FindGameObjectWithTag("Hand").transform);
-        Card3.name = "Card 3";
-        battleSystem.deck.RemoveAt(0);
-
-        ifDeckEmpty();
-        GameObject Card4 = Instantiate(battleSystem.deck[0].gameObject, new Vector3(2, -3.5f, 0), Quaternion.identity);
-        Card4.transform.SetParent(GameObject.FindGameObjectWithTag("Hand").transform);
-        Card4.name = "Card 4";
-        battleSystem.deck.RemoveAt(0);
-
-        ifDeckEmpty();
-        GameObject Card5 = Instantiate(battleSystem.deck[0].gameObject, new Vector3(4, -3.5f, 0), Quaternion.identity);
-        Card5.transform.SetParent(GameObject.FindGameObjectWithTag("Hand").transform);
-        Card5.name = "Card 5";
-        battleSystem.deck.RemoveAt(0);
     }
 
     void ifDeckEmpty() 
