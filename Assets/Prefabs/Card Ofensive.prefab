@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 1633022273115557983}
   - component: {fileID: 4628609814435144347}
   - component: {fileID: 6266339915960488678}
-  - component: {fileID: 1850235255314229029}
   m_Layer: 5
   m_Name: Card Ofensive
   m_TagString: Card
@@ -193,17 +192,3 @@ MonoBehaviour:
   _combatSystem: {fileID: 0}
   _player: {fileID: 0}
   _button: {fileID: 2892048061583668490}
---- !u!114 &1850235255314229029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7003530851262981509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 455ce4c0ae5d76a4fb6fc1e4f384ed69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasBeenPlayed: 0
-  handIndex: 0

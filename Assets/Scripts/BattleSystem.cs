@@ -10,7 +10,6 @@ public class BattleSystem : MonoBehaviour
 {
     public List<GameObject> deck = new List<GameObject>();
     public List<GameObject> discardPile = new List<GameObject>();
-    public List<Card> hand = new List<Card>();
     public bool[] availableCardSlots;
 
     public Text deckSizeText;
@@ -44,23 +43,7 @@ public class BattleSystem : MonoBehaviour
     public int currentTurn = 0;
 
 
-
-    public void drawCard()
-    {
-        if (deck.Count < 1)
-        {
-            Shuffle();
-        }
-
-        if (deck.Count >= 1)
-        {
-            var randCard = deck[Random.Range(0, deck.Count)];
-            deck.Remove(randCard);
-            deckSizeText.text = deck.ToString();
-            discardPileSizeText.text = deck.ToString();           
-        }
-
-    }
+    //Las cosas marcadas con RM (removible) son necesarias en este momento, para el correcto funcionamiento de el juego, pero, mas adelante seran obsoletas
 
     public void Shuffle()
     {
@@ -90,19 +73,16 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator SetupBattle()
     {
-        //GameObject playerGO = Instantiate(playerPrefab, playerBattleStation);
-        GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
-        playerUnit = playerGO.GetComponent<Unit>();
+        GameObject playerGO = GameObject.FindGameObjectWithTag("Player"); //RM
+        playerUnit = playerGO.GetComponent<Unit>(); //RM
 
-        //GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation);
-        GameObject enemyGO = GameObject.FindGameObjectWithTag("Enemy1");
-        //enemyUnit = enemyGO.GetComponent<EnemyAITemplate>();
-        enemyUnit = enemyGO.GetComponent<Unit>();
+        GameObject enemyGO = GameObject.FindGameObjectWithTag("Enemy1"); //RM
+        enemyUnit = enemyGO.GetComponent<Unit>(); //RM
 
-        dialogueText.text = "A " + enemyUnit.unitName + " wants to fight";
+        dialogueText.text = "A " + enemyUnit.unitName + " wants to fight"; 
 
-        playerHUD.SetHUD(playerUnit);
-        enemyHUD.SetHUD(enemyUnit);
+        playerHUD.SetHUD(playerUnit); //RM
+        enemyHUD.SetHUD(enemyUnit); //RM
 
         currentTurn = 0;
 
@@ -115,12 +95,12 @@ public class BattleSystem : MonoBehaviour
     IEnumerator PlayerAttack()
     {
         bool enemyDied = enemyUnit.TakeDamage(playerUnit.damage);
-        playerUnit.LoseEnergy(1);
+        playerUnit.LoseEnergy(1); //RM
         playerHUD.SetEnergy(playerUnit.unitEnergy);
         enemyHUD.SetHP(enemyUnit.currentHP);
-        dialogueText.text = "Hit!";
+        dialogueText.text = "Hit!"; //RM
         yield return new WaitForSeconds(1f);
-        dialogueText.text = "Your Turn";
+        dialogueText.text = "Your Turn"; //RM
 
 
         yield return new WaitForSeconds(2f);
@@ -144,18 +124,14 @@ public class BattleSystem : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
 
-        Debug.Log("enemigos van a atacar");
-
         if (enemyAI1.currentlyAlive)
         {
             int enemyEffectDamage = enemyAI1.AffectedbyStatus();
             bool currentlyAlive = enemyAI1.TakeDamage(enemyEffectDamage);
-            //playerHUD.SetHP(enemyAI1.currentHP);
+            //playerHUD.SetHP(enemyAI1.currentHP);  Esto hay que modificarlo para cambiar el hp del enemigo al hp actual en su barra de hp
                 if (enemyAI1.currentlyAlive)
                 {
                     StartCoroutine(EnemyTurn(enemyAI1.unitName, enemyAI1.EnemyAttack));
-
-                    Debug.Log("enemigo 1 ataco");
                 }
                 else
                 {
@@ -169,11 +145,10 @@ public class BattleSystem : MonoBehaviour
         {
             int enemyEffectDamage = enemyAI2.AffectedbyStatus();
             bool currentlyAlive = enemyAI2.TakeDamage(enemyEffectDamage);
-            //playerHUD.SetHP(enemyAI2.currentHP);
+            //playerHUD.SetHP(enemyAI2.currentHP);  Esto hay que modificarlo para cambiar el hp del enemigo al hp actual en su barra de hp
             if (enemyAI2.currentlyAlive)
             {
                 StartCoroutine(EnemyTurn(enemyAI2.unitName, enemyAI2.EnemyAttack));
-                Debug.Log("enemigo 2 ataco");
             }
             else
             {
@@ -187,11 +162,10 @@ public class BattleSystem : MonoBehaviour
         {
             int enemyEffectDamage = enemyAI3.AffectedbyStatus();
             bool currentlyAlive = enemyAI3.TakeDamage(enemyEffectDamage);
-            //playerHUD.SetHP(enemyAI3.currentHP);
+            //playerHUD.SetHP(enemyAI3.currentHP);  Esto hay que modificarlo para cambiar el hp del enemigo al hp actual en su barra de hp
             if (enemyAI3.currentlyAlive)
             {
                 StartCoroutine(EnemyTurn(enemyAI3.unitName, enemyAI3.EnemyAttack));
-                Debug.Log("enemigo 3 ataco");
             }
             else
             {
@@ -281,7 +255,7 @@ public class BattleSystem : MonoBehaviour
     public void OnEndTurnButton()
     {
         GameObject[] Cards = GameObject.FindGameObjectsWithTag("Card");
-        StartCoroutine(SlideAndDestroyCards(Cards));
+        StartCoroutine(SlideAndDiscardCards(Cards));
        
         if (state == BattleState.PLAYERTURN)
         {
@@ -290,41 +264,33 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    private IEnumerator SlideAndDestroyCards(GameObject[] Cards)
+    private IEnumerator SlideAndDiscardCards(GameObject[] Cards)
     {
-        float staggerTime = 0.03f; // Tiempo de espera entre que cada carta empieza a moverse
-        float duration = 0.3f; // Duración del deslizamiento
+        float staggerTime = 0.03f;
+        float duration = 0.3f;
 
         foreach (GameObject Card in Cards)
         {
-            // Inicia el deslizamiento de la carta, pero no espera a que termine
             StartCoroutine(SlideCardDown(Card, duration));
-
-            // Espera un tiempo antes de iniciar la siguiente carta
             yield return new WaitForSeconds(staggerTime);
         }
-
-        // Espera a que todas las cartas terminen de deslizarse antes de continuar
         yield return new WaitForSeconds(duration + staggerTime);
     }
 
     private IEnumerator SlideCardDown(GameObject card, float duration)
     {
         Vector3 startPosition = card.transform.position;
-        Vector3 endPosition = startPosition - new Vector3(0, 3, 0); // Ajusta 10 según cuánto quieres que se mueva hacia abajo
+        Vector3 endPosition = startPosition - new Vector3(0, 3, 0);
         float elapsedTime = 0;
 
         while (elapsedTime < duration)
         {
             card.transform.position = Vector3.Lerp(startPosition, endPosition, (elapsedTime / duration));
             elapsedTime += Time.deltaTime;
-            yield return null; // Espera un frame antes de continuar
+            yield return null;
         }
 
-        // Asegúrate de que la carta llegue exactamente a la posición final
         card.transform.position = endPosition;
-
-        // Destruye la carta después del deslizamiento
 
         //var cardComponent = card;
         discardPile.Add(card);

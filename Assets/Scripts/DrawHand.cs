@@ -43,7 +43,6 @@ public class DrawHand : MonoBehaviour
 
     void ifDeckEmpty() 
     {
-        Debug.Log("ifdeckempty");
         if (battleSystem.deck.Count == 0)
         {
             battleSystem.Shuffle();
