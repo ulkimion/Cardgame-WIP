@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,8 +10,10 @@ public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOSS }
 public class BattleSystem : MonoBehaviour
 {
     public List<GameObject> deck = new List<GameObject>();
+    public List<GameObject> hand = new List<GameObject>();
     public List<GameObject> discardPile = new List<GameObject>();
-    public bool[] availableCardSlots;
+
+
 
     public Text deckSizeText;
     public Text discardPileSizeText;
@@ -79,7 +82,7 @@ public class BattleSystem : MonoBehaviour
         GameObject enemyGO = GameObject.FindGameObjectWithTag("Enemy1"); //RM
         enemyUnit = enemyGO.GetComponent<Unit>(); //RM
 
-        dialogueText.text = "A " + enemyUnit.unitName + " wants to fight"; 
+        dialogueText.text = "A " + enemyUnit.unitName + " wants to fight";
 
         playerHUD.SetHUD(playerUnit); //RM
         enemyHUD.SetHUD(enemyUnit); //RM
@@ -87,6 +90,16 @@ public class BattleSystem : MonoBehaviour
         currentTurn = 0;
 
         yield return new WaitForSeconds(2f);
+
+        for (int i = 0; i < deck.Count; i++) 
+        {
+            GameObject card = Instantiate(deck[i], new Vector3(0, -8, 0), Quaternion.identity);
+            card.transform.SetParent(GameObject.FindGameObjectWithTag("Deck").transform);
+            card.transform.localScale = Vector3.one * 60;
+        }
+
+
+
 
         state = BattleState.PLAYERTURN;
         PlayerTurn();
@@ -296,8 +309,5 @@ public class BattleSystem : MonoBehaviour
         discardPile.Add(card);
         //GameObject.Destroy(card);
     }
-
-
-
 
 }

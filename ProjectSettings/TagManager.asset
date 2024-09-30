@@ -9,6 +9,7 @@ TagManager:
   - Enemy1
   - EnemySpawner1
   - Card
+  - Deck
   layers:
   - Default
   - TransparentFX

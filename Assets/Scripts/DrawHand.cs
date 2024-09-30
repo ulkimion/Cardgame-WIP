@@ -27,11 +27,11 @@ public class DrawHand : MonoBehaviour
             ifDeckEmpty();
             if (battleSystem.deck.Count > 0)
             {
-                GameObject card = Instantiate(battleSystem.deck[0].gameObject, cardPositions[i], Quaternion.identity);
-                card.transform.SetParent(GameObject.FindGameObjectWithTag("Hand").transform);
-                card.transform.localScale = Vector3.one * 60;
-                card.name = "Card " + (i + 1);
+                battleSystem.hand.Add(battleSystem.deck[0]);
                 battleSystem.deck.RemoveAt(0);
+                battleSystem.hand[i].transform.position = cardPositions[i];
+                battleSystem.hand[i].transform.SetParent(GameObject.FindGameObjectWithTag("Hand").transform);
+                //battleSystem.hand[i].name = "Card " + (i + 1);
             }
             else
             {
