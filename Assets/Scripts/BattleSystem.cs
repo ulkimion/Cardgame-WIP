@@ -294,7 +294,7 @@ public class BattleSystem : MonoBehaviour
 
         //var cardComponent = card;
         discardPile.Add(card);
-        GameObject.Destroy(card);
+        //GameObject.Destroy(card);
     }
 
 
