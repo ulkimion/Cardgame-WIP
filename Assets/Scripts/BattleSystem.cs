@@ -72,8 +72,9 @@ public class BattleSystem : MonoBehaviour
         enemyAI1 = new Delinquent_1();
         enemyAI2 = new Delinquent_2();
         enemyAI3 = new Police_1();
-        deckSizeText.text = inFightDeck.Count.ToString();
-        discardPileSizeText.text = inFightDeck.Count.ToString();
+        deckSizeText.text = playerDeck.Count.ToString();
+        discardPileSizeText.text = discardPile.Count.ToString();
+        TurnCounter.text = ("Turn 0");
     }
 
     IEnumerator SetupBattle()
@@ -95,7 +96,7 @@ public class BattleSystem : MonoBehaviour
 
         for (int i = 0; i < playerDeck.Count; i++) 
         {
-            GameObject card = Instantiate(playerDeck[i], new Vector3(0, -8, 0), Quaternion.identity);
+            GameObject card = Instantiate(playerDeck[i], new Vector3(-3, -8, 0), Quaternion.identity);
             card.transform.SetParent(GameObject.FindGameObjectWithTag("Deck").transform);
             card.transform.localScale = Vector3.one * 60;
             inFightDeck.Add(card);
@@ -117,6 +118,7 @@ public class BattleSystem : MonoBehaviour
         dialogueText.text = "Hit!"; //RM
         yield return new WaitForSeconds(1f);
         dialogueText.text = "Your Turn"; //RM
+
 
 
         yield return new WaitForSeconds(2f);
@@ -244,6 +246,8 @@ public class BattleSystem : MonoBehaviour
         TurnCounter.text = "Turn " + currentTurn;
         enemyDamage = enemyAI1.enemyAction();
         enemyIntent.text = "Enemy will do: " + enemyDamage + " Damage ";
+        deckSizeText.text = inFightDeck.Count.ToString();
+        discardPileSizeText.text = discardPile.Count.ToString();
     }
 
 
@@ -281,7 +285,7 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    private IEnumerator SlideAndDiscardCards(GameObject[] Cards)
+    public IEnumerator SlideAndDiscardCards(GameObject[] Cards)
     {
         float staggerTime = 0.03f;
         float duration = 0.3f;
@@ -312,6 +316,8 @@ public class BattleSystem : MonoBehaviour
         //var cardComponent = card;
         discardPile.Add(card);
         hand.RemoveAt(0);
+        discardPileSizeText.text = discardPile.Count.ToString();
+        card.transform.SetParent(GameObject.FindGameObjectWithTag("DiscardPile").transform);
         //GameObject.Destroy(card);
     }
 

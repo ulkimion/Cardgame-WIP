@@ -83,6 +83,7 @@ public class CardSelectionHandler : MonoBehaviour , IPointerEnterHandler, IPoint
     {
         //seleccionar la carta
         eventData.selectedObject = gameObject;
+        _startPos = transform.position;
     }
 
     public void OnPointerExit(PointerEventData eventData)

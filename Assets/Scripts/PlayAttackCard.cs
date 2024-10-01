@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,7 +15,7 @@ public class PlayAttackCard : MonoBehaviour
     {
         _combatSystem = GameObject.FindGameObjectWithTag("CombatSystem");
         _player = GameObject.FindGameObjectWithTag("Player");
-        BattleSystem battleSystem = _combatSystem.GetComponent<BattleSystem>();
+        battleSystem = _combatSystem.GetComponent<BattleSystem>();
         _button.onClick.AddListener(this.discardCard);
         _button.onClick.AddListener(battleSystem.OnAttackButton);
     }
@@ -23,7 +24,9 @@ public class PlayAttackCard : MonoBehaviour
         Unit player = _player.GetComponent<Unit>();
         if(player.unitEnergy > 0)
         {
-            Destroy(this.gameObject);
+            battleSystem.discardPile.Add(this.gameObject);
+            battleSystem.hand.Remove(this.gameObject);
+            this.gameObject.transform.position = new Vector3(0, -8, 0);
         }
         else
         {
