@@ -8,8 +8,10 @@ using UnityEngine.UI;
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOSS }
 
 public class BattleSystem : MonoBehaviour
-{
-    public List<GameObject> deck = new List<GameObject>();
+
+{ 
+    public List<GameObject> playerDeck = new List<GameObject>();
+    public List<GameObject> inFightDeck = new List<GameObject>();
     public List<GameObject> hand = new List<GameObject>();
     public List<GameObject> discardPile = new List<GameObject>();
 
@@ -54,7 +56,7 @@ public class BattleSystem : MonoBehaviour
         {
             foreach(var card in discardPile)
             {
-                deck.Add(card);
+                inFightDeck.Add(card);
             }
             discardPile.Clear();
         }
@@ -70,8 +72,8 @@ public class BattleSystem : MonoBehaviour
         enemyAI1 = new Delinquent_1();
         enemyAI2 = new Delinquent_2();
         enemyAI3 = new Police_1();
-        deckSizeText.text = deck.Count.ToString();
-        discardPileSizeText.text = deck.Count.ToString();
+        deckSizeText.text = inFightDeck.Count.ToString();
+        discardPileSizeText.text = inFightDeck.Count.ToString();
     }
 
     IEnumerator SetupBattle()
@@ -91,11 +93,12 @@ public class BattleSystem : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        for (int i = 0; i < deck.Count; i++) 
+        for (int i = 0; i < playerDeck.Count; i++) 
         {
-            GameObject card = Instantiate(deck[i], new Vector3(0, -8, 0), Quaternion.identity);
+            GameObject card = Instantiate(playerDeck[i], new Vector3(0, -8, 0), Quaternion.identity);
             card.transform.SetParent(GameObject.FindGameObjectWithTag("Deck").transform);
             card.transform.localScale = Vector3.one * 60;
+            inFightDeck.Add(card);
         }
 
 
@@ -267,7 +270,8 @@ public class BattleSystem : MonoBehaviour
 
     public void OnEndTurnButton()
     {
-        GameObject[] Cards = GameObject.FindGameObjectsWithTag("Card");
+
+        GameObject[] Cards = hand.ToArray();
         StartCoroutine(SlideAndDiscardCards(Cards));
        
         if (state == BattleState.PLAYERTURN)
@@ -307,6 +311,7 @@ public class BattleSystem : MonoBehaviour
 
         //var cardComponent = card;
         discardPile.Add(card);
+        hand.RemoveAt(0);
         //GameObject.Destroy(card);
     }
 

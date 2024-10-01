@@ -25,10 +25,10 @@ public class DrawHand : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             ifDeckEmpty();
-            if (battleSystem.deck.Count > 0)
+            if (battleSystem.inFightDeck.Count > 0)
             {
-                battleSystem.hand.Add(battleSystem.deck[0]);
-                battleSystem.deck.RemoveAt(0);
+                battleSystem.hand.Add(battleSystem.inFightDeck[0]);
+                battleSystem.inFightDeck.RemoveAt(0);
                 battleSystem.hand[i].transform.position = cardPositions[i];
                 battleSystem.hand[i].transform.SetParent(GameObject.FindGameObjectWithTag("Hand").transform);
                 //battleSystem.hand[i].name = "Card " + (i + 1);
@@ -43,7 +43,7 @@ public class DrawHand : MonoBehaviour
 
     void ifDeckEmpty() 
     {
-        if (battleSystem.deck.Count == 0)
+        if (battleSystem.inFightDeck.Count == 0)
         {
             battleSystem.Shuffle();
         }

@@ -15,10 +15,10 @@ public class PlayAttackCard : MonoBehaviour
         _combatSystem = GameObject.FindGameObjectWithTag("CombatSystem");
         _player = GameObject.FindGameObjectWithTag("Player");
         BattleSystem battleSystem = _combatSystem.GetComponent<BattleSystem>();
-        _button.onClick.AddListener(this.destroyCard);
+        _button.onClick.AddListener(this.discardCard);
         _button.onClick.AddListener(battleSystem.OnAttackButton);
     }
-    public void destroyCard()
+    public void discardCard()
     {
         Unit player = _player.GetComponent<Unit>();
         if(player.unitEnergy > 0)
