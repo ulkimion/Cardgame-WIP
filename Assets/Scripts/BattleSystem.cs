@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using Unity.Collections.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -248,6 +249,10 @@ public class BattleSystem : MonoBehaviour
         enemyIntent.text = "Enemy will do: " + enemyDamage + " Damage ";
         deckSizeText.text = inFightDeck.Count.ToString();
         discardPileSizeText.text = discardPile.Count.ToString();
+        GameObject[] deck = inFightDeck.ToArray();
+        StartCoroutine(PileInDeck(deck));
+        GameObject[] discardpile = discardPile.ToArray();
+        StartCoroutine(PileInDiscardPile(discardpile));
     }
 
 
@@ -285,7 +290,27 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    public IEnumerator SlideAndDiscardCards(GameObject[] Cards)
+    private IEnumerator PileInDiscardPile(GameObject[] Cards)
+    {
+        foreach (GameObject Card in Cards)
+        {
+                Card.transform.position = new Vector3(3, -8, 0);
+        }
+        
+        yield return null;
+    }
+
+    private IEnumerator PileInDeck(GameObject[] Cards)
+    {
+        foreach (GameObject Card in Cards)
+        {
+            Card.transform.position = new Vector3(-3, -8, 0);
+        }
+
+        yield return null;
+    }
+
+    private IEnumerator SlideAndDiscardCards(GameObject[] Cards)
     {
         float staggerTime = 0.03f;
         float duration = 0.3f;

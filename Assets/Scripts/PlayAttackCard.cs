@@ -26,7 +26,7 @@ public class PlayAttackCard : MonoBehaviour
         {
             battleSystem.discardPile.Add(this.gameObject);
             battleSystem.hand.Remove(this.gameObject);
-            this.gameObject.transform.position = new Vector3(0, -8, 0);
+            this.gameObject.transform.position = new Vector3(0, 8, 0);
         }
         else
         {
