@@ -10,6 +10,7 @@ TagManager:
   - EnemySpawner1
   - Card
   - Deck
+  - DiscardPile
   layers:
   - Default
   - TransparentFX

@@ -9,14 +9,23 @@ public class Unit : MonoBehaviour
     public int damage;
     public int maxHP;
     public int currentHP; 
+    public int block;
     public int unitEnergy;
     public int Burn = 0;
     public int Paralysis = 0;
     public int Poison = 0;
 
+
     public bool TakeDamage(int dmg)
     {
-        currentHP -= dmg;
+        if (damage <= block) {
+            block = block - dmg;
+        }
+        else
+        {
+            currentHP = currentHP - (dmg - block);
+            block = 0;
+        }
 
         if(currentHP <= 0)
             return true;

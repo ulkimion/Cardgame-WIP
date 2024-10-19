@@ -36,9 +36,14 @@ public class BattleSystem : MonoBehaviour
     //public EnemyHUD enemyHUD1;
     public DrawHand drawHand;
     public Text TurnCounter;
+    public Text playerBlock;
     public Delinquent_1 enemyAI1;
     public Delinquent_2 enemyAI2;
     public Police_1 enemyAI3;
+
+
+    public List<EnemyAITemplate> enemyList;
+
     public Text enemyIntent;
     public int enemyDamage;
     public EnemySpawner enemySpawner;
@@ -73,9 +78,11 @@ public class BattleSystem : MonoBehaviour
         enemyAI1 = new Delinquent_1();
         enemyAI2 = new Delinquent_2();
         enemyAI3 = new Police_1();
+        enemyList = new List<EnemyAITemplate>();
         deckSizeText.text = playerDeck.Count.ToString();
         discardPileSizeText.text = discardPile.Count.ToString();
         TurnCounter.text = ("Turn 0");
+        //playerUnit.block = 100;
     }
 
     IEnumerator SetupBattle()
@@ -143,6 +150,27 @@ public class BattleSystem : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
 
+    /*
+        for (int i = 0; i < enemyList.Count; i++) 
+        {
+            if (enemyList[i].currentlyAlive) {
+                int enemyEffectDamage = enemyList[i].AffectedbyStatus();
+                bool currentlyAlive = enemyList[i].TakeDamage(enemyEffectDamage);
+                //playerHUD.SetHP(enemyList[i].currentHP);  Esto hay que modificarlo para cambiar el hp del enemigo al hp actual en su barra de hp
+                if (enemyList[i].currentlyAlive)
+                {
+                    StartCoroutine(EnemyTurn(enemyList[i].unitName, enemyList[i].EnemyAttack));
+                }
+                else
+                {
+                    enemyList[i].enemyDies();
+                }
+                yield return new WaitForSeconds(1f);
+            }
+        
+        }    
+        */
+
         if (enemyAI1.currentlyAlive)
         {
             int enemyEffectDamage = enemyAI1.AffectedbyStatus();
@@ -193,11 +221,28 @@ public class BattleSystem : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
 
+        /*
+        int activeEnemy = 0;
+
+        for (int i = 0; i < enemyList.Count; i++)
+        {
+            if (enemyList[i].currentlyAlive == true)
+            {
+                activeEnemy++;
+            }
+        }
+        if (activeEnemy <= 0)
+        {
+            EndBattle();
+            yield break;
+        }
+        */
         if (enemyAI1.currentlyAlive == false && enemyAI2.currentlyAlive == false && enemyAI3.currentlyAlive == false)
         {
             EndBattle();
             yield break;
         }
+
 
         state = BattleState.PLAYERTURN;
         PlayerTurn();
@@ -209,6 +254,7 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(1f);
         bool playerDied = playerUnit.TakeDamage(enemyDamage);
         playerHUD.SetHP(playerUnit.currentHP);
+        playerBlock.text = playerUnit.block.ToString();
         yield return new WaitForSeconds(1f);
 
         if(playerDied)
@@ -249,6 +295,8 @@ public class BattleSystem : MonoBehaviour
         enemyIntent.text = "Enemy will do: " + enemyDamage + " Damage ";
         deckSizeText.text = inFightDeck.Count.ToString();
         discardPileSizeText.text = discardPile.Count.ToString();
+        playerUnit.block = 0;
+        playerBlock.text = playerUnit.block.ToString();
         GameObject[] deck = inFightDeck.ToArray();
         StartCoroutine(PileInDeck(deck));
         GameObject[] discardpile = discardPile.ToArray();
