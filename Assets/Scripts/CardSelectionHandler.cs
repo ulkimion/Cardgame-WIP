@@ -63,6 +63,35 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
         }
     }
 
+    private IEnumerator MoveCardInstant(bool startAnimation, Vector3 targetPosition)
+    {
+        Vector3 endPosition;
+        Vector3 endScale;
+
+        if (battleSystem.state == BattleState.PLAYERTURN)
+        {
+            if (startAnimation)
+            {
+                endPosition = targetPosition != Vector3.zero ? targetPosition : _startPos + new Vector3(0f, _verticalMoveAmount, 0f);
+                endScale = _startScale * _scaleAmount;
+                gameObject.transform.SetAsLastSibling();
+                yield return new WaitForSeconds(1);
+                endScale = _startScale;
+            }
+            else
+            {
+                endPosition = _startPos;
+                endScale = _startScale;
+            }
+
+            // Aplicar cambios a posición y escala instantáneamente
+            transform.position = endPosition;
+            transform.localScale = endScale;
+        }
+        yield return null;
+    }
+
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         // Seleccionar la carta
@@ -99,7 +128,7 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
         if (!isClicked)
         {
             isClicked = true;
-            StartCoroutine(MoveCard(true, new Vector3(3, -8, 0)));
+            StartCoroutine(MoveCardInstant(true, new Vector3(3, -8, 0)));
         }
         else
         {

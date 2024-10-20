@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class unsureWhatToCallThis : MonoBehaviour
+public class showCardDetail : MonoBehaviour
 {
     [SerializeField] public Image img;
     [SerializeField] public Image imgArt;

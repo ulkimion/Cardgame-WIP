@@ -490,7 +490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _combatSystem: {fileID: 0}
   _player: {fileID: 0}
-  _button: {fileID: 0}
+  _button: {fileID: 1282752025866197752}
 --- !u!1 &8493923243898159400
 GameObject:
   m_ObjectHideFlags: 0
