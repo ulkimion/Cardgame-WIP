@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Shoot
   effectText: Shoot 1
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: c1bbb777e2d477743a2d46e52ceb483f, type: 3}
   CardType: 1
   energyCost: 1
+  CardTarget: 0

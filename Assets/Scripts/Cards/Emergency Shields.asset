@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Emergency Shields
   effectText: Block 5
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: bc1f3a3802e4e09448455e09700aba95, type: 3}
   CardType: 0
   energyCost: 1
+  CardTarget: 0
