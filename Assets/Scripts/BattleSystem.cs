@@ -38,6 +38,7 @@ public class BattleSystem : MonoBehaviour
     public Text TurnCounter;
     public Text playerBlock;
     public Delinquent_1 enemyAI1;
+    public IEnemy enemyAI11;
     public Delinquent_2 enemyAI2;
     public Police_1 enemyAI3;
 
@@ -75,7 +76,11 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.START;
         StartCoroutine(SetupBattle());
         enemySpawner.spawnEnemy();
-        enemyAI1 = new Delinquent_1();
+        enemyAI1 = ScriptableObject.CreateInstance<Delinquent_1>();
+        //enemyAI1 = new Delinquent_1();
+        enemyAI11 = new Delinquent_2();
+        enemyAI11 = new Police_1();
+
         enemyAI2 = new Delinquent_2();
         enemyAI3 = new Police_1();
         enemyList = new List<EnemyAITemplate>();
