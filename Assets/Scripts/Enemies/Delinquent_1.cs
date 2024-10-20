@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Delinquent_1 : EnemyAITemplate
+public class Delinquent_1 : Enemy, IEnemy
 {
     public Delinquent_1()
     {
