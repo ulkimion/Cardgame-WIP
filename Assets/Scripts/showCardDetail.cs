@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class showCardDetail : MonoBehaviour
+public class ShowCardDetail : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] public Image img;
     [SerializeField] public Image imgArt;
@@ -15,27 +16,23 @@ public class showCardDetail : MonoBehaviour
     public Sprite tacticBig;
     public TextMeshProUGUI efecto;
     public TextMeshProUGUI nombre;
+    private Coroutine currentCoroutine;
 
     void Start()
     {
         img = GetComponent<Image>();
         efecto.enabled = false;
-        StartCoroutine(ShowBigVersion());
     }
 
-    public IEnumerator ShowBigVersion()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        yield return new WaitForSeconds(5);
         img.sprite = tacticBig;
         efecto.enabled = true;
-        StartCoroutine(ShowMiniVersion());
     }
 
-    public IEnumerator ShowMiniVersion()
+    public void OnPointerExit(PointerEventData eventData)
     {
-        yield return new WaitForSeconds(5);
         img.sprite = tacticMini;
         efecto.enabled = false;
-        StartCoroutine(ShowMiniVersion());
     }
 }

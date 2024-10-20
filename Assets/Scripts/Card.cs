@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum cardType { Tactic, Shoot }
+public enum cardTarget { Self, Enemy, All }
 [CreateAssetMenu(fileName = "new Card", menuName = "Card")]
 public class Card : ScriptableObject
 {
@@ -11,5 +12,6 @@ public class Card : ScriptableObject
     public Sprite artwork;
     public cardType CardType;
     public int energyCost;
+    public cardTarget CardTarget;
 
 }
