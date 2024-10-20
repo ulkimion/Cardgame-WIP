@@ -20,6 +20,7 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
         _startPos = transform.position;
         _startPos.y = -3.5f;
         _startScale = transform.localScale;
+        battleSystem = FindObjectOfType<BattleSystem>();
     }
 
     private IEnumerator MoveCard(bool startAnimation, Vector3 targetPosition)
@@ -28,9 +29,12 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
         Vector3 endScale;
 
         float elapsedTime = 0f;
- 
 
-        while (elapsedTime < _moveTime)
+        Debug.Log("estado actual: " + battleSystem.state);
+
+        if (battleSystem.state == BattleState.PLAYERTURN)
+        {
+            while (elapsedTime < _moveTime)
             {
                 elapsedTime += Time.deltaTime;
 
@@ -56,6 +60,7 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
 
                 yield return null;
             }
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
