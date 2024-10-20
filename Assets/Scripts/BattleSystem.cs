@@ -327,13 +327,12 @@ public class BattleSystem : MonoBehaviour
 
     public void OnEndTurnButton()
     {
-
-        GameObject[] Cards = hand.ToArray();
-        StartCoroutine(SlideAndDiscardCards(Cards));
        
         if (state == BattleState.PLAYERTURN)
         {
             state = BattleState.ENEMYTURN;
+            GameObject[] Cards = hand.ToArray();
+            StartCoroutine(SlideAndDiscardCards(Cards));
             StartCoroutine(EnemiesTurn());
         }
     }

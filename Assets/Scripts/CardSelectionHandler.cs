@@ -13,9 +13,12 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
     private Vector3 _startScale;
     private bool isClicked = false;
 
+    public BattleSystem battleSystem;
+
     private void Start()
     {
         _startPos = transform.position;
+        _startPos.y = -3.5f;
         _startScale = transform.localScale;
     }
 
@@ -25,32 +28,34 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
         Vector3 endScale;
 
         float elapsedTime = 0f;
+ 
+
         while (elapsedTime < _moveTime)
-        {
-            elapsedTime += Time.deltaTime;
-
-            if (startAnimation)
             {
-                endPosition = targetPosition != Vector3.zero ? targetPosition : _startPos + new Vector3(0f, _verticalMoveAmount, 0f);
-                endScale = _startScale * _scaleAmount;
-                gameObject.transform.SetAsLastSibling();
+                elapsedTime += Time.deltaTime;
+
+                if (startAnimation)
+                {
+                    endPosition = targetPosition != Vector3.zero ? targetPosition : _startPos + new Vector3(0f, _verticalMoveAmount, 0f);
+                    endScale = _startScale * _scaleAmount;
+                    gameObject.transform.SetAsLastSibling();
+                }
+                else
+                {
+                    endPosition = _startPos;
+                    endScale = _startScale;
+                }
+
+                // Calcular la cantidad interpolada
+                Vector3 lerpedPos = Vector3.Lerp(transform.position, endPosition, (elapsedTime / _moveTime));
+                Vector3 lerpedScale = Vector3.Lerp(transform.localScale, endScale, (elapsedTime / _moveTime));
+
+                // Aplicar cambios a posición y escala
+                transform.position = lerpedPos;
+                transform.localScale = lerpedScale;
+
+                yield return null;
             }
-            else
-            {
-                endPosition = _startPos;
-                endScale = _startScale;
-            }
-
-            // Calcular la cantidad interpolada
-            Vector3 lerpedPos = Vector3.Lerp(transform.position, endPosition, (elapsedTime / _moveTime));
-            Vector3 lerpedScale = Vector3.Lerp(transform.localScale, endScale, (elapsedTime / _moveTime));
-
-            // Aplicar cambios a posición y escala
-            transform.position = lerpedPos;
-            transform.localScale = lerpedScale;
-
-            yield return null;
-        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -58,6 +63,7 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
         // Seleccionar la carta
         eventData.selectedObject = gameObject;
         _startPos = transform.position;
+        _startPos.y = -3.5f;
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -68,7 +74,7 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
 
     public void OnSelect(BaseEventData eventData)
     {
-        if (!isClicked)
+            if (!isClicked)
         {
             StartCoroutine(MoveCard(true, Vector3.zero));
         }
