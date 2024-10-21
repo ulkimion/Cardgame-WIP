@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -7,11 +8,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOSS }
-
 public class BattleSystem : MonoBehaviour
 
-{ 
-    public List<GameObject> playerDeck = new List<GameObject>();
+{
+    private static readonly System.Random rng = new System.Random();
+    public List<Card> playerDeck = new List<Card>();
     public List<GameObject> inFightDeck = new List<GameObject>();
     public List<GameObject> hand = new List<GameObject>();
     public List<GameObject> discardPile = new List<GameObject>();
@@ -21,7 +22,7 @@ public class BattleSystem : MonoBehaviour
     public Text deckSizeText;
     public Text discardPileSizeText;
 
-    
+    public GameObject cardBase;
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
 
@@ -54,7 +55,6 @@ public class BattleSystem : MonoBehaviour
 
     public int currentTurn = 0;
 
-
     //Las cosas marcadas con RM (removible) son necesarias en este momento, para el correcto funcionamiento de el juego, pero, mas adelante seran obsoletas
 
     public void Shuffle()
@@ -67,6 +67,17 @@ public class BattleSystem : MonoBehaviour
             }
             discardPile.Clear();
         }
+
+        int n = inFightDeck.Count;
+
+        for (int i = n - 1; i > 0; i--)
+        {
+            int j = rng.Next(0, i + 1); // Get a random index from 0 to i
+                                        // Swap inFightDeck[i] with the element at random index
+            var temp = inFightDeck[i];
+            inFightDeck[i] = inFightDeck[j];
+            inFightDeck[j] = temp;
+        }
     }
 
 
@@ -78,8 +89,8 @@ public class BattleSystem : MonoBehaviour
         enemySpawner.spawnEnemy();
         enemyAI1 = ScriptableObject.CreateInstance<Delinquent_1>();
         //enemyAI1 = new Delinquent_1();
-        enemyAI11 = new Delinquent_2();
-        enemyAI11 = new Police_1();
+        //enemyAI11 = new Delinquent_2();
+        //enemyAI11 = new Police_1();
 
         enemyAI2 = new Delinquent_2();
         enemyAI3 = new Police_1();
@@ -107,16 +118,18 @@ public class BattleSystem : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        for (int i = 0; i < playerDeck.Count; i++) 
+        for (int i = 0; i < playerDeck.Count; i++)
         {
-            GameObject card = Instantiate(playerDeck[i], new Vector3(-3, -8, 0), Quaternion.identity);
+            GameObject card = Instantiate(cardBase,new Vector3(-3, -8, 0), Quaternion.identity);
+            CardDisplay cardDisplay = card.GetComponent<CardDisplay>();
+            cardDisplay.card = playerDeck[i];
+
             card.transform.SetParent(GameObject.FindGameObjectWithTag("Deck").transform);
             card.transform.localScale = Vector3.one * 60;
             inFightDeck.Add(card);
         }
 
-
-
+        Shuffle();
 
         state = BattleState.PLAYERTURN;
         PlayerTurn();
