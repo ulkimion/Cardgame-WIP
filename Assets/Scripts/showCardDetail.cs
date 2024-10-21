@@ -9,7 +9,7 @@ public class ShowCardDetail : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 {
     [SerializeField] public Image img;
     [SerializeField] public Image imgArt;
-
+    //[SerializeField] public Card cardType;
     public Sprite shootMini;
     public Sprite shootBig;
     public Sprite tacticMini;
@@ -21,18 +21,41 @@ public class ShowCardDetail : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     void Start()
     {
         img = GetComponent<Image>();
+        //CardDisplay cardDisplay = GetComponent<Card>();
+        /*if (cardDisplay.cardType == cardType.Shoot)
+        {
+            img.sprite = shootMini;
+        }
+        else
+        { */
+            img.sprite = tacticMini;
+        //}
         efecto.enabled = false;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        img.sprite = tacticBig;
+        /*if (type == cardType.Shoot)
+        {
+            img.sprite = shootBig;
+        }
+        else
+        { */
+            img.sprite = tacticBig;
+        //}
         efecto.enabled = true;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        img.sprite = tacticMini;
+        /*if (type == cardType.Shoot)
+        {
+            img.sprite = shootMini;
+        }
+        else
+        { */
+            img.sprite = tacticMini;
+        //}
         efecto.enabled = false;
     }
 }

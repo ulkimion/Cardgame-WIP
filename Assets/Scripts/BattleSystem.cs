@@ -72,8 +72,7 @@ public class BattleSystem : MonoBehaviour
 
         for (int i = n - 1; i > 0; i--)
         {
-            int j = rng.Next(0, i + 1); // Get a random index from 0 to i
-                                        // Swap inFightDeck[i] with the element at random index
+            int j = rng.Next(0, i + 1); 
             var temp = inFightDeck[i];
             inFightDeck[i] = inFightDeck[j];
             inFightDeck[j] = temp;
