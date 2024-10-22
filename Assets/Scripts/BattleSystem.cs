@@ -283,7 +283,7 @@ public class BattleSystem : MonoBehaviour
         PlayerTurn();
     }
 
-    IEnumerator EnemyTurn(string unitName, int EnemyAttack) 
+    public IEnumerator EnemyTurn(string unitName, int EnemyAttack) 
     {
         dialogueText.text = unitName + " attacks!";
         yield return new WaitForSeconds(1f);
@@ -426,6 +426,24 @@ public class BattleSystem : MonoBehaviour
         discardPileSizeText.text = discardPile.Count.ToString();
         card.transform.SetParent(GameObject.FindGameObjectWithTag("DiscardPile").transform);
         //GameObject.Destroy(card);
+    }
+
+    public bool cleanhit()
+    {
+        bool cleanHit = playerUnit.CleanHit();
+        if (cleanHit) { return true; } else { return false; }
+    }
+
+    public void shoot(int shootAmount)
+    {
+        Debug.Log("shoot" + shootAmount);
+        return;
+    }
+
+    public void multiShot(int shootAmount)
+    {
+        Debug.Log("multishoot" + shootAmount);
+        return;
     }
 
 }

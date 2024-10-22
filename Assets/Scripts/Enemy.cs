@@ -10,6 +10,7 @@ public class Enemy : ScriptableObject
     public string unitName = "enemigo";
     public int maxHP;
     public int currentHP;
+    public int focus;
     public int CurrentStep = 1;
     public int EnemyAttack = 0;
     public int Burn = 0;
@@ -18,35 +19,45 @@ public class Enemy : ScriptableObject
     public HpBar HpBar;
     public Sprite artwork;
 
-    public int NumberOfSteps;
+    public int NumberOfSteps = 1;
+    public Interrupt Interrupt;
 
     public Action ActionStep1;
+    public bool OnHit1;
     public int Damage1;
+    public int Tangled1;
     public int InfBurn1;
     public int InfParalysis1;
     public int InfPoison1;
     public int GainBlock1;
+    public int GainFocus1;
 
     public Action ActionStep2;
+    public bool OnHit2;
     public int Damage2;
     public int InfBurn2;
     public int InfParalysis2;
     public int InfPoison2;
     public int GainBlock2;
+    public int GainFocus2;
 
     public Action ActionStep3;
+    public bool OnHit3;
     public int Damage3;
     public int InfBurn3;
     public int InfParalysis3;
     public int InfPoison3;
     public int GainBlock3;
-     
-    public Interrupt Interrupt;
+    public int GainFocus3;
+ 
+    public Action ActionInterrupt;
+    public bool OnHitInterrupt;
     public int DamageInterrupt;
     public int InfBurnInterrupt;
     public int InfParalysisInterrupt;
     public int InfPoisonInterrupt;
     public int GainBlockInterrupt;
+    public int GainFocusInterrupt;
 
     public bool TakeDamage(int dmg)
     {

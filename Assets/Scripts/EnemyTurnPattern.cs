@@ -14,7 +14,7 @@ public class EnemyTurnPattern : MonoBehaviour
         BattleSystem = GameObject.FindWithTag("CombatSystem").GetComponent<BattleSystem>();
     }
 
-    public void enemyTurn ()
+    public void enemyTurn()
     {
         if (enemy.Interrupt == Interrupt.Paralysis && BattleSystem.playerUnit.Paralysis > 0) 
         {
@@ -45,28 +45,113 @@ public class EnemyTurnPattern : MonoBehaviour
 
     public void interruptionTurn() 
     {
-        BattleSystem.playerUnit.currentHP = BattleSystem.playerUnit.currentHP - 1;
+        StartCoroutine(BattleSystem.EnemyTurn(enemy.unitName, enemy.DamageInterrupt));
+        enemy.focus = enemy.GainFocusInterrupt;
+
+        if (enemy.OnHitInterrupt == true)
+        {
+            if (BattleSystem.cleanhit())
+            {
+                BattleSystem.playerUnit.Burn = BattleSystem.playerUnit.Burn + enemy.InfBurnInterrupt;
+                BattleSystem.playerUnit.Paralysis = BattleSystem.playerUnit.Paralysis + enemy.InfParalysisInterrupt;
+                BattleSystem.playerUnit.Poison = BattleSystem.playerUnit.Poison + enemy.InfPoisonInterrupt;
+            }
+        }
+        else if (enemy.OnHitInterrupt == false)
+        {
+            BattleSystem.playerUnit.Burn = BattleSystem.playerUnit.Burn + enemy.InfBurnInterrupt;
+            BattleSystem.playerUnit.Paralysis = BattleSystem.playerUnit.Paralysis + enemy.InfParalysisInterrupt;
+            BattleSystem.playerUnit.Poison = BattleSystem.playerUnit.Poison + enemy.InfPoisonInterrupt;
+        }
+
+        enemy.CurrentStep = 1;
     }
 
     public void turn1()
     {
-        BattleSystem.playerUnit.Burn = BattleSystem.playerUnit.Burn + enemy.InfBurn1;
-        BattleSystem.playerUnit.Paralysis = BattleSystem.playerUnit.Paralysis + enemy.InfParalysis1;
-        BattleSystem.playerUnit.Poison = BattleSystem.playerUnit.Poison + enemy.InfPoison1;
+        StartCoroutine(BattleSystem.EnemyTurn(enemy.unitName, enemy.Damage1));
+        enemy.focus = enemy.GainFocus1;
+
+        if (enemy.OnHit1 == true)
+            {
+            if (BattleSystem.cleanhit()) 
+                {
+                BattleSystem.playerUnit.Burn = BattleSystem.playerUnit.Burn + enemy.InfBurn1;
+                BattleSystem.playerUnit.Paralysis = BattleSystem.playerUnit.Paralysis + enemy.InfParalysis1;
+                BattleSystem.playerUnit.Poison = BattleSystem.playerUnit.Poison + enemy.InfPoison1;
+                }
+            }
+        else if (enemy.OnHit1 == false)
+            {
+            BattleSystem.playerUnit.Burn = BattleSystem.playerUnit.Burn + enemy.InfBurn1;
+            BattleSystem.playerUnit.Paralysis = BattleSystem.playerUnit.Paralysis + enemy.InfParalysis1;
+            BattleSystem.playerUnit.Poison = BattleSystem.playerUnit.Poison + enemy.InfPoison1;
+            }
+
+
+
+        if (enemy.NumberOfSteps > 1 ) 
+        { 
+            enemy.CurrentStep = 2;
+        }
 
     }
 
     public void turn2()
     {
-        BattleSystem.playerUnit.currentHP = BattleSystem.playerUnit.currentHP - 1;
+        StartCoroutine(BattleSystem.EnemyTurn(enemy.unitName, enemy.Damage2));
+        enemy.focus = enemy.GainFocus2;
+
+        if (enemy.OnHit2 == true)
+        {
+            if (BattleSystem.cleanhit())
+            {
+                BattleSystem.playerUnit.Burn = BattleSystem.playerUnit.Burn + enemy.InfBurn2;
+                BattleSystem.playerUnit.Paralysis = BattleSystem.playerUnit.Paralysis + enemy.InfParalysis2;
+                BattleSystem.playerUnit.Poison = BattleSystem.playerUnit.Poison + enemy.InfPoison2;
+            }
+        }
+        else if (enemy.OnHit2 == false)
+        {
+            BattleSystem.playerUnit.Burn = BattleSystem.playerUnit.Burn + enemy.InfBurn2;
+            BattleSystem.playerUnit.Paralysis = BattleSystem.playerUnit.Paralysis + enemy.InfParalysis2;
+            BattleSystem.playerUnit.Poison = BattleSystem.playerUnit.Poison + enemy.InfPoison2;
+        }
+
+        if (enemy.NumberOfSteps > 2)
+        {
+            enemy.CurrentStep = 3;
+        }
+        else
+        {
+            enemy.CurrentStep = 1;
+        }
     }
 
     public void turn3()
     {
-        BattleSystem.playerUnit.currentHP = BattleSystem.playerUnit.currentHP - 1;
+        StartCoroutine(BattleSystem.EnemyTurn(enemy.unitName, enemy.Damage3));
+        enemy.focus = enemy.GainFocus3;
+
+        if (enemy.OnHit3 == true)
+        {
+            if (BattleSystem.cleanhit())
+            {
+                BattleSystem.playerUnit.Burn = BattleSystem.playerUnit.Burn + enemy.InfBurn3;
+                BattleSystem.playerUnit.Paralysis = BattleSystem.playerUnit.Paralysis + enemy.InfParalysis3;
+                BattleSystem.playerUnit.Poison = BattleSystem.playerUnit.Poison + enemy.InfPoison3;
+            }
+        }
+        else if (enemy.OnHit1 == false)
+        {
+            BattleSystem.playerUnit.Burn = BattleSystem.playerUnit.Burn + enemy.InfBurn3;
+            BattleSystem.playerUnit.Paralysis = BattleSystem.playerUnit.Paralysis + enemy.InfParalysis3;
+            BattleSystem.playerUnit.Poison = BattleSystem.playerUnit.Poison + enemy.InfPoison3;
+        }
+
+        enemy.CurrentStep = 1;
     }
 
-    /*
     public bool TakeDamage(int dmg)
     {
         enemy.currentHP -= dmg;
@@ -95,5 +180,5 @@ public class EnemyTurnPattern : MonoBehaviour
     public void enemyDies()
     {
         enemy.currentlyAlive = false;
-    }*/
+    }
 }

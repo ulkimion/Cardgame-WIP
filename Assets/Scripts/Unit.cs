@@ -54,4 +54,16 @@ public class Unit : MonoBehaviour
         Poison = Mathf.Max(0, Poison - statusLoss);
         return;
     }
+
+    public bool CleanHit()
+    {
+        if (block > 0)
+        {
+            return false;
+        }
+        else
+        {
+            return false;
+        } 
+    }
 }

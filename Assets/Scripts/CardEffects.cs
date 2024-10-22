@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -13,9 +14,10 @@ public class CardEffects : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!isClicked) //y la energia de la carta =< energia jugador
+        if (!isClicked/* && card.energyCost >= BattleSystem.playerUnit.unitEnergy */)
         {
             activateEffect();
+            BattleSystem.playerUnit.unitEnergy = BattleSystem.playerUnit.unitEnergy - card.energyCost;
             //cardSelectionHandler.Discard();
         }
     }
@@ -30,10 +32,31 @@ public class CardEffects : MonoBehaviour, IPointerClickHandler
             BattleSystem.playerUnit.block = BattleSystem.playerUnit.block + card.block;
             Debug.Log("se gano block");
         }
-        else
+        else if (card.cardTarget == cardTarget.Enemy)
         {
-            BattleSystem.enemyAI1.currentHP = BattleSystem.enemyAI1.currentHP - card.damage;
-            Debug.Log("se disparo");
+            if (card.shootType == shootType.Shoot) 
+            {
+                BattleSystem.shoot(card.shoot);
+                Debug.Log("se disparo");
+            }
+            else if (card.shootType == shootType.Shoot)
+            {
+                BattleSystem.multiShot(card.shoot);
+                Debug.Log("se multidisparo");
+            }
+        }
+        else if (card.cardTarget == cardTarget.All)
+        {
+            if (card.shootType == shootType.Shoot)
+            {
+                BattleSystem.shoot(card.shoot);
+                Debug.Log("se disparo");
+            }
+            else if (card.shootType == shootType.Shoot)
+            {
+                BattleSystem.multiShot(card.shoot);
+                Debug.Log("se multidisparo");
+            }
         }
     }   
 }
