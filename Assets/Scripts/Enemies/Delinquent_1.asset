@@ -23,4 +23,4 @@ MonoBehaviour:
   Paralysis: 0
   Poison: 0
   HpBar: {fileID: 0}
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: b3379fa001eeb2c48a98890dd233d80b, type: 3}

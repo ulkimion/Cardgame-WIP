@@ -17,6 +17,10 @@ public class BattleSystem : MonoBehaviour
     public List<GameObject> hand = new List<GameObject>();
     public List<GameObject> discardPile = new List<GameObject>();
 
+    public List<Enemy> EncounterList = new List<Enemy>();    
+    public List<GameObject> Enemies = new List<GameObject>();
+    public GameObject enemyBase;
+
 
 
     public Text deckSizeText;
@@ -128,6 +132,15 @@ public class BattleSystem : MonoBehaviour
             card.transform.SetParent(GameObject.FindGameObjectWithTag("Deck").transform);
             card.transform.localScale = Vector3.one * 60;
             inFightDeck.Add(card);
+        }
+
+        for (int i = 0; i < EncounterList.Count; i++)
+        {
+            GameObject enemy = Instantiate(enemyBase, new Vector3((3 * i), -1, 0), Quaternion.identity);
+            EnemyDisplay enemyDisplay = enemy.GetComponent<EnemyDisplay>();
+            enemyDisplay.enemy = EncounterList[i];
+            enemy.transform.SetParent(GameObject.FindGameObjectWithTag("EnemySpawner1").transform);
+            enemy.transform.localScale = Vector3.one * 60;
         }
 
         Shuffle();

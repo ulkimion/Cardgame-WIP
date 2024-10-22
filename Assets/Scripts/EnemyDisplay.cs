@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class EnemyDisplay : MonoBehaviour
 {
-    [SerializeField] public Image img;
+    public Image look;
     public Enemy enemy;
     public Sprite intent;
     public Sprite Waiting;
@@ -20,8 +20,7 @@ public class EnemyDisplay : MonoBehaviour
 
     void Start()
     {
-        img = GetComponent<Image>();
-        img.sprite = enemy.artwork;
+        look.sprite = enemy.artwork;
 
     }
 }

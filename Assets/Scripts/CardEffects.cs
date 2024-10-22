@@ -35,5 +35,5 @@ public class CardEffects : MonoBehaviour, IPointerClickHandler
             BattleSystem.enemyAI1.currentHP = BattleSystem.enemyAI1.currentHP - card.damage;
             Debug.Log("se disparo");
         }
-    }
+    }   
 }
