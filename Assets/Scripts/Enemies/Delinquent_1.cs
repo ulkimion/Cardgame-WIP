@@ -16,7 +16,6 @@ public class Delinquent_1 : Enemy, IEnemy
         if (CurrentStep == 1)
         {
             EnemyAttack = 7;
-            enemyActionSymbol = Action.Attack;
             return EnemyAttack;
         }
         else

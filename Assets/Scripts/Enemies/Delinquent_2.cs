@@ -16,14 +16,12 @@ public class Delinquent_2 : EnemyAITemplate, IEnemy
         if (CurrentStep == 1)
         {
             EnemyAttack = 0;
-            enemyActionSymbol = Action.Waiting;
             CurrentStep = 2;
             return 0;
         }
         if (CurrentStep == 2)
         {
             EnemyAttack = 8;
-            enemyActionSymbol = Action.Attack_Debuff;
             CurrentStep = 1;
             return EnemyAttack;
             //inflingir 2 de fuego

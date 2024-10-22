@@ -16,7 +16,6 @@ public class Police_1 : EnemyAITemplate, IEnemy
         if (CurrentStep == 1)
         {
             EnemyAttack = 6;
-            enemyActionSymbol = Action.Waiting;
         }
         return 0;
     }

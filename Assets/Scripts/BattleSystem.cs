@@ -139,6 +139,9 @@ public class BattleSystem : MonoBehaviour
             GameObject enemy = Instantiate(enemyBase, new Vector3((3 * i), -1, 0), Quaternion.identity);
             EnemyDisplay enemyDisplay = enemy.GetComponent<EnemyDisplay>();
             enemyDisplay.enemy = EncounterList[i];
+            EnemyTurnPattern enemyTurnPatern = enemy.GetComponent<EnemyTurnPattern>();
+            enemyTurnPatern.enemy = EncounterList[i];
+            enemyTurnPatern.enemyId = i + 1;
             enemy.transform.SetParent(GameObject.FindGameObjectWithTag("EnemySpawner1").transform);
             enemy.transform.localScale = Vector3.one * 60;
         }

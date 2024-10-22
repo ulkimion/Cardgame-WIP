@@ -18,7 +18,6 @@ public class Police_2 : EnemyAITemplate, IEnemy
             //agregar un if, if player has debuff, enemyAttack = 15, enemyAction = Action.Attack, return EnemyAttack.
             //gain 8 defense
             EnemyAttack = 0;
-            enemyActionSymbol = Action.Waiting;
         }
         return 0;
     }

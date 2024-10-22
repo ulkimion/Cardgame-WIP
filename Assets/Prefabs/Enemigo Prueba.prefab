@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 1282752025866197752}
   - component: {fileID: 4350509721536958074}
   - component: {fileID: 5115444286819853046}
+  - component: {fileID: 1082690329856955253}
   m_Layer: 5
   m_Name: Enemigo Prueba
   m_TagString: Untagged
@@ -260,3 +261,17 @@ MonoBehaviour:
   Burn: {fileID: 0}
   Paralysis: {fileID: 0}
   Poison: {fileID: 0}
+--- !u!114 &1082690329856955253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6876785180859665576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ec14bf0daddd143895a0ec1039c8a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 11400000, guid: 89c71e3ee6cc3ed449cc8a8bb085cd42, type: 2}
+  BattleSystem: {fileID: 0}
