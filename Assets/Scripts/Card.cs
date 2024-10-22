@@ -22,5 +22,6 @@ public class Card : ScriptableObject
     public int poison;
     public int shoot;
     public shootType shootType;
+    public cardTarget cardTarget;
 
 }

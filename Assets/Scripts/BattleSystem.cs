@@ -26,7 +26,7 @@ public class BattleSystem : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
 
-    Unit playerUnit;
+    public Unit playerUnit;
     Unit enemyUnit;
     //EnemyAITemplate enemyUnit;
 
@@ -122,6 +122,8 @@ public class BattleSystem : MonoBehaviour
             GameObject card = Instantiate(cardBase,new Vector3(-3, -8, 0), Quaternion.identity);
             CardDisplay cardDisplay = card.GetComponent<CardDisplay>();
             cardDisplay.card = playerDeck[i];
+            CardEffects cardEffects = card.GetComponent<CardEffects>();
+            cardEffects.card = playerDeck[i];
 
             card.transform.SetParent(GameObject.FindGameObjectWithTag("Deck").transform);
             card.transform.localScale = Vector3.one * 60;

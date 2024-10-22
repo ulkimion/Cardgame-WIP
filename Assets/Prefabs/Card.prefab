@@ -421,6 +421,7 @@ GameObject:
   - component: {fileID: 5453802293198631645}
   - component: {fileID: 382679085648851223}
   - component: {fileID: 9007981347817011584}
+  - component: {fileID: 1147350230116256228}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -617,7 +618,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   img: {fileID: 5477149795026200472}
   imgArt: {fileID: 9028080734126069069}
-  cardtype: 1
   shootMini: {fileID: 21300000, guid: 7dc8f4c27e544184da788a89e47e828b, type: 3}
   shootBig: {fileID: 21300000, guid: 1228619fd674ced45ba586f5f8f7ce13, type: 3}
   tacticMini: {fileID: 21300000, guid: 20ddef03db144fd418799d84e1b5e36b, type: 3}
@@ -641,6 +641,20 @@ MonoBehaviour:
   effectText: {fileID: 5170450737721209554}
   artwork: {fileID: 9028080734126069069}
   energyCost: {fileID: 4713876466349728199}
+--- !u!114 &1147350230116256228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6876785180859665576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d2591c096a3724bae783020b0dd93c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BattleSystem: {fileID: 0}
+  card: {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}
 --- !u!1 &8493923243898159400
 GameObject:
   m_ObjectHideFlags: 0

@@ -2695,28 +2695,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDeck:
-  - {fileID: 6876785180859665576, guid: cb12222561592dc4bac4ffb0a383fd67, type: 3}
-  - {fileID: 6876785180859665576, guid: cb12222561592dc4bac4ffb0a383fd67, type: 3}
-  - {fileID: 6876785180859665576, guid: cb12222561592dc4bac4ffb0a383fd67, type: 3}
-  - {fileID: 6876785180859665576, guid: cb12222561592dc4bac4ffb0a383fd67, type: 3}
-  - {fileID: 6876785180859665576, guid: cb12222561592dc4bac4ffb0a383fd67, type: 3}
-  - {fileID: 6876785180859665576, guid: cb12222561592dc4bac4ffb0a383fd67, type: 3}
-  - {fileID: 6876785180859665576, guid: cb12222561592dc4bac4ffb0a383fd67, type: 3}
-  - {fileID: 6876785180859665576, guid: cb12222561592dc4bac4ffb0a383fd67, type: 3}
-  - {fileID: 6876785180859665576, guid: cb12222561592dc4bac4ffb0a383fd67, type: 3}
-  - {fileID: 6876785180859665576, guid: cb12222561592dc4bac4ffb0a383fd67, type: 3}
-  - {fileID: 6876785180859665576, guid: cb12222561592dc4bac4ffb0a383fd67, type: 3}
-  - {fileID: 6876785180859665576, guid: cb12222561592dc4bac4ffb0a383fd67, type: 3}
-  - {fileID: 6876785180859665576, guid: cb12222561592dc4bac4ffb0a383fd67, type: 3}
-  - {fileID: 6876785180859665576, guid: cb12222561592dc4bac4ffb0a383fd67, type: 3}
-  - {fileID: 6876785180859665576, guid: cb12222561592dc4bac4ffb0a383fd67, type: 3}
+  - {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}
+  - {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}
+  - {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}
+  - {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}
+  - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
   inFightDeck: []
   hand: []
   discardPile: []
   deckSizeText: {fileID: 1758215775}
   discardPileSizeText: {fileID: 33950029}
+  cardBase: {fileID: 6876785180859665576, guid: cb12222561592dc4bac4ffb0a383fd67, type: 3}
   playerPrefab: {fileID: 3732280159261777354}
   enemyPrefab: {fileID: 1823586350}
+  playerUnit: {fileID: 0}
   dialogueText: {fileID: 969589190}
   playerHUD: {fileID: 1099966187}
   enemyHUD: {fileID: 625149700}
