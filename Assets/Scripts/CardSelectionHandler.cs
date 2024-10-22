@@ -124,7 +124,6 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        // Mover la carta a una posición específica al hacer clic
         if (!isClicked)
         {
             isClicked = true;

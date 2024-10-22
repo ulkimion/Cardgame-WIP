@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,16 +11,23 @@ public class HpBar : MonoBehaviour
     [SerializeField] private Slider slider;
     [SerializeField] private Transform target;
     [SerializeField] private Vector3 offset;
+    [SerializeField] private TextMeshProUGUI burn;
+    [SerializeField] private TextMeshProUGUI paralysis;
+    [SerializeField] private TextMeshProUGUI poison;
 
     public void UpdateHPBar(float currentValue, float MaxValue)
     {
         slider.value = currentValue / MaxValue;
-
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        transform.position = target.position + offset; 
+        transform.position = target.position + offset;
+        /*RectTransform burnTransform = burn.GetComponent<RectTransform>();
+        burnTransform.anchoredPosition = target.position;
+        RectTransform paralysisTransform = paralysis.GetComponent<RectTransform>();
+        paralysisTransform.anchoredPosition = target.position;
+        RectTransform poisonTransform = poison.GetComponent<RectTransform>();
+        poisonTransform.anchoredPosition = target.position; */
     }
 }
