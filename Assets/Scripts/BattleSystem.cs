@@ -33,6 +33,7 @@ public class BattleSystem : MonoBehaviour
     public BattleHUD playerHUD;
     public DrawHand drawHand;
     public int cardsDrawnPerTurn = 5;
+    public int extraCardsDrawn = 0;
     public Text TurnCounter;
     public Text playerBlock;
 
@@ -97,7 +98,6 @@ public class BattleSystem : MonoBehaviour
 
 
         dialogueText.text = "The fight Begins";
-
         playerHUD.SetHUD(playerUnit); //RM
 
         currentTurn = 0;
@@ -124,19 +124,14 @@ public class BattleSystem : MonoBehaviour
         PlayerTurn();
     }
 
-    IEnumerator PlayerAttack()
+    /*IEnumerator PlayerAttack()
     {
-        playerUnit.LoseEnergy(1); //RM
-        playerHUD.SetEnergy(playerUnit.unitEnergy);
         dialogueText.text = "Hit!"; //RM
         yield return new WaitForSeconds(1f);
         dialogueText.text = "Your Turn"; //RM
-
-
-
         yield return new WaitForSeconds(2f);
 
-    }
+    }*/
 
     IEnumerator EnemiesTurn()
     {
@@ -233,7 +228,8 @@ public class BattleSystem : MonoBehaviour
     void PlayerTurn()
     {
         currentTurn++;
-        drawHand.drawHand(cardsDrawnPerTurn);
+        drawHand.drawHand(cardsDrawnPerTurn + extraCardsDrawn);
+        extraCardsDrawn = 0;
         playerUnit.unitEnergy = 3;
         playerHUD.SetEnergy(playerUnit.unitEnergy);
         dialogueText.text = "Your Turn";
@@ -249,7 +245,7 @@ public class BattleSystem : MonoBehaviour
     }
 
 
-    public void OnAttackButton()
+/*   public void OnAttackButton()
     {
         if (state != BattleState.PLAYERTURN)
         {
@@ -267,7 +263,7 @@ public class BattleSystem : MonoBehaviour
 
         }
 
-    }
+    }*/
 
 
     public void OnEndTurnButton()

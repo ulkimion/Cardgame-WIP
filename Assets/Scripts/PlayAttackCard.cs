@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class PlayAttackCard : MonoBehaviour
 {
+    /*
     [SerializeField] private GameObject _combatSystem;
     [SerializeField] private GameObject _player;
     [SerializeField] private Button _button;
@@ -32,7 +33,7 @@ public class PlayAttackCard : MonoBehaviour
         {
             Debug.Log("Not Enough Energy");
         }
-    }
+    }*/
 
 
 }
