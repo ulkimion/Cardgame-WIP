@@ -187,28 +187,7 @@ public class BattleSystem : MonoBehaviour
             EndBattle();
         }
         yield return new WaitForSeconds(1f);
-
-    /*
-        for (int i = 0; i < enemyList.Count; i++) 
-        {
-            if (enemyList[i].currentlyAlive) {
-                int enemyEffectDamage = enemyList[i].AffectedbyStatus();
-                bool currentlyAlive = enemyList[i].TakeDamage(enemyEffectDamage);
-                //playerHUD.SetHP(enemyList[i].currentHP);  Esto hay que modificarlo para cambiar el hp del enemigo al hp actual en su barra de hp
-                if (enemyList[i].currentlyAlive)
-                {
-                    StartCoroutine(EnemyTurn(enemyList[i].unitName, enemyList[i].EnemyAttack));
-                }
-                else
-                {
-                    enemyList[i].enemyDies();
-                }
-                yield return new WaitForSeconds(1f);
-            }
-        
-        }    
-        */
-
+        /*
         if (enemyAI1.currentlyAlive)
         {
             int enemyEffectDamage = enemyAI1.AffectedbyStatus();
@@ -257,7 +236,19 @@ public class BattleSystem : MonoBehaviour
                 enemyAI3.enemyDies();
             }
             yield return new WaitForSeconds(1f);
+        }*/
+
+        for (int i = 0; i < Enemies.Count; i++)
+        {
+            var enemyTurnPattern = Enemies[i].GetComponent<EnemyTurnPattern>();
+
+            if (enemyTurnPattern != null)
+            {
+                enemyTurnPattern.enemyTurn();
+                yield return new WaitForSeconds(1f);
+            }
         }
+
 
         /*
         int activeEnemy = 0;

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Police_1
   m_EditorClassIdentifier: 
   currentlyAlive: 1
-  enemyActionSymbol: 0
   unitName: Police 1
-  maxHP: 40
-  currentHP: 40
+  maxHP: 60
+  currentHP: 60
+  focus: 0
   CurrentStep: 1
   EnemyAttack: 0
   Burn: 0
@@ -24,3 +24,38 @@ MonoBehaviour:
   Poison: 0
   HpBar: {fileID: 0}
   artwork: {fileID: 0}
+  NumberOfSteps: 1
+  Interrupt: 0
+  ActionStep1: 1
+  OnHit1: 1
+  Damage1: 6
+  Tangled1: 0
+  InfBurn1: 0
+  InfParalysis1: 2
+  InfPoison1: 0
+  GainBlock1: 0
+  GainFocus1: 0
+  ActionStep2: 0
+  OnHit2: 0
+  Damage2: 0
+  InfBurn2: 0
+  InfParalysis2: 0
+  InfPoison2: 0
+  GainBlock2: 0
+  GainFocus2: 0
+  ActionStep3: 0
+  OnHit3: 0
+  Damage3: 0
+  InfBurn3: 0
+  InfParalysis3: 0
+  InfPoison3: 0
+  GainBlock3: 0
+  GainFocus3: 0
+  ActionInterrupt: 0
+  OnHitInterrupt: 0
+  DamageInterrupt: 0
+  InfBurnInterrupt: 0
+  InfParalysisInterrupt: 0
+  InfPoisonInterrupt: 0
+  GainBlockInterrupt: 0
+  GainFocusInterrupt: 0
