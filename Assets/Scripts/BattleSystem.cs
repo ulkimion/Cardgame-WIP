@@ -17,47 +17,26 @@ public class BattleSystem : MonoBehaviour
     public List<GameObject> inFightDeck = new List<GameObject>();
     public List<GameObject> hand = new List<GameObject>();
     public List<GameObject> discardPile = new List<GameObject>();
+    public GameObject cardBase;
 
     public List<Enemy> EncounterList = new List<Enemy>();    
     public List<GameObject> Enemies = new List<GameObject>();
     public GameObject enemyBase;
 
-
-
     public Text deckSizeText;
     public Text discardPileSizeText;
 
-    public GameObject cardBase;
     public GameObject playerPrefab;
-    public GameObject enemyPrefab;
-
     public Unit playerUnit;
-    Unit enemyUnit;
-    //EnemyAITemplate enemyUnit;
 
     public Text dialogueText;
-
     public BattleHUD playerHUD;
-    public BattleHUD enemyHUD;
-    //public EnemyHUD enemyHUD1;
     public DrawHand drawHand;
+    public int cardsDrawnPerTurn = 5;
     public Text TurnCounter;
     public Text playerBlock;
-    public Delinquent_1 enemyAI1;
-    public IEnemy enemyAI11;
-    public Delinquent_2 enemyAI2;
-    public Police_1 enemyAI3;
-
-
-    public List<EnemyAITemplate> enemyList;
-
-    public Text enemyIntent;
-    public int enemyDamage;
-    public EnemySpawner enemySpawner;
-
 
     public BattleState state;
-
     public int currentTurn = 0;
 
     //Las cosas marcadas con RM (removible) son necesarias en este momento, para el correcto funcionamiento de el juego, pero, mas adelante seran obsoletas
@@ -85,24 +64,13 @@ public class BattleSystem : MonoBehaviour
     }
 
 
-    // Start is called before the first frame update
     void Start()
     {
         state = BattleState.START;
         StartCoroutine(SetupBattle());
-        enemySpawner.spawnEnemy();
-        enemyAI1 = ScriptableObject.CreateInstance<Delinquent_1>();
-        //enemyAI1 = new Delinquent_1();
-        //enemyAI11 = new Delinquent_2();
-        //enemyAI11 = new Police_1();
-
-        enemyAI2 = new Delinquent_2();
-        enemyAI3 = new Police_1();
-        enemyList = new List<EnemyAITemplate>();
         deckSizeText.text = playerDeck.Count.ToString();
         discardPileSizeText.text = discardPile.Count.ToString();
         TurnCounter.text = ("Turn 0");
-        //playerUnit.block = 100;
 
 
         for (int i = 0; i < EncounterList.Count; i++)
@@ -127,13 +95,10 @@ public class BattleSystem : MonoBehaviour
         GameObject playerGO = GameObject.FindGameObjectWithTag("Player"); //RM
         playerUnit = playerGO.GetComponent<Unit>(); //RM
 
-        GameObject enemyGO = GameObject.FindGameObjectWithTag("Enemy1"); //RM
-        enemyUnit = enemyGO.GetComponent<Unit>(); //RM
 
-        dialogueText.text = "A " + enemyUnit.unitName + " wants to fight";
+        dialogueText.text = "The fight Begins";
 
         playerHUD.SetHUD(playerUnit); //RM
-        enemyHUD.SetHUD(enemyUnit); //RM
 
         currentTurn = 0;
 
@@ -161,10 +126,8 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator PlayerAttack()
     {
-        bool enemyDied = enemyUnit.TakeDamage(playerUnit.damage);
         playerUnit.LoseEnergy(1); //RM
         playerHUD.SetEnergy(playerUnit.unitEnergy);
-        enemyHUD.SetHP(enemyUnit.currentHP);
         dialogueText.text = "Hit!"; //RM
         yield return new WaitForSeconds(1f);
         dialogueText.text = "Your Turn"; //RM
@@ -173,11 +136,6 @@ public class BattleSystem : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        if(enemyDied)
-        {
-            state = BattleState.WON;
-            EndBattle();
-        }
     }
 
     IEnumerator EnemiesTurn()
@@ -215,6 +173,12 @@ public class BattleSystem : MonoBehaviour
 
         if (deadEnemies == Enemies.Count)
         {
+            for (int i = 0; i < Enemies.Count; i++)
+            {
+                var money = Enemies[i].GetComponent<CombatEnemyState>();
+                playerUnit.money = playerUnit.money + money.moneyDrop;
+            }
+            state = BattleState.WON;
             EndBattle();
             yield break;
         }
@@ -257,7 +221,6 @@ public class BattleSystem : MonoBehaviour
         if(state == BattleState.WON)
         {
             dialogueText.text = "YOU WON!";
-            Destroy(enemyPrefab);
         }
         else if (state == BattleState.LOSS)
         {
@@ -270,13 +233,11 @@ public class BattleSystem : MonoBehaviour
     void PlayerTurn()
     {
         currentTurn++;
-        drawHand.draw5();
+        drawHand.drawHand(cardsDrawnPerTurn);
         playerUnit.unitEnergy = 3;
         playerHUD.SetEnergy(playerUnit.unitEnergy);
         dialogueText.text = "Your Turn";
         TurnCounter.text = "Turn " + currentTurn;
-        enemyDamage = enemyAI1.enemyAction();
-        enemyIntent.text = "Enemy will do: " + enemyDamage + " Damage ";
         deckSizeText.text = inFightDeck.Count.ToString();
         discardPileSizeText.text = discardPile.Count.ToString();
         playerUnit.block = 0;

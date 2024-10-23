@@ -19,6 +19,7 @@ public class Enemy : ScriptableObject
     public int Poison = 0;
     public HpBar HpBar;
     public Sprite artwork;
+    public int moneyDrop = 50;
 
     public int NumberOfSteps = 1;
     public Interrupt Interrupt;

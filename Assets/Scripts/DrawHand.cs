@@ -15,14 +15,21 @@ public class DrawHand : MonoBehaviour
         {
             battleSystem = FindObjectOfType<BattleSystem>();
         }
-        cardPositions = new List<Vector3>();
-        for (int i = 0; i < 5; i++) cardPositions.Add(new Vector3(-4f + (i*2),-3.5f,0f));
     }
 
 
-    public void draw5()
+    public void drawHand(int quantity)
     {
-        for (int i = 0; i < 5; i++)
+
+        cardPositions = new List<Vector3>();
+        float offset = (quantity - 1) * 1.75f / 2.0f;
+        for (int i = 0; i < quantity; i++)
+        {
+            float xPos = (i * 1.75f) - offset;
+            cardPositions.Add(new Vector3(xPos, -3.5f, 0f));
+        }
+
+        for (int i = 0; i < quantity; i++)
         {
             ifDeckEmpty();
             if (battleSystem.inFightDeck.Count > 0)
@@ -31,7 +38,6 @@ public class DrawHand : MonoBehaviour
                 battleSystem.inFightDeck.RemoveAt(0);
                 battleSystem.hand[i].transform.position = cardPositions[i];
                 battleSystem.hand[i].transform.SetParent(GameObject.FindGameObjectWithTag("Hand").transform);
-                //battleSystem.hand[i].name = "Card " + (i + 1);
             }
             else
             {

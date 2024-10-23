@@ -14,6 +14,7 @@ public class CombatEnemyState : MonoBehaviour
     public int Burn = 0;
     public int Paralysis = 0;
     public int Poison = 0;
+    public int moneyDrop;
 
     private void Start()
     {
@@ -25,6 +26,7 @@ public class CombatEnemyState : MonoBehaviour
         Burn = enemy.Burn;
         Paralysis = enemy.Paralysis;
         Poison = enemy.Poison;
+        moneyDrop = enemy.moneyDrop;
     }
 
     public bool TakeDamage(int dmg)

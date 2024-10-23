@@ -14,6 +14,7 @@ public class Unit : MonoBehaviour
     public int Burn = 0;
     public int Paralysis = 0;
     public int Poison = 0;
+    public int money = 0;
 
 
     public bool TakeDamage(int dmg)
