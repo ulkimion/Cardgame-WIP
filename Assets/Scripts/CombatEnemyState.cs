@@ -6,6 +6,7 @@ public class CombatEnemyState : MonoBehaviour
 {
     public Enemy enemy;
 
+    public bool currentlyAlive;
     public int maxHP;
     public int currentHP;
     public int block;
@@ -18,6 +19,7 @@ public class CombatEnemyState : MonoBehaviour
 
     private void Start()
     {
+        currentlyAlive = enemy.currentlyAlive;
         maxHP = enemy.maxHP;
         block = enemy.block;
         currentHP = enemy.currentHP;
@@ -29,33 +31,34 @@ public class CombatEnemyState : MonoBehaviour
         moneyDrop = enemy.moneyDrop;
     }
 
-    public bool TakeDamage(int dmg)
+    public void TakeDamage(int dmg)
     {
-        enemy.currentHP -= dmg;
+        currentHP -= dmg;
         //HpBar.UpdateHPBar(currentHP,maxHP);
-        if (enemy.currentHP <= 0)
-            return true;
-        else
-            return false;
+        if (currentHP <= 0)
+        {
+            currentlyAlive = false;
+        }
+        
 
     }
     public int AffectedbyStatus()
     {
-        int damage = (enemy.Burn + enemy.Paralysis + enemy.Poison);
+        int damage = (Burn + Paralysis + Poison);
         LoseStatus(1);
         return damage;
     }
 
     public void LoseStatus(int statusLoss)
     {
-        enemy.Burn = Mathf.Max(0, enemy.Burn - statusLoss);
-        enemy.Paralysis = Mathf.Max(0, enemy.Paralysis - statusLoss);
-        enemy.Poison = Mathf.Max(0, enemy.Poison - statusLoss);
+        Burn = Mathf.Max(0, Burn - statusLoss);
+        Paralysis = Mathf.Max(0, Paralysis - statusLoss);
+        Poison = Mathf.Max(0, Poison - statusLoss);
         return;
     }
 
     public void enemyDies()
     {
-        enemy.currentlyAlive = false;
+        currentlyAlive = false;
     }
 }

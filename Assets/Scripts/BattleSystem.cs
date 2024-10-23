@@ -136,6 +136,7 @@ public class BattleSystem : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
 
+
         int deadEnemies = 0;
 
         for (int i = 0; i < Enemies.Count; i++)
@@ -144,9 +145,9 @@ public class BattleSystem : MonoBehaviour
             var alive = Enemies[i].GetComponent<CombatEnemyState>();
             //actualizar visual vida enemigo
             int enemyEffectDamage = alive.AffectedbyStatus();
-            bool currentlyAlive = alive.TakeDamage(enemyEffectDamage);
+            alive.TakeDamage(enemyEffectDamage);
 
-            if (alive.enemy.currentlyAlive)
+            if (alive.currentlyAlive)
                 {
                     enemyTurnPattern.enemyTurn();
                     yield return new WaitForSeconds(1f);
@@ -157,18 +158,8 @@ public class BattleSystem : MonoBehaviour
             }
         }
 
-        if (deadEnemies == Enemies.Count)
-        {
-            for (int i = 0; i < Enemies.Count; i++)
-            {
-                var money = Enemies[i].GetComponent<CombatEnemyState>();
-                playerUnit.money = playerUnit.money + money.moneyDrop;
-            }
-            state = BattleState.WON;
-            EndBattle();
-            yield break;
-        }
         
+        checkIfEnemiesAreAlive(deadEnemies);
         state = BattleState.PLAYERTURN;
         PlayerTurn();
     }
@@ -298,17 +289,61 @@ public class BattleSystem : MonoBehaviour
 
     public void shoot(int shootAmount)
     {
+
+        Debug.Log("se hizo llego hasta aqui al menos");
+        int deadEnemies = 1;
+        for (int i = 0; i < Enemies.Count; i++)
+        {
+            var alive = Enemies[i].GetComponent<CombatEnemyState>();
+            if (alive.currentlyAlive == true)
+            {
+                Debug.Log("se hizo " + shootAmount + " de dano");
+                alive.currentHP = alive.currentHP - shootAmount;
+                if (alive.currentHP < 0)
+                {
+                    alive.currentHP = 0;
+                }
+
+                if (alive.currentHP == 0)
+                {
+                    alive.currentlyAlive = false;
+                }
+                i = Enemies.Count;
+            }
+            else 
+            {
+
+                Debug.Log("como terminamos aqui?");
+                deadEnemies++;
+            }
+            checkIfEnemiesAreAlive(deadEnemies);
+        }
+
         Debug.Log("shoot" + shootAmount);
         return;
     }
 
-    public void multiShot(int shootAmount)
+
+public void multiShot(int shootAmount)
     {
         Debug.Log("multishoot" + shootAmount);
         return;
     }
 
+    private void checkIfEnemiesAreAlive(int deadEnemies)
+    {
+        Debug.Log("hay " + deadEnemies + " muertos de " + Enemies.Count);
+        if (deadEnemies == Enemies.Count)
+        {
+            for (int i = 0; i < Enemies.Count; i++)
+            {
+                var money = Enemies[i].GetComponent<CombatEnemyState>();
+                playerUnit.money += money.moneyDrop;
+            }
 
-
+            state = BattleState.WON;
+            EndBattle();
+        }
+    }
 
 }

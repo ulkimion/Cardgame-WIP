@@ -16,6 +16,7 @@ MonoBehaviour:
   unitName: Delinquent 2
   maxHP: 40
   currentHP: 40
+  block: 0
   focus: 0
   CurrentStep: 1
   EnemyAttack: 0
@@ -23,11 +24,13 @@ MonoBehaviour:
   Paralysis: 0
   Poison: 0
   HpBar: {fileID: 0}
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: 4f6dd40e77e7ad74dae5e260a439345b, type: 3}
+  moneyDrop: 50
   NumberOfSteps: 2
   Interrupt: 0
   ActionStep1: 0
   OnHit1: 0
+  Block1: 0
   Damage1: 0
   Tangled1: 0
   InfBurn1: 0
@@ -37,6 +40,7 @@ MonoBehaviour:
   GainFocus1: 0
   ActionStep2: 1
   OnHit2: 0
+  Block2: 0
   Damage2: 8
   InfBurn2: 2
   InfParalysis2: 0
@@ -45,6 +49,7 @@ MonoBehaviour:
   GainFocus2: 0
   ActionStep3: 0
   OnHit3: 0
+  Block3: 0
   Damage3: 0
   InfBurn3: 0
   InfParalysis3: 0
@@ -53,6 +58,7 @@ MonoBehaviour:
   GainFocus3: 0
   ActionInterrupt: 0
   OnHitInterrupt: 0
+  BlockInterrupt: 0
   DamageInterrupt: 0
   InfBurnInterrupt: 0
   InfParalysisInterrupt: 0

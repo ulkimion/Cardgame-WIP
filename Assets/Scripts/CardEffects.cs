@@ -14,14 +14,17 @@ public class CardEffects : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!isClicked/* && card.energyCost >= BattleSystem.playerUnit.unitEnergy */)
+        if (!isClicked)
         {
-            activateEffect();
-            BattleSystem.playerUnit.unitEnergy = BattleSystem.playerUnit.unitEnergy - card.energyCost;
-            //cardSelectionHandler.Discard();
-            BattleSystem.discardPile.Add(this.gameObject);
-            BattleSystem.hand.Remove(this.gameObject);
-            this.gameObject.transform.position = new Vector3(0, 8, 0);
+            /*if (card.energyCost > BattleSystem.playerUnit.unitEnergy)
+            { */
+                activateEffect();
+                BattleSystem.playerUnit.unitEnergy = BattleSystem.playerUnit.unitEnergy - card.energyCost;
+                //cardSelectionHandler.Discard();
+                BattleSystem.discardPile.Add(this.gameObject);
+                BattleSystem.hand.Remove(this.gameObject);
+                this.gameObject.transform.position = new Vector3(0, 8, 0);
+            //}*/
         }
     }
 
@@ -33,6 +36,7 @@ public class CardEffects : MonoBehaviour, IPointerClickHandler
         if (card.cardTarget == cardTarget.Self)
         {
             BattleSystem.playerUnit.block = BattleSystem.playerUnit.block + card.block;
+            BattleSystem.playerBlock.text = BattleSystem.playerUnit.block.ToString();
             Debug.Log("se gano block");
         }
         else if (card.cardTarget == cardTarget.Enemy)

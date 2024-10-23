@@ -24,7 +24,8 @@ MonoBehaviour:
   Paralysis: 0
   Poison: 0
   HpBar: {fileID: 0}
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: 6bc1f92d5b748c240a855dc8f0e6dbcd, type: 3}
+  moneyDrop: 70
   NumberOfSteps: 1
   Interrupt: 1
   ActionStep1: 3
