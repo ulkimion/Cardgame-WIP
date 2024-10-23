@@ -357,7 +357,7 @@ public class BattleSystem : MonoBehaviour
     private IEnumerator SlideCardDown(GameObject card, float duration)
     {
         Vector3 startPosition = card.transform.position;
-        Vector3 endPosition = startPosition - new Vector3(0, 3, 0);
+        Vector3 endPosition = startPosition - new Vector3(0, 3.2f, 0);
         float elapsedTime = 0;
 
         while (elapsedTime < duration)
