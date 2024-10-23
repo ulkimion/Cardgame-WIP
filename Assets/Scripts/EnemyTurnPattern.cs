@@ -7,6 +7,7 @@ public class EnemyTurnPattern : MonoBehaviour
 {
     public int enemyId;
     public Enemy enemy;
+    public CombatEnemyState combatEnemyState;
     public BattleSystem BattleSystem;
 
     public void Start()
@@ -46,7 +47,8 @@ public class EnemyTurnPattern : MonoBehaviour
     public void interruptionTurn() 
     {
         StartCoroutine(BattleSystem.EnemyTurn(enemy.unitName, enemy.DamageInterrupt));
-        enemy.focus = enemy.GainFocusInterrupt;
+        combatEnemyState.focus = enemy.GainFocusInterrupt;
+        combatEnemyState.block = enemy.BlockInterrupt;
 
         if (enemy.OnHitInterrupt == true)
         {
@@ -69,8 +71,10 @@ public class EnemyTurnPattern : MonoBehaviour
 
     public void turn1()
     {
+        Debug.Log("Turno 1");
         StartCoroutine(BattleSystem.EnemyTurn(enemy.unitName, enemy.Damage1));
-        enemy.focus = enemy.GainFocus1;
+        combatEnemyState.focus = enemy.GainFocus1;
+        combatEnemyState.block = enemy.Block1;
 
         if (enemy.OnHit1 == true)
             {
@@ -100,7 +104,8 @@ public class EnemyTurnPattern : MonoBehaviour
     public void turn2()
     {
         StartCoroutine(BattleSystem.EnemyTurn(enemy.unitName, enemy.Damage2));
-        enemy.focus = enemy.GainFocus2;
+        combatEnemyState.focus = enemy.GainFocus2;
+        combatEnemyState.block = enemy.Block2;
 
         if (enemy.OnHit2 == true)
         {
@@ -131,7 +136,8 @@ public class EnemyTurnPattern : MonoBehaviour
     public void turn3()
     {
         StartCoroutine(BattleSystem.EnemyTurn(enemy.unitName, enemy.Damage3));
-        enemy.focus = enemy.GainFocus3;
+        combatEnemyState.focus = enemy.GainFocus3;
+        combatEnemyState.block = enemy.Block3;
 
         if (enemy.OnHit3 == true)
         {
@@ -150,35 +156,5 @@ public class EnemyTurnPattern : MonoBehaviour
         }
 
         enemy.CurrentStep = 1;
-    }
-
-    public bool TakeDamage(int dmg)
-    {
-        enemy.currentHP -= dmg;
-        //HpBar.UpdateHPBar(currentHP,maxHP);
-        if (enemy.currentHP <= 0)
-            return true;
-        else
-            return false;
-
-    }
-    public int AffectedbyStatus()
-    {
-        int damage = (enemy.Burn + enemy.Paralysis + enemy.Poison);
-        LoseStatus(1);
-        return damage;
-    }
-
-    public void LoseStatus(int statusLoss)
-    {
-        enemy.Burn = Mathf.Max(0, enemy.Burn - statusLoss);
-        enemy.Paralysis = Mathf.Max(0, enemy.Paralysis - statusLoss);
-        enemy.Poison = Mathf.Max(0, enemy.Poison - statusLoss);
-        return;
-    }
-
-    public void enemyDies()
-    {
-        enemy.currentlyAlive = false;
     }
 }

@@ -6,6 +6,7 @@ using Unity.Collections.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOSS }
 public class BattleSystem : MonoBehaviour
@@ -112,6 +113,9 @@ public class BattleSystem : MonoBehaviour
             EnemyTurnPattern enemyTurnPatern = enemy.GetComponent<EnemyTurnPattern>();
             enemyTurnPatern.enemy = EncounterList[i];
             enemyTurnPatern.enemyId = i + 1;
+            CombatEnemyState combatEnemyState = enemy.GetComponent<CombatEnemyState>();
+            combatEnemyState.enemy = EncounterList[i];
+            enemyTurnPatern.combatEnemyState = combatEnemyState;
             enemy.transform.SetParent(GameObject.FindGameObjectWithTag("EnemySpawner1").transform);
             enemy.transform.localScale = Vector3.one * 60;
             Enemies.Add(enemy);
@@ -187,101 +191,52 @@ public class BattleSystem : MonoBehaviour
             EndBattle();
         }
         yield return new WaitForSeconds(1f);
-        /*
-        if (enemyAI1.currentlyAlive)
-        {
-            int enemyEffectDamage = enemyAI1.AffectedbyStatus();
-            bool currentlyAlive = enemyAI1.TakeDamage(enemyEffectDamage);
-            //playerHUD.SetHP(enemyAI1.currentHP);  Esto hay que modificarlo para cambiar el hp del enemigo al hp actual en su barra de hp
-                if (enemyAI1.currentlyAlive)
-                {
-                    StartCoroutine(EnemyTurn(enemyAI1.unitName, enemyAI1.EnemyAttack));
-                }
-                else
-                {
-                    enemyAI1.enemyDies();
-                }
-            yield return new WaitForSeconds(1f);
-        }
 
-
-        if (enemyAI2.currentlyAlive)
-        {
-            int enemyEffectDamage = enemyAI2.AffectedbyStatus();
-            bool currentlyAlive = enemyAI2.TakeDamage(enemyEffectDamage);
-            //playerHUD.SetHP(enemyAI2.currentHP);  Esto hay que modificarlo para cambiar el hp del enemigo al hp actual en su barra de hp
-            if (enemyAI2.currentlyAlive)
-            {
-                StartCoroutine(EnemyTurn(enemyAI2.unitName, enemyAI2.EnemyAttack));
-            }
-            else
-            {
-                enemyAI2.enemyDies();
-            }
-            yield return new WaitForSeconds(1f);
-        }
-
-
-        if (enemyAI3.currentlyAlive)
-        {
-            int enemyEffectDamage = enemyAI3.AffectedbyStatus();
-            bool currentlyAlive = enemyAI3.TakeDamage(enemyEffectDamage);
-            //playerHUD.SetHP(enemyAI3.currentHP);  Esto hay que modificarlo para cambiar el hp del enemigo al hp actual en su barra de hp
-            if (enemyAI3.currentlyAlive)
-            {
-                StartCoroutine(EnemyTurn(enemyAI3.unitName, enemyAI3.EnemyAttack));
-            }
-            else
-            {
-                enemyAI3.enemyDies();
-            }
-            yield return new WaitForSeconds(1f);
-        }*/
+        int deadEnemies = 0;
 
         for (int i = 0; i < Enemies.Count; i++)
         {
             var enemyTurnPattern = Enemies[i].GetComponent<EnemyTurnPattern>();
+            var alive = Enemies[i].GetComponent<CombatEnemyState>();
+            //actualizar visual vida enemigo
+            int enemyEffectDamage = alive.AffectedbyStatus();
+            bool currentlyAlive = alive.TakeDamage(enemyEffectDamage);
 
-            if (enemyTurnPattern != null)
+            if (alive.enemy.currentlyAlive)
+                {
+                    enemyTurnPattern.enemyTurn();
+                    yield return new WaitForSeconds(1f);
+                }
+            else
             {
-                enemyTurnPattern.enemyTurn();
-                yield return new WaitForSeconds(1f);
+                deadEnemies++;
             }
         }
 
-
-        /*
-        int activeEnemy = 0;
-
-        for (int i = 0; i < enemyList.Count; i++)
-        {
-            if (enemyList[i].currentlyAlive == true)
-            {
-                activeEnemy++;
-            }
-        }
-        if (activeEnemy <= 0)
-        {
-            EndBattle();
-            yield break;
-        }
-        */
-        if (enemyAI1.currentlyAlive == false && enemyAI2.currentlyAlive == false && enemyAI3.currentlyAlive == false)
+        if (deadEnemies == Enemies.Count)
         {
             EndBattle();
             yield break;
         }
 
 
-        state = BattleState.PLAYERTURN;
+            /*
+                    if (enemyAI1.currentlyAlive == false && enemyAI2.currentlyAlive == false && enemyAI3.currentlyAlive == false)
+                    {
+                        EndBattle();
+                        yield break;
+                    }
+
+                    */
+            state = BattleState.PLAYERTURN;
         PlayerTurn();
     }
 
-    public IEnumerator EnemyTurn(string unitName, int EnemyAttack) 
+    public IEnumerator EnemyTurn(string unitName, int EnemyAttack)
     {
-        dialogueText.text = unitName + " attacks!";
+        dialogueText.text = unitName + " does " + EnemyAttack + " damage"; 
         yield return new WaitForSeconds(1f);
-        bool playerDied = playerUnit.TakeDamage(enemyDamage);
+        bool playerDied = playerUnit.TakeDamage(EnemyAttack);
         playerHUD.SetHP(playerUnit.currentHP);
         playerBlock.text = playerUnit.block.ToString();
         yield return new WaitForSeconds(1f);

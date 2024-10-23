@@ -10,6 +10,7 @@ public class Enemy : ScriptableObject
     public string unitName = "enemigo";
     public int maxHP;
     public int currentHP;
+    public int block;
     public int focus;
     public int CurrentStep = 1;
     public int EnemyAttack = 0;
@@ -24,6 +25,7 @@ public class Enemy : ScriptableObject
 
     public Action ActionStep1;
     public bool OnHit1;
+    public int Block1;
     public int Damage1;
     public int Tangled1;
     public int InfBurn1;
@@ -34,6 +36,7 @@ public class Enemy : ScriptableObject
 
     public Action ActionStep2;
     public bool OnHit2;
+    public int Block2;
     public int Damage2;
     public int InfBurn2;
     public int InfParalysis2;
@@ -43,6 +46,7 @@ public class Enemy : ScriptableObject
 
     public Action ActionStep3;
     public bool OnHit3;
+    public int Block3;
     public int Damage3;
     public int InfBurn3;
     public int InfParalysis3;
@@ -52,6 +56,7 @@ public class Enemy : ScriptableObject
  
     public Action ActionInterrupt;
     public bool OnHitInterrupt;
+    public int BlockInterrupt;
     public int DamageInterrupt;
     public int InfBurnInterrupt;
     public int InfParalysisInterrupt;

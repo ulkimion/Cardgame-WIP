@@ -9,7 +9,7 @@ public class Unit : MonoBehaviour
     public int damage;
     public int maxHP;
     public int currentHP; 
-    public int block;
+    public int block = 0;
     public int unitEnergy;
     public int Burn = 0;
     public int Paralysis = 0;
@@ -18,7 +18,8 @@ public class Unit : MonoBehaviour
 
     public bool TakeDamage(int dmg)
     {
-        if (damage <= block) {
+        Debug.Log("se hizo " + dmg + " de danio");
+        if (dmg <= block) {
             block = block - dmg;
         }
         else
@@ -63,7 +64,7 @@ public class Unit : MonoBehaviour
         }
         else
         {
-            return false;
+            return true;
         } 
     }
 }

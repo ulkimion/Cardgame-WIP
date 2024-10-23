@@ -16,6 +16,7 @@ MonoBehaviour:
   unitName: Police 2
   maxHP: 30
   currentHP: 30
+  block: 0
   focus: 0
   CurrentStep: 1
   EnemyAttack: 0
@@ -28,6 +29,7 @@ MonoBehaviour:
   Interrupt: 1
   ActionStep1: 3
   OnHit1: 0
+  Block1: 0
   Damage1: 0
   Tangled1: 0
   InfBurn1: 0
@@ -37,6 +39,7 @@ MonoBehaviour:
   GainFocus1: 8
   ActionStep2: 0
   OnHit2: 0
+  Block2: 0
   Damage2: 0
   InfBurn2: 0
   InfParalysis2: 0
@@ -45,6 +48,7 @@ MonoBehaviour:
   GainFocus2: 0
   ActionStep3: 0
   OnHit3: 0
+  Block3: 0
   Damage3: 0
   InfBurn3: 0
   InfParalysis3: 0
@@ -53,6 +57,7 @@ MonoBehaviour:
   GainFocus3: 0
   ActionInterrupt: 1
   OnHitInterrupt: 0
+  BlockInterrupt: 0
   DamageInterrupt: 15
   InfBurnInterrupt: 0
   InfParalysisInterrupt: 0
