@@ -124,15 +124,6 @@ public class BattleSystem : MonoBehaviour
         PlayerTurn();
     }
 
-    /*IEnumerator PlayerAttack()
-    {
-        dialogueText.text = "Hit!"; //RM
-        yield return new WaitForSeconds(1f);
-        dialogueText.text = "Your Turn"; //RM
-        yield return new WaitForSeconds(2f);
-
-    }*/
-
     IEnumerator EnemiesTurn()
     {
         int playerEffectDamage = playerUnit.AffectedbyStatus();
@@ -177,17 +168,8 @@ public class BattleSystem : MonoBehaviour
             EndBattle();
             yield break;
         }
-
-
-            /*
-                    if (enemyAI1.currentlyAlive == false && enemyAI2.currentlyAlive == false && enemyAI3.currentlyAlive == false)
-                    {
-                        EndBattle();
-                        yield break;
-                    }
-
-                    */
-            state = BattleState.PLAYERTURN;
+        
+        state = BattleState.PLAYERTURN;
         PlayerTurn();
     }
 
@@ -244,28 +226,6 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(PileInDiscardPile(discardpile));
     }
 
-
-/*   public void OnAttackButton()
-    {
-        if (state != BattleState.PLAYERTURN)
-        {
-            return;
-        }
-
-        if (playerUnit.unitEnergy <= 0)
-        {
-            dialogueText.text = "Not enough energy";
-            return;
-        }
-        else
-        {
-            StartCoroutine(PlayerAttack());
-
-        }
-
-    }*/
-
-
     public void OnEndTurnButton()
     {
        
@@ -284,7 +244,6 @@ public class BattleSystem : MonoBehaviour
         {
                 Card.transform.position = new Vector3(3, -8, 0);
         }
-        
         yield return null;
     }
 
@@ -325,13 +284,10 @@ public class BattleSystem : MonoBehaviour
         }
 
         card.transform.position = endPosition;
-
-        //var cardComponent = card;
         discardPile.Add(card);
         hand.RemoveAt(0);
         discardPileSizeText.text = discardPile.Count.ToString();
         card.transform.SetParent(GameObject.FindGameObjectWithTag("DiscardPile").transform);
-        //GameObject.Destroy(card);
     }
 
     public bool cleanhit()
@@ -351,5 +307,8 @@ public class BattleSystem : MonoBehaviour
         Debug.Log("multishoot" + shootAmount);
         return;
     }
+
+
+
 
 }

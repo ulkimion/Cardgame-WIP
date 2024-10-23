@@ -19,6 +19,9 @@ public class CardEffects : MonoBehaviour, IPointerClickHandler
             activateEffect();
             BattleSystem.playerUnit.unitEnergy = BattleSystem.playerUnit.unitEnergy - card.energyCost;
             //cardSelectionHandler.Discard();
+            BattleSystem.discardPile.Add(this.gameObject);
+            BattleSystem.hand.Remove(this.gameObject);
+            this.gameObject.transform.position = new Vector3(0, 8, 0);
         }
     }
 
