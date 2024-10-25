@@ -291,7 +291,7 @@ public class BattleSystem : MonoBehaviour
     {
 
         Debug.Log("se hizo llego hasta aqui al menos");
-        int deadEnemies = 1;
+        int deadEnemies = 0;
         for (int i = 0; i < Enemies.Count; i++)
         {
             var alive = Enemies[i].GetComponent<CombatEnemyState>();
