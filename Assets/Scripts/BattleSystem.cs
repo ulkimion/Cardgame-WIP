@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime;
+using System.Runtime.InteropServices;
 using System.Text;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOSS }
 public class BattleSystem : MonoBehaviour
@@ -18,6 +21,12 @@ public class BattleSystem : MonoBehaviour
     public List<GameObject> hand = new List<GameObject>();
     public List<GameObject> discardPile = new List<GameObject>();
     public GameObject cardBase;
+
+
+    public List<Bullet> bullets = new List<Bullet>();
+    public List<GameObject> inFightBullets = new List<GameObject>();
+    public GameObject bulletBase;
+    public Bullet emptyBullet;
 
     public List<Enemy> EncounterList = new List<Enemy>();    
     public List<GameObject> Enemies = new List<GameObject>();
@@ -35,6 +44,7 @@ public class BattleSystem : MonoBehaviour
     public int cardsDrawnPerTurn = 5;
     public int extraCardsDrawn = 0;
     public Text TurnCounter;
+    public int CurrentTarget = 1;
     public Text playerBlock;
 
     public BattleState state;
@@ -84,6 +94,11 @@ public class BattleSystem : MonoBehaviour
             enemyTurnPatern.enemyId = i + 1;
             CombatEnemyState combatEnemyState = enemy.GetComponent<CombatEnemyState>();
             combatEnemyState.enemy = EncounterList[i];
+            UnityEngine.UI.Button enemyButton = enemy.GetComponent<UnityEngine.UI.Button>();
+            enemyButton.onClick.RemoveAllListeners();
+            enemyButton.onClick.AddListener(() => changeTarget(enemyTurnPatern.enemyId));
+
+
             enemyTurnPatern.combatEnemyState = combatEnemyState;
             enemy.transform.SetParent(GameObject.FindGameObjectWithTag("EnemySpawner1").transform);
             enemy.transform.localScale = Vector3.one * 60;
@@ -116,6 +131,19 @@ public class BattleSystem : MonoBehaviour
             card.transform.localScale = Vector3.one * 60;
             inFightDeck.Add(card);
         }
+
+        
+        for (int i = 0; i < bullets.Count ; i++)
+        {
+            //GameObject bullet = Instantiate(bulletBase, new Vector3(-7.7f, 4.5f, 0), Quaternion.identity);
+            GameObject bullet = Instantiate(bulletBase, new Vector3(-7.7f, 6, 0), Quaternion.identity);
+            //BulletDisplay bulletDisplay = bullet.GetComponent<BulletDisplay>();
+            //bulletDisplay.bullet = bullets[i];
+
+            bullet.transform.localScale = Vector3.one * 1;
+            bullet.transform.SetParent(GameObject.FindGameObjectWithTag("BulletDeck").transform);
+            inFightBullets.Add(bullet);
+        }
         
 
         Shuffle();
@@ -136,9 +164,6 @@ public class BattleSystem : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
 
-
-        int deadEnemies = 0;
-
         for (int i = 0; i < Enemies.Count; i++)
         {
             var enemyTurnPattern = Enemies[i].GetComponent<EnemyTurnPattern>();
@@ -152,14 +177,10 @@ public class BattleSystem : MonoBehaviour
                     enemyTurnPattern.enemyTurn();
                     yield return new WaitForSeconds(1f);
                 }
-            else
-            {
-                deadEnemies++;
-            }
         }
 
         
-        checkIfEnemiesAreAlive(deadEnemies);
+        checkIfEnemiesAreAlive();
         state = BattleState.PLAYERTURN;
         PlayerTurn();
     }
@@ -201,6 +222,7 @@ public class BattleSystem : MonoBehaviour
     void PlayerTurn()
     {
         currentTurn++;
+        TargetAliveEnemy();
         drawHand.drawHand(cardsDrawnPerTurn + extraCardsDrawn);
         extraCardsDrawn = 0;
         playerUnit.unitEnergy = 3;
@@ -226,6 +248,40 @@ public class BattleSystem : MonoBehaviour
             GameObject[] Cards = hand.ToArray();
             StartCoroutine(SlideAndDiscardCards(Cards));
             StartCoroutine(EnemiesTurn());
+        }
+    }
+
+    public void changeTarget(int enemyId)
+    {
+        int TargetedEnemy = enemyId -1;
+        int lastTargetedEnemy = CurrentTarget - 1;
+
+        CombatEnemyState combatEnemyState = Enemies[TargetedEnemy].GetComponent<CombatEnemyState>();
+        EnemyDisplay enemyDisplay = Enemies[TargetedEnemy].GetComponent<EnemyDisplay>();
+        EnemyDisplay lastEnemyDisplay = Enemies[lastTargetedEnemy].GetComponent<EnemyDisplay>();
+        if (combatEnemyState.currentlyAlive == true)
+        {
+            CurrentTarget = enemyId;
+            enemyDisplay.TargetIcon.enabled = true;
+            lastEnemyDisplay.TargetIcon.enabled = false;
+        }
+
+    }
+
+    void TargetAliveEnemy()
+    {
+        for (int i = 0; i < Enemies.Count; i++)
+        {
+            CombatEnemyState combatEnemyState = Enemies[i].GetComponent<CombatEnemyState>();
+            if(combatEnemyState.currentlyAlive == true)
+            {
+                EnemyDisplay enemyDisplay = Enemies[i].GetComponent<EnemyDisplay>();
+                EnemyDisplay lastEnemyDisplay = Enemies[CurrentTarget - 1].GetComponent<EnemyDisplay>();
+                enemyDisplay.TargetIcon.enabled = true;
+                lastEnemyDisplay.TargetIcon.enabled = false;
+                CurrentTarget = i + 1;
+                return;
+            }
         }
     }
 
@@ -292,10 +348,8 @@ public class BattleSystem : MonoBehaviour
 
         Debug.Log("se hizo llego hasta aqui al menos");
         int deadEnemies = 1;
-        for (int i = 0; i < Enemies.Count; i++)
-        {
-            var alive = Enemies[i].GetComponent<CombatEnemyState>();
-            if (alive.currentlyAlive == true)
+        var alive = Enemies[CurrentTarget - 1].GetComponent<CombatEnemyState>();
+         if (alive.currentlyAlive == true)
             {
                 Debug.Log("se hizo " + shootAmount + " de dano");
                 alive.currentHP = alive.currentHP - shootAmount;
@@ -307,31 +361,46 @@ public class BattleSystem : MonoBehaviour
                 if (alive.currentHP == 0)
                 {
                     alive.currentlyAlive = false;
+                    EnemyDisplay enemyDisplay = Enemies[CurrentTarget - 1].GetComponent<EnemyDisplay>();
+                    enemyDisplay.TargetIcon.enabled = false;
+                    enemyDisplay.DeadIcon.enabled = true;
+                    checkIfEnemiesAreAlive();
                 }
-                i = Enemies.Count;
             }
-            else 
+         else 
             {
-
                 Debug.Log("como terminamos aqui?");
                 deadEnemies++;
             }
-            checkIfEnemiesAreAlive(deadEnemies);
-        }
+
 
         Debug.Log("shoot" + shootAmount);
         return;
     }
 
 
-public void multiShot(int shootAmount)
+    public void multiShot(int shootAmount)
     {
         Debug.Log("multishoot" + shootAmount);
         return;
     }
 
-    private void checkIfEnemiesAreAlive(int deadEnemies)
+    private void checkIfEnemiesAreAlive()
     {
+        int deadEnemies = 0;
+        for(int i = 0; i < Enemies.Count; i++)
+        {
+            CombatEnemyState combatEnemyState = Enemies[i].GetComponent<CombatEnemyState>();
+            if (combatEnemyState.currentlyAlive == false)
+            {
+                deadEnemies++;
+            }
+            else
+            {
+                return;
+            }
+        }
+
         Debug.Log("hay " + deadEnemies + " muertos de " + Enemies.Count);
         if (deadEnemies == Enemies.Count)
         {

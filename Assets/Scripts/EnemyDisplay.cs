@@ -17,10 +17,21 @@ public class EnemyDisplay : MonoBehaviour
     public TextMeshProUGUI Burn;
     public TextMeshProUGUI Paralysis;
     public TextMeshProUGUI Poison;
+    public Image DeadIcon;
+    public Image TargetIcon;
+    public Image BurnIcon;
+    public Image PoisonIcon;
+    public Image ParalysisIcon;
+    public Slider HPSlider;
 
     void Start()
     {
         look.sprite = enemy.artwork;
+        DeadIcon.enabled = false;
+        TargetIcon.enabled = false;
+        BurnIcon.enabled = false;
+        PoisonIcon.enabled = false;
+        ParalysisIcon.enabled = false;
 
-    }
+}
 }

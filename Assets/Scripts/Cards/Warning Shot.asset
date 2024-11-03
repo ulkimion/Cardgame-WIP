@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7831f81fc5422e74abe1af24161435f3, type: 3}
-  m_Name: Emergency Shields
+  m_Name: Warning Shot
   m_EditorClassIdentifier: 
-  name: Emergency Shields
-  effectText: Block 5
-  artwork: {fileID: 21300000, guid: bc1f3a3802e4e09448455e09700aba95, type: 3}
+  name: Warning Shot
+  effectText: Cycle 1. all enemies do 5 less damage this turn.
+  artwork: {fileID: 0}
   CardType: 0
   shootType: 0
-  cardTarget: 1
+  cardTarget: 2
   condition: 0
-  energyCost: 1
+  energyCost: 0
   shoot: 0
-  block: 10
+  block: 0
   effectModifier: 1
-  bulletDamageModifier: 0
+  bulletDamageModifier: 1
   draw: 0
-  effectDuration: 0
+  effectDuration: 1
   burn: 0
   paralysis: 0
   poison: 0
   topdeck: 0
   cycle: 0
-  blockPlus: 0
+  blockPlus: -5
   blockMultiplier: 0
   damagePlus: 0
   damageMultiplier: 0

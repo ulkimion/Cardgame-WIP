@@ -11,6 +11,7 @@ TagManager:
   - Card
   - Deck
   - DiscardPile
+  - CurrentBullet
   layers:
   - Default
   - TransparentFX

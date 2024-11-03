@@ -5,7 +5,8 @@ using UnityEngine.EventSystems;
 
 public enum cardType { Tactic, Shoot }
 public enum shootType { None, Shoot, MultiShoot }
-public enum cardTarget { Self, Enemy, All }
+public enum cardTarget { Enemy, Self, All }
+public enum condition { None, NoBlock, Debuff,  }
 [CreateAssetMenu(fileName = "new Card", menuName = "Card")]
 public class Card : ScriptableObject
 {
@@ -13,15 +14,39 @@ public class Card : ScriptableObject
     public string effectText;
     public Sprite artwork;
     public cardType CardType;
-    public int energyCost;
+
+    public shootType shootType;
+    public cardTarget cardTarget;
+    public condition condition;
+    public int energyCost = 1;
+    public int shoot;
     public int block;
+    public float effectModifier = 1;
+    public float bulletDamageModifier = 1;
     public int draw;
-    public int damage;
+    public int effectDuration;
     public int burn;
     public int paralysis;
     public int poison;
-    public int shoot;
-    public shootType shootType;
-    public cardTarget cardTarget;
+    public int topdeck;
+    public int cycle;
+    public int blockPlus;
+    public int blockMultiplier;
+    public int damagePlus;
+    public int damageMultiplier;
+    public int perfectBlock;
+    public bool vanishes = false;
+    public bool keepBlock = false;
+    public bool takeCover = false;
+    public bool destroyBullet = false;
+    public bool transformNextBullet = false;
+    public bool Overdrive = false;
+    public bool burningSpirit = false;
+    public bool toxicEmotions = false;
+    public bool retain = false;
+
+    
+
+
 
 }

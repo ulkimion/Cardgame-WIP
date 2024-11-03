@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7831f81fc5422e74abe1af24161435f3, type: 3}
-  m_Name: Emergency Shields
+  m_Name: Precise Shot
   m_EditorClassIdentifier: 
-  name: Emergency Shields
-  effectText: Block 5
-  artwork: {fileID: 21300000, guid: bc1f3a3802e4e09448455e09700aba95, type: 3}
-  CardType: 0
-  shootType: 0
-  cardTarget: 1
+  name: Precise Shot
+  effectText: Shoot 1, effects applied twice.
+  artwork: {fileID: 0}
+  CardType: 1
+  shootType: 1
+  cardTarget: 0
   condition: 0
   energyCost: 1
-  shoot: 0
-  block: 10
-  effectModifier: 1
-  bulletDamageModifier: 0
+  shoot: 1
+  block: 0
+  effectModifier: 2
+  bulletDamageModifier: 1
   draw: 0
   effectDuration: 0
   burn: 0

@@ -16,13 +16,31 @@ MonoBehaviour:
   effectText: Shoot 1
   artwork: {fileID: 21300000, guid: c1bbb777e2d477743a2d46e52ceb483f, type: 3}
   CardType: 1
-  energyCost: 100
+  shootType: 1
+  cardTarget: 0
+  condition: 0
+  energyCost: 1
+  shoot: 1
   block: 0
   draw: 0
-  damage: 0
+  effectDuration: 0
   burn: 0
   paralysis: 0
   poison: 0
-  shoot: 1
-  shootType: 1
-  cardTarget: 1
+  effectModifier: 1
+  bulletDamageModifier: 1
+  topdeck: 0
+  cycle: 0
+  blockPlus: 0
+  blockMultiplier: 0
+  damagePlus: 0
+  damageMultiplier: 0
+  perfectBlock: 0
+  vanishes: 0
+  keepBlock: 0
+  takeCover: 0
+  destroyBullet: 0
+  transformNextBullet: 0
+  Overdrive: 0
+  burningSpirit: 0
+  toxicEmotions: 0

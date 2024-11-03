@@ -236,7 +236,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: 277.97}
+  m_AnchoredPosition: {x: -488.8, y: 196.53}
   m_SizeDelta: {x: 188.66, y: 98.79}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &182181157
@@ -2177,6 +2177,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1806311103}
   m_CullTransparentMesh: 1
+--- !u!1 &1823728133
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1823728134}
+  m_Layer: 5
+  m_Name: CurentBullet
+  m_TagString: CurrentBullet
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1823728134
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823728133}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1942498818}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -533.13, y: 299.7}
+  m_SizeDelta: {x: 100, y: 75.405}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1939771544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2222,7 +2257,16 @@ MonoBehaviour:
   hand: []
   discardPile: []
   cardBase: {fileID: 6876785180859665576, guid: cb12222561592dc4bac4ffb0a383fd67, type: 3}
+  bullets:
+  - {fileID: 11400000, guid: b397567c75eca9743bbb9be8cbfafaad, type: 2}
+  - {fileID: 11400000, guid: e4438771652282a48953f2249c051579, type: 2}
+  - {fileID: 11400000, guid: dec7267d1b7af9b42b0ee1b35587b66c, type: 2}
+  inFightBullets: []
+  bulletBase: {fileID: 6831427741468293100, guid: 787722cdf229465448c6900db5bb7a7b, type: 3}
+  emptyBullet: {fileID: 11400000, guid: c778c75493181ad40adf49df144d851c, type: 2}
   EncounterList:
+  - {fileID: 11400000, guid: 89c71e3ee6cc3ed449cc8a8bb085cd42, type: 2}
+  - {fileID: 11400000, guid: 89c71e3ee6cc3ed449cc8a8bb085cd42, type: 2}
   - {fileID: 11400000, guid: 89c71e3ee6cc3ed449cc8a8bb085cd42, type: 2}
   Enemies: []
   enemyBase: {fileID: 6876785180859665576, guid: 329bf640a06648645a7d14fef12476f6, type: 3}
@@ -2376,6 +2420,7 @@ RectTransform:
   - {fileID: 1799927946}
   - {fileID: 339942600}
   - {fileID: 182181156}
+  - {fileID: 1823728134}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2447,9 +2492,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 327f15321c776b247bc01d0d15ed9699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 504712039118398500, guid: 0fb921256b52a33458e60e361be32d8c, type: 3}
-  EnemyB: {fileID: 2988702576005830079, guid: 43642455c9c6bfb46b4e6a99dda7b008, type: 3}
-  EnemyC: {fileID: 3270467522477653842, guid: 816eae4482abd7e46917b53acf02fecf, type: 3}
 --- !u!224 &2003052734
 RectTransform:
   m_ObjectHideFlags: 0
