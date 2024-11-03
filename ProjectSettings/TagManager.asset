@@ -12,6 +12,7 @@ TagManager:
   - Deck
   - DiscardPile
   - CurrentBullet
+  - BulletDeck
   layers:
   - Default
   - TransparentFX

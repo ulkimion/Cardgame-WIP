@@ -29,7 +29,7 @@ public class EnemyDisplay : MonoBehaviour
         look.sprite = enemy.artwork;
         DeadIcon.enabled = false;
         TargetIcon.enabled = false;
-        BurnIcon.enabled = false;
+        //BurnIcon.enabled = false;
         PoisonIcon.enabled = false;
         ParalysisIcon.enabled = false;
 

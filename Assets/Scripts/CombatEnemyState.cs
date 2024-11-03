@@ -5,6 +5,7 @@ using UnityEngine;
 public class CombatEnemyState : MonoBehaviour
 {
     public Enemy enemy;
+    public EnemyDisplay enemyDisplay;
 
     public bool currentlyAlive;
     public int maxHP;
@@ -19,6 +20,7 @@ public class CombatEnemyState : MonoBehaviour
 
     private void Start()
     {
+        enemyDisplay = GetComponent<EnemyDisplay>();
         currentlyAlive = enemy.currentlyAlive;
         maxHP = enemy.maxHP;
         block = enemy.block;
@@ -34,7 +36,7 @@ public class CombatEnemyState : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         currentHP -= dmg;
-        //HpBar.UpdateHPBar(currentHP,maxHP);
+        enemyDisplay.HPSlider.value = currentHP / maxHP;
         if (currentHP <= 0)
         {
             currentlyAlive = false;
@@ -44,7 +46,15 @@ public class CombatEnemyState : MonoBehaviour
     }
     public int AffectedbyStatus()
     {
-        int damage = (Burn + Paralysis + Poison);
+        int damage;
+        if (Poison > 1)
+        {
+            damage = Mathf.CeilToInt((Burn + Paralysis + Poison) * 1.5f);
+        }
+        else
+        {
+            damage = (Burn + Paralysis);
+        }
         LoseStatus(1);
         return damage;
     }
@@ -54,6 +64,19 @@ public class CombatEnemyState : MonoBehaviour
         Burn = Mathf.Max(0, Burn - statusLoss);
         Paralysis = Mathf.Max(0, Paralysis - statusLoss);
         Poison = Mathf.Max(0, Poison - statusLoss);
+        if (Burn == 0)
+        {
+            enemyDisplay.BurnIcon.enabled = false;
+        }
+        if (Paralysis == 0)
+        {
+            enemyDisplay.ParalysisIcon.enabled = false;
+        }
+        if (Poison == 0)
+        {
+
+            enemyDisplay.PoisonIcon.enabled = false;
+        }
         return;
     }
 

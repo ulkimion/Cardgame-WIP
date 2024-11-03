@@ -5,6 +5,7 @@ using System.Runtime;
 using System.Runtime.InteropServices;
 using System.Text;
 using Unity.Collections.LowLevel.Unsafe;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -262,8 +263,8 @@ public class BattleSystem : MonoBehaviour
         if (combatEnemyState.currentlyAlive == true)
         {
             CurrentTarget = enemyId;
-            enemyDisplay.TargetIcon.enabled = true;
             lastEnemyDisplay.TargetIcon.enabled = false;
+            enemyDisplay.TargetIcon.enabled = true;
         }
 
     }
@@ -277,8 +278,8 @@ public class BattleSystem : MonoBehaviour
             {
                 EnemyDisplay enemyDisplay = Enemies[i].GetComponent<EnemyDisplay>();
                 EnemyDisplay lastEnemyDisplay = Enemies[CurrentTarget - 1].GetComponent<EnemyDisplay>();
-                enemyDisplay.TargetIcon.enabled = true;
                 lastEnemyDisplay.TargetIcon.enabled = false;
+                enemyDisplay.TargetIcon.enabled = true;
                 CurrentTarget = i + 1;
                 return;
             }
@@ -349,19 +350,20 @@ public class BattleSystem : MonoBehaviour
         Debug.Log("se hizo llego hasta aqui al menos");
         int deadEnemies = 1;
         var alive = Enemies[CurrentTarget - 1].GetComponent<CombatEnemyState>();
-         if (alive.currentlyAlive == true)
+        EnemyDisplay enemyDisplay = Enemies[CurrentTarget - 1].GetComponent<EnemyDisplay>();
+        if (alive.currentlyAlive == true)
             {
                 Debug.Log("se hizo " + shootAmount + " de dano");
                 alive.currentHP = alive.currentHP - shootAmount;
                 if (alive.currentHP < 0)
                 {
-                    alive.currentHP = 0;
-                }
+                alive.currentHP = 0;
+                enemyDisplay.HPSlider.value = alive.currentHP / alive.maxHP;
+            }
 
                 if (alive.currentHP == 0)
                 {
                     alive.currentlyAlive = false;
-                    EnemyDisplay enemyDisplay = Enemies[CurrentTarget - 1].GetComponent<EnemyDisplay>();
                     enemyDisplay.TargetIcon.enabled = false;
                     enemyDisplay.DeadIcon.enabled = true;
                     checkIfEnemiesAreAlive();

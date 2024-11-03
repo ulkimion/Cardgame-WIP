@@ -108,6 +108,7 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
 
     public void OnSelect(BaseEventData eventData)
     {
+
             if (!isClicked)
         {
             StartCoroutine(MoveCard(true, Vector3.zero));
