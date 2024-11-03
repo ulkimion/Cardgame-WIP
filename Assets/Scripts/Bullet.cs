@@ -12,19 +12,8 @@ public class Bullet : ScriptableObject
     public new string name;
     public Sprite artwork;
     public int exp;
-    public string effectText;
     public int level = 1;
-    public int damage;
     public bulletCondition condition;
-    public int burn;
-    public int paralysis;
-    public int poison;
-    public int cycle;
-    public int gainsEnergy;
-    public int heal = 0;
-    public int extraDamagePerHeldTurns;
-
-
     public string effectTextLv1;
     public string effectTextLv2;
     public string effectTextLv3;
@@ -52,62 +41,7 @@ public class Bullet : ScriptableObject
     public int extraDamagePerHeldTurnsLv1;
     public int extraDamagePerHeldTurnsLv2;
     public int extraDamagePerHeldTurnsLv3;
-
-
-    public int heldTurns = 0;
     public bool becomesEmpty = false;
     public bool duplicating = false;
     public bool damagex2 = false;
-
-    void Start()
-    {
-        if (exp is >= 3 and < 8) 
-        {
-            level = 2;
-            if (effectTextLv2 != null) {
-                effectText = effectTextLv2;
-            }
-            extraDamagePerHeldTurns = extraDamagePerHeldTurnsLv2;
-            damage = damageLv2;
-            burn = burnLv2;
-            paralysis = paralysisLv2;
-            poison = poisonLv2;
-            cycle = cycleLv2;
-            gainsEnergy = gainsEnergyLv2;
-            heal = healLv2;
-        }
-        else if (exp > 8)
-        {
-            level = 3;
-            if (effectTextLv3 != null)
-            {
-                effectText = effectTextLv3;
-            }
-            extraDamagePerHeldTurns = extraDamagePerHeldTurnsLv3;
-            damage = damageLv3;
-            burn = burnLv3;
-            paralysis = paralysisLv3;
-            poison = poisonLv3;
-            cycle = cycleLv3;
-            gainsEnergy = gainsEnergyLv3;
-            heal = healLv3;
-        }
-        else
-        {
-            level = 1;
-            if (effectTextLv2 != null)
-            {
-                effectText = effectTextLv1;
-            }
-
-            extraDamagePerHeldTurns = extraDamagePerHeldTurnsLv1;
-            damage = damageLv1;
-            burn = burnLv1;
-            paralysis = paralysisLv1;
-            poison = poisonLv1;
-            cycle = cycleLv1;
-            gainsEnergy = gainsEnergyLv1;
-            heal = healLv1;
-        }
-    }
 }

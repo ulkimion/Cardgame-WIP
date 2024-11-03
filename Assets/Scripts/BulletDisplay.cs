@@ -7,15 +7,16 @@ using UnityEngine.UI;
 
 public class BulletDisplay : MonoBehaviour
 {
-    public Bullet bullet;
+    public BulletState bulletState;
     public TextMeshProUGUI bulletName;
     public TextMeshProUGUI bulletEffect;
     public Image artwork;
 
     void Start()
     {
-        //bulletName.text = bullet.name;
-        //bulletEffect.text = bullet.effectTextLv1;
-        //artwork.sprite = bullet.artwork;
+        bulletState = GetComponent<BulletState>();
+        bulletName.text = bulletState.name;
+        bulletEffect.text = bulletState.effectText;
+        artwork.sprite = bulletState.artwork;
     }
 }

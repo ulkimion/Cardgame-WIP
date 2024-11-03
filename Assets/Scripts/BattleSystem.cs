@@ -136,10 +136,12 @@ public class BattleSystem : MonoBehaviour
         
         for (int i = 0; i < bullets.Count ; i++)
         {
-            //GameObject bullet = Instantiate(bulletBase, new Vector3(-7.7f, 4.5f, 0), Quaternion.identity);
-            GameObject bullet = Instantiate(bulletBase, new Vector3(-7.7f, 6, 0), Quaternion.identity);
-            //BulletDisplay bulletDisplay = bullet.GetComponent<BulletDisplay>();
-            //bulletDisplay.bullet = bullets[i];
+            GameObject bullet = Instantiate(bulletBase, new Vector3(-7.7f, 4.5f, 0), Quaternion.identity);
+            //GameObject bullet = Instantiate(bulletBase, new Vector3(-7.7f, 6, 0), Quaternion.identity);
+            BulletState bulletState = bullet.GetComponent<BulletState>();
+            bulletState.bullet = bullets[i];
+            BulletDisplay bulletDisplay = bullet.GetComponent<BulletDisplay>();
+            bulletDisplay.bulletState = bulletState;
 
             bullet.transform.localScale = Vector3.one * 1;
             bullet.transform.SetParent(GameObject.FindGameObjectWithTag("BulletDeck").transform);
@@ -346,35 +348,47 @@ public class BattleSystem : MonoBehaviour
 
     public void shoot(int shootAmount)
     {
-
-        Debug.Log("se hizo llego hasta aqui al menos");
-        int deadEnemies = 1;
         var alive = Enemies[CurrentTarget - 1].GetComponent<CombatEnemyState>();
+        var bullet = inFightBullets[0].GetComponent<BulletEffects>();
         EnemyDisplay enemyDisplay = Enemies[CurrentTarget - 1].GetComponent<EnemyDisplay>();
         if (alive.currentlyAlive == true)
             {
-                Debug.Log("se hizo " + shootAmount + " de dano");
-                alive.currentHP = alive.currentHP - shootAmount;
-                if (alive.currentHP < 0)
-                {
-                alive.currentHP = 0;
+                bullet.activateEffects(shootAmount);
                 enemyDisplay.HPSlider.value = alive.currentHP / alive.maxHP;
+            if (alive.currentHP == 0)
+            {
+                enemyDisplay.TargetIcon.enabled = false;
+                enemyDisplay.DeadIcon.enabled = true;
+                enemyDisplay.BurnIcon.enabled = false;
+                enemyDisplay.ParalysisIcon.enabled = false;
+                enemyDisplay.PoisonIcon.enabled = false;
+                checkIfEnemiesAreAlive();
             }
-
-                if (alive.currentHP == 0)
+            else
+            {
+                if (alive.Burn > 0)
                 {
-                    alive.currentlyAlive = false;
-                    enemyDisplay.TargetIcon.enabled = false;
-                    enemyDisplay.DeadIcon.enabled = true;
-                    checkIfEnemiesAreAlive();
+                    enemyDisplay.BurnIcon.enabled = true;
+                }
+
+                if (alive.Poison > 0)
+                {
+                    enemyDisplay.PoisonIcon.enabled = true;
+                }
+                if (alive.Paralysis > 0)
+                {
+                    enemyDisplay.ParalysisIcon.enabled = true;
                 }
             }
+        }
          else 
             {
                 Debug.Log("como terminamos aqui?");
-                deadEnemies++;
             }
 
+        var firstBullet = inFightBullets[0];
+        inFightBullets.Add(firstBullet);
+        inFightBullets.RemoveAt(0);
 
         Debug.Log("shoot" + shootAmount);
         return;
