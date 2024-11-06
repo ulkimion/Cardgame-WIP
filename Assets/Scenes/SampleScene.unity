@@ -1727,6 +1727,41 @@ RectTransform:
   m_AnchoredPosition: {x: -1.6894226, y: -0.04849624}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1735261695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1735261696}
+  m_Layer: 5
+  m_Name: BulletDeck
+  m_TagString: BulletDeck
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1735261696
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735261695}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1942498818}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -533.13, y: 404.3}
+  m_SizeDelta: {x: 100, y: 75.405}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1747299930
 GameObject:
   m_ObjectHideFlags: 0
@@ -2277,9 +2312,10 @@ MonoBehaviour:
   dialogueText: {fileID: 969589190}
   playerHUD: {fileID: 1099966187}
   drawHand: {fileID: 1503287663}
-  cardsDrawnPerTurn: 10
+  cardsDrawnPerTurn: 5
   extraCardsDrawn: 0
   TurnCounter: {fileID: 182181157}
+  CurrentTarget: 1
   playerBlock: {fileID: 1029925684}
   state: 0
   currentTurn: 0
@@ -2421,6 +2457,7 @@ RectTransform:
   - {fileID: 339942600}
   - {fileID: 182181156}
   - {fileID: 1823728134}
+  - {fileID: 1735261696}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

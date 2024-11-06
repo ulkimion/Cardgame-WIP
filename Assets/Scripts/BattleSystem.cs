@@ -136,18 +136,23 @@ public class BattleSystem : MonoBehaviour
         
         for (int i = 0; i < bullets.Count ; i++)
         {
-            GameObject bullet = Instantiate(bulletBase, new Vector3(-7.7f, 4.5f, 0), Quaternion.identity);
-            //GameObject bullet = Instantiate(bulletBase, new Vector3(-7.7f, 6, 0), Quaternion.identity);
+            //GameObject bullet = Instantiate(bulletBase, new Vector3(-7.7f, 4.5f, 0), Quaternion.identity);
+            GameObject bullet = Instantiate(bulletBase, new Vector3(-7.7f, 6, 0), Quaternion.identity);
             BulletState bulletState = bullet.GetComponent<BulletState>();
             bulletState.bullet = bullets[i];
             BulletDisplay bulletDisplay = bullet.GetComponent<BulletDisplay>();
-            bulletDisplay.bulletState = bulletState;
+            bulletDisplay.bullet = bullets[i];
 
             bullet.transform.localScale = Vector3.one * 1;
             bullet.transform.SetParent(GameObject.FindGameObjectWithTag("BulletDeck").transform);
             inFightBullets.Add(bullet);
         }
-        
+
+        if (inFightBullets.Count > 0 && inFightBullets[0] != null)
+        {
+            inFightBullets[0].transform.position = new Vector3(-7.7f, 4.5f, 0);
+        }
+
 
         Shuffle();
 
@@ -181,6 +186,8 @@ public class BattleSystem : MonoBehaviour
                     yield return new WaitForSeconds(1f);
                 }
         }
+
+
 
         
         checkIfEnemiesAreAlive();
@@ -387,6 +394,9 @@ public class BattleSystem : MonoBehaviour
             }
 
         var firstBullet = inFightBullets[0];
+        var nextBullet = inFightBullets[1];
+        nextBullet.transform.position = new Vector3(-7.7f, 4.5f, 0);
+        firstBullet.transform.position = new Vector3(-7.7f, 6, 0);
         inFightBullets.Add(firstBullet);
         inFightBullets.RemoveAt(0);
 
