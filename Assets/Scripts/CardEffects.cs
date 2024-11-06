@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class CardEffects : MonoBehaviour, IPointerClickHandler
 {
@@ -14,17 +15,22 @@ public class CardEffects : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+
+        BattleSystem = GameObject.FindWithTag("CombatSystem").GetComponent<BattleSystem>();
         if (!isClicked)
         {
-            /*if (card.energyCost > BattleSystem.playerUnit.unitEnergy)
-            { */
+            if (BattleSystem.playerUnit.unitEnergy >= card.energyCost)
+            {
                 activateEffect();
                 BattleSystem.playerUnit.unitEnergy = BattleSystem.playerUnit.unitEnergy - card.energyCost;
-                //cardSelectionHandler.Discard();
+
                 BattleSystem.discardPile.Add(this.gameObject);
                 BattleSystem.hand.Remove(this.gameObject);
                 this.gameObject.transform.position = new Vector3(0, 8, 0);
-            //}*/
+                BattleSystem.playerHUD.energyText.text = BattleSystem.playerUnit.unitEnergy + "/3";
+
+            }
+            else { BattleSystem.dialogueText.text = "Not Enough Energy"; }
         }
     }
 

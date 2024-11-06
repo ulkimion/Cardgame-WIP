@@ -12,11 +12,13 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
     private Vector3 _startPos;
     private Vector3 _startScale;
     private bool isClicked = false;
+    public CardEffects cardEffects;
 
     public BattleSystem battleSystem;
 
     private void Start()
     {
+        cardEffects = GetComponent<CardEffects>();
         _startPos = transform.position;
         _startPos.y = -3.5f;
         _startScale = transform.localScale;
@@ -127,8 +129,11 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
     {
         if (!isClicked)
         {
-            isClicked = true;
-            StartCoroutine(MoveCardInstant(true, new Vector3(3, -8, 0)));
+            if (battleSystem.playerUnit.unitEnergy >= cardEffects.card.energyCost)
+            {
+                isClicked = true;
+                StartCoroutine(MoveCardInstant(true, new Vector3(3, -8, 0)));
+            }
         }
         else
         {
