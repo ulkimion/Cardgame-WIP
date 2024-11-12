@@ -20,13 +20,18 @@ public class Unit : MonoBehaviour
     public bool TakeDamage(int dmg)
     {
         Debug.Log("se hizo " + dmg + " de danio");
-        if (dmg <= block) {
-            block = block - dmg;
-        }
-        else
+
+        if (dmg > 0 )
         {
-            currentHP = currentHP - (dmg - block);
-            block = 0;
+            if (dmg <= block)
+            {
+                block = block - dmg;
+            }
+            else
+            {
+                currentHP = currentHP - (dmg - block);
+                block = 0;
+            }
         }
 
         if(currentHP <= 0)

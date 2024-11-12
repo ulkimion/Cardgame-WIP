@@ -45,6 +45,7 @@ public class BattleSystem : MonoBehaviour
     public Draw drawHand;
     public int cardsDrawnPerTurn = 5;
     public int extraCardsDrawn = 0;
+    public int damageTakenModifier = 0;
     public bool keepBlock = false;
     public Text TurnCounter;
     public int CurrentTarget = 1;
@@ -202,7 +203,7 @@ public class BattleSystem : MonoBehaviour
     {
         dialogueText.text = unitName + " does " + EnemyAttack + " damage"; 
         yield return new WaitForSeconds(1f);
-        bool playerDied = playerUnit.TakeDamage(EnemyAttack);
+        bool playerDied = playerUnit.TakeDamage(EnemyAttack + damageTakenModifier);
         playerHUD.SetHP(playerUnit.currentHP);
         playerBlock.text = playerUnit.block.ToString();
         yield return new WaitForSeconds(1f);
@@ -239,6 +240,7 @@ public class BattleSystem : MonoBehaviour
         drawHand.drawHand(cardsDrawnPerTurn + extraCardsDrawn);
         extraCardsDrawn = 0;
         playerUnit.unitEnergy = 3;
+        damageTakenModifier = 0;
         playerHUD.SetEnergy(playerUnit.unitEnergy);
         dialogueText.text = "Your Turn";
         TurnCounter.text = "Turn " + currentTurn;

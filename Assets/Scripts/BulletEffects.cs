@@ -36,19 +36,23 @@ public class BulletEffects : MonoBehaviour
                 enemy.TakeDamage(damage);
             }
 
-
-            enemy.Burn = enemy.Burn + bullet.burn;
-            enemy.Paralysis = enemy.Paralysis + bullet.paralysis;
-            enemy.Poison = enemy.Poison + bullet.poison;
+            int totalBurn = (int)(bullet.burn * effectModifier);
+            int totalParalysis = (int)(bullet.paralysis * effectModifier);
+            int totalPoison = (int)(bullet.poison * effectModifier);
+            enemy.Burn = enemy.Burn + totalBurn;
+            enemy.Paralysis = enemy.Paralysis + totalParalysis;
+            enemy.Poison = enemy.Poison + totalPoison;
 
             if (bullet.cycle > 0)
             {
-                BattleSystem.cycle(bullet.cycle);
+                int totalCycle = (int)(bullet.cycle * effectModifier);
+                BattleSystem.cycle(totalCycle);
             }
 
             if (bullet.draw > 0)
             {
-                BattleSystem.draw(bullet.draw);
+                int totalDraw = (int)(bullet.draw * effectModifier);
+                BattleSystem.draw(totalDraw);
             }
 
             if (enemy.currentHP < 0)

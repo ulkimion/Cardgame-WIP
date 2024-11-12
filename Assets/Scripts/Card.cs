@@ -30,7 +30,7 @@ public class Card : ScriptableObject
     public int poison;
     public int topdeck;
     public int cycle;
-    public int blockPlus;
+    public int DamageTakenModifier;
     public int blockMultiplier;
     public int damagePlus;
     public int damageMultiplier;

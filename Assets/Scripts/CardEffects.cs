@@ -58,6 +58,7 @@ public class CardEffects : MonoBehaviour, IPointerClickHandler
         BattleSystem.playerUnit.block = BattleSystem.playerUnit.block + card.block;
         BattleSystem.playerBlock.text = BattleSystem.playerUnit.block.ToString();
         BattleSystem.keepBlock = card.keepBlock;
+        BattleSystem.damageTakenModifier = BattleSystem.damageTakenModifier + card.DamageTakenModifier;
         if (card.cardTarget == cardTarget.Enemy)
         {
             if (card.shootType == shootType.Shoot) 
