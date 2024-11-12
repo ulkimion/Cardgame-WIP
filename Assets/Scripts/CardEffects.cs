@@ -55,13 +55,10 @@ public class CardEffects : MonoBehaviour, IPointerClickHandler
         BattleSystem = GameObject.FindWithTag("CombatSystem").GetComponent<BattleSystem>();
         Debug.Log("El efecto se activo");
 
-        if (card.cardTarget == cardTarget.Self)
-        {
-            BattleSystem.playerUnit.block = BattleSystem.playerUnit.block + card.block;
-            BattleSystem.playerBlock.text = BattleSystem.playerUnit.block.ToString();
-            Debug.Log("se gano block");
-        }
-        else if (card.cardTarget == cardTarget.Enemy)
+        BattleSystem.playerUnit.block = BattleSystem.playerUnit.block + card.block;
+        BattleSystem.playerBlock.text = BattleSystem.playerUnit.block.ToString();
+        BattleSystem.keepBlock = card.keepBlock;
+        if (card.cardTarget == cardTarget.Enemy)
         {
             if (card.shootType == shootType.Shoot) 
             {

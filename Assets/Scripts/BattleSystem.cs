@@ -45,6 +45,7 @@ public class BattleSystem : MonoBehaviour
     public Draw drawHand;
     public int cardsDrawnPerTurn = 5;
     public int extraCardsDrawn = 0;
+    public bool keepBlock = false;
     public Text TurnCounter;
     public int CurrentTarget = 1;
     public Text playerBlock;
@@ -243,12 +244,19 @@ public class BattleSystem : MonoBehaviour
         TurnCounter.text = "Turn " + currentTurn;
         deckSizeText.text = inFightDeck.Count.ToString();
         discardPileSizeText.text = discardPile.Count.ToString();
-        playerUnit.block = 0;
-        playerBlock.text = playerUnit.block.ToString();
         GameObject[] deck = inFightDeck.ToArray();
         StartCoroutine(PileInDeck(deck));
         GameObject[] discardpile = discardPile.ToArray();
         StartCoroutine(PileInDiscardPile(discardpile));
+        if(keepBlock == true)
+        {
+            keepBlock = false;
+        }
+        else
+        {
+            playerUnit.block = 0;
+            playerBlock.text = playerUnit.block.ToString();
+        }
     }
 
     public void OnEndTurnButton()
