@@ -13,6 +13,7 @@ TagManager:
   - DiscardPile
   - CurrentBullet
   - BulletDeck
+  - VanishZone
   layers:
   - Default
   - TransparentFX

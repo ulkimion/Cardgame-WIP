@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Reload
   m_EditorClassIdentifier: 
   name: Reload
-  effectText: ' Cycle 1. Draw 1, vanishes.'
+  effectText: ' Cycle 1. Draw 1.'
   artwork: {fileID: 0}
   CardType: 0
   shootType: 0
@@ -24,19 +24,19 @@ MonoBehaviour:
   block: 0
   effectModifier: 1
   bulletDamageModifier: 1
-  draw: 1
+  draw: 2
   effectDuration: 0
   burn: 0
   paralysis: 0
   poison: 0
   topdeck: 0
-  cycle: 0
+  cycle: 1
   blockPlus: 0
   blockMultiplier: 0
   damagePlus: 0
   damageMultiplier: 0
   perfectBlock: 0
-  vanishes: 1
+  vanishes: 0
   keepBlock: 0
   takeCover: 0
   destroyBullet: 0
@@ -44,4 +44,4 @@ MonoBehaviour:
   Overdrive: 0
   burningSpirit: 0
   toxicEmotions: 0
-  retain: 0
+  retain: 1

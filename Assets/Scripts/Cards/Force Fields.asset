@@ -37,7 +37,7 @@ MonoBehaviour:
   damageMultiplier: 0
   perfectBlock: 0
   vanishes: 0
-  keepBlock: 0
+  keepBlock: 1
   takeCover: 0
   destroyBullet: 0
   transformNextBullet: 0

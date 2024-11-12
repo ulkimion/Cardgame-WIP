@@ -15,29 +15,20 @@ MonoBehaviour:
   name: Spark Bullet
   artwork: {fileID: 21300000, guid: 1800fd1c381a6bd4eaed382a92b27d5e, type: 3}
   exp: 0
-  effectText: 
   level: 1
-  damage: 0
   condition: 0
-  burn: 0
-  paralysis: 0
-  poison: 0
-  cycle: 0
-  gainsEnergy: 0
-  heal: 0
-  extraDamagePerHeldTurns: 0
-  effectTextLv1: Applies 2 Paralysis
-  effectTextLv2: Applies 3 Paralysis
-  effectTextLv3: Applies 4 Paralysis
+  effectTextLv1: Applies 1 Paralysis
+  effectTextLv2: Applies 2 Paralysis
+  effectTextLv3: Applies 3 Paralysis
   damageLv1: 8
   damageLv2: 12
   damageLv3: 16
   burnLv1: 0
   burnLv2: 0
   burnLv3: 0
-  paralysisLv1: 2
-  paralysisLv2: 3
-  paralysisLv3: 4
+  paralysisLv1: 1
+  paralysisLv2: 2
+  paralysisLv3: 3
   poisonLv1: 0
   poisonLv2: 0
   poisonLv3: 0
@@ -50,10 +41,12 @@ MonoBehaviour:
   healLv1: 0
   healLv2: 0
   healLv3: 0
+  drawLv1: 0
+  drawLv2: 0
+  drawLv3: 0
   extraDamagePerHeldTurnsLv1: 0
   extraDamagePerHeldTurnsLv2: 0
   extraDamagePerHeldTurnsLv3: 0
-  heldTurns: 0
   becomesEmpty: 0
   duplicating: 0
   damagex2: 0

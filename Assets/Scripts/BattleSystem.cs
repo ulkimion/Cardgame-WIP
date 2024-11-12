@@ -372,14 +372,14 @@ public class BattleSystem : MonoBehaviour
         if (cleanHit) { return true; } else { return false; }
     }
 
-    public void shoot(int shootAmount)
+    public void shoot(int shootAmount, float bulletdamageModifier, float effectModifier)
     {
         var alive = Enemies[CurrentTarget - 1].GetComponent<CombatEnemyState>();
         var bullet = inFightBullets[0].GetComponent<BulletEffects>();
         EnemyDisplay enemyDisplay = Enemies[CurrentTarget - 1].GetComponent<EnemyDisplay>();
         if (alive.currentlyAlive == true)
             {
-                bullet.activateEffects(shootAmount);
+                bullet.activateEffects(shootAmount, bulletdamageModifier, effectModifier);
                 //enemyDisplay.HPSlider.value = alive.currentHP / alive.maxHP;
             if (alive.currentHP == 0)
             {

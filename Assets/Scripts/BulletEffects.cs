@@ -17,19 +17,23 @@ public class BulletEffects : MonoBehaviour
         bullet = GetComponent<BulletState>();
 }
 
-    public void activateEffects(int shootAmount)
+    public void activateEffects(int shootAmount, float bulletdamageModifier, float effectModifier)
     {
         enemy = BattleSystem.Enemies[BattleSystem.CurrentTarget - 1].GetComponent<CombatEnemyState>();
         for (int i = 0; i < shootAmount; i++)
         {
             if(enemy.Burn > 0)
             {
-                int damageWhenHitByBurn = (int)(bullet.damage * 1.5);
+                int damageWhenHitByBurn = (int)((bullet.damage * bulletdamageModifier) * 1.5);
+                Debug.Log("modifier = " + bulletdamageModifier);
                 enemy.TakeDamage(damageWhenHitByBurn);
             }
             else
             {
-                enemy.TakeDamage(bullet.damage);
+                int damage = (int)((bullet.damage * bulletdamageModifier));
+
+                Debug.Log("modifier = " + bulletdamageModifier);
+                enemy.TakeDamage(damage);
             }
 
 

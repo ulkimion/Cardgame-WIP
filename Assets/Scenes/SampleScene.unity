@@ -859,6 +859,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 598078077}
   m_CullTransparentMesh: 1
+--- !u!1 &606366064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 606366065}
+  m_Layer: 5
+  m_Name: Vanish Zone
+  m_TagString: VanishZone
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &606366065
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606366064}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1942498818}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 329, y: -587}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &625149697
 GameObject:
   m_ObjectHideFlags: 0
@@ -2278,24 +2313,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDeck:
-  - {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}
-  - {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}
-  - {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}
-  - {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}
   - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
   - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
   - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
   - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
   - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
-  - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
+  - {fileID: 11400000, guid: c71dcf5468812af4b8551eb1b2b5140d, type: 2}
+  - {fileID: 11400000, guid: c71dcf5468812af4b8551eb1b2b5140d, type: 2}
+  - {fileID: 11400000, guid: c71dcf5468812af4b8551eb1b2b5140d, type: 2}
+  - {fileID: 11400000, guid: c71dcf5468812af4b8551eb1b2b5140d, type: 2}
+  - {fileID: 11400000, guid: c71dcf5468812af4b8551eb1b2b5140d, type: 2}
   inFightDeck: []
   hand: []
   discardPile: []
+  vanishPile: []
   cardBase: {fileID: 6876785180859665576, guid: cb12222561592dc4bac4ffb0a383fd67, type: 3}
   bullets:
-  - {fileID: 11400000, guid: b397567c75eca9743bbb9be8cbfafaad, type: 2}
-  - {fileID: 11400000, guid: e4438771652282a48953f2249c051579, type: 2}
   - {fileID: 11400000, guid: dec7267d1b7af9b42b0ee1b35587b66c, type: 2}
+  - {fileID: 11400000, guid: e4438771652282a48953f2249c051579, type: 2}
   inFightBullets: []
   bulletBase: {fileID: 6831427741468293100, guid: 787722cdf229465448c6900db5bb7a7b, type: 3}
   emptyBullet: {fileID: 11400000, guid: c778c75493181ad40adf49df144d851c, type: 2}
@@ -2314,6 +2349,7 @@ MonoBehaviour:
   drawHand: {fileID: 1503287663}
   cardsDrawnPerTurn: 5
   extraCardsDrawn: 0
+  keepBlock: 0
   TurnCounter: {fileID: 182181157}
   CurrentTarget: 1
   playerBlock: {fileID: 1029925684}
@@ -2446,6 +2482,7 @@ RectTransform:
   m_Children:
   - {fileID: 1528327367}
   - {fileID: 211003235}
+  - {fileID: 606366065}
   - {fileID: 1758215774}
   - {fileID: 1029925686}
   - {fileID: 33950028}
@@ -2509,7 +2546,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2003052734}
-  - component: {fileID: 2003052733}
   m_Layer: 5
   m_Name: Enemy spawner
   m_TagString: EnemySpawner1
@@ -2517,18 +2553,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2003052733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2003052732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 327f15321c776b247bc01d0d15ed9699, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &2003052734
 RectTransform:
   m_ObjectHideFlags: 0

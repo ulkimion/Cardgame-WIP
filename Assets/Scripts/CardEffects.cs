@@ -62,7 +62,7 @@ public class CardEffects : MonoBehaviour, IPointerClickHandler
         {
             if (card.shootType == shootType.Shoot) 
             {
-                BattleSystem.shoot(card.shoot);
+                BattleSystem.shoot(card.shoot, card.bulletDamageModifier, card.effectModifier);
                 Debug.Log("se disparo");
             }
             else if (card.shootType == shootType.MultiShoot)
@@ -75,7 +75,7 @@ public class CardEffects : MonoBehaviour, IPointerClickHandler
         {
             if (card.shootType == shootType.Shoot)
             {
-                BattleSystem.shoot(card.shoot);
+                BattleSystem.shoot(card.shoot, card.damageMultiplier, card.effectModifier);
                 Debug.Log("se disparo");
             }
             else if (card.shootType == shootType.MultiShoot)

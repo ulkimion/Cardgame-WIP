@@ -17,7 +17,7 @@ MonoBehaviour:
   artwork: {fileID: 0}
   CardType: 0
   shootType: 0
-  cardTarget: 0
+  cardTarget: 1
   condition: 0
   energyCost: 0
   shoot: 0
@@ -36,7 +36,7 @@ MonoBehaviour:
   damagePlus: 0
   damageMultiplier: 0
   perfectBlock: 0
-  vanishes: 0
+  vanishes: 1
   keepBlock: 0
   takeCover: 0
   destroyBullet: 0
