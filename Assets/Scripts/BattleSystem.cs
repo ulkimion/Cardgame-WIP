@@ -321,8 +321,17 @@ public class BattleSystem : MonoBehaviour
 
         foreach (GameObject Card in Cards)
         {
-            StartCoroutine(SlideCardDown(Card, duration));
-            yield return new WaitForSeconds(staggerTime);
+            bool retainable = Cards[0].GetComponent<CardEffects>().card.retain;
+            /*if (retainable == true)
+            {
+                hand.Add(Card);
+                hand.RemoveAt(0);
+            }
+            else
+            {*/
+                StartCoroutine(SlideCardDown(Card, duration));
+                yield return new WaitForSeconds(staggerTime);
+            //}
         }
         yield return new WaitForSeconds(duration + staggerTime);
     }
