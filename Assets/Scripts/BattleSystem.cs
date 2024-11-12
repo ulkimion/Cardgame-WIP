@@ -21,6 +21,7 @@ public class BattleSystem : MonoBehaviour
     public List<GameObject> inFightDeck = new List<GameObject>();
     public List<GameObject> hand = new List<GameObject>();
     public List<GameObject> discardPile = new List<GameObject>();
+    public List<GameObject> vanishPile = new List<GameObject>();
     public GameObject cardBase;
 
 

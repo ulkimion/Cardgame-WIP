@@ -63,6 +63,7 @@ public class Draw : MonoBehaviour
                 Debug.Log("Deck vacío");
             }
         }
+        battleSystem.deckSizeText.text = battleSystem.inFightDeck.Count.ToString();
         rearange();
         //card selection handler codeEnabled = true;
     }

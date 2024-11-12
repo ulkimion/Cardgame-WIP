@@ -23,11 +23,20 @@ public class CardEffects : MonoBehaviour, IPointerClickHandler
                 activateEffect();
                 BattleSystem.playerUnit.unitEnergy = BattleSystem.playerUnit.unitEnergy - card.energyCost;
 
-                BattleSystem.discardPile.Add(this.gameObject);
-                BattleSystem.hand.Remove(this.gameObject);
+                if(this.card.vanishes == true)
+                {
+                    BattleSystem.vanishPile.Add(this.gameObject);
+                    this.transform.SetParent(GameObject.FindGameObjectWithTag("VanishZone").transform);
+                    this.gameObject.transform.position = new Vector3(1, 8, 0);
+                }
+                else
+                {
+                    BattleSystem.discardPile.Add(this.gameObject);
+                    this.transform.SetParent(GameObject.FindGameObjectWithTag("DiscardPile").transform);
+                    this.gameObject.transform.position = new Vector3(0, 8, 0);
 
-                this.transform.SetParent(GameObject.FindGameObjectWithTag("DiscardPile").transform);
-                this.gameObject.transform.position = new Vector3(0, 8, 0);
+                }
+                BattleSystem.hand.Remove(this.gameObject);
                 BattleSystem.playerHUD.energyText.text = BattleSystem.playerUnit.unitEnergy + "/3";
 
                 //efectos que se ejecutan tras descartarse
