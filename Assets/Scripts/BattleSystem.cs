@@ -184,7 +184,8 @@ public class BattleSystem : MonoBehaviour
                 {
                     enemyTurnPattern.enemyTurn();
                     yield return new WaitForSeconds(1f);
-                }
+            }
+            alive.LoseStatus(1);
         }
 
 
@@ -370,7 +371,7 @@ public class BattleSystem : MonoBehaviour
         if (alive.currentlyAlive == true)
             {
                 bullet.activateEffects(shootAmount);
-                enemyDisplay.HPSlider.value = alive.currentHP / alive.maxHP;
+                //enemyDisplay.HPSlider.value = alive.currentHP / alive.maxHP;
             if (alive.currentHP == 0)
             {
                 enemyDisplay.TargetIcon.enabled = false;

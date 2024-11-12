@@ -22,19 +22,20 @@ public class BulletEffects : MonoBehaviour
         enemy = BattleSystem.Enemies[BattleSystem.CurrentTarget - 1].GetComponent<CombatEnemyState>();
         for (int i = 0; i < shootAmount; i++)
         {
-            enemy.Burn = enemy.Burn + bullet.burn;
-            enemy.Paralysis = enemy.Paralysis + bullet.paralysis;
-            enemy.Poison = enemy.Poison + bullet.poison;
-
             if(enemy.Burn > 0)
             {
                 int damageWhenHitByBurn = (int)(bullet.damage * 1.5);
-                enemy.currentHP = enemy.currentHP - damageWhenHitByBurn;
+                enemy.TakeDamage(damageWhenHitByBurn);
             }
             else
             {
-                enemy.currentHP = enemy.currentHP - bullet.damage;
+                enemy.TakeDamage(bullet.damage);
             }
+
+
+            enemy.Burn = enemy.Burn + bullet.burn;
+            enemy.Paralysis = enemy.Paralysis + bullet.paralysis;
+            enemy.Poison = enemy.Poison + bullet.poison;
 
             if (bullet.cycle > 0)
             {

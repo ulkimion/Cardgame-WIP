@@ -41,7 +41,6 @@ public class EnemyAITemplate
         {
             damage = (Burn + Paralysis + Poison) * 3;
         }
-        LoseStatus(1);
         return damage;
     }
 

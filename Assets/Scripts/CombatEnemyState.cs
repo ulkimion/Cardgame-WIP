@@ -44,18 +44,18 @@ public class CombatEnemyState : MonoBehaviour
         
 
     }
+
     public int AffectedbyStatus()
     {
-        int damage;
-        if (Poison > 1)
+        int damage = 0;
+        if (Poison > 0)
         {
-            damage = Mathf.CeilToInt((Burn + Paralysis + Poison) * 1.5f);
+            damage = (Burn + Paralysis + Poison) * 6;
         }
         else
         {
-            damage = (Burn + Paralysis);
+            damage = (Burn + Paralysis + Poison) * 3;
         }
-        LoseStatus(1);
         return damage;
     }
 

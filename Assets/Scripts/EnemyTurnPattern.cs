@@ -46,7 +46,16 @@ public class EnemyTurnPattern : MonoBehaviour
 
     public void interruptionTurn() 
     {
-        StartCoroutine(BattleSystem.EnemyTurn(enemy.unitName, enemy.DamageInterrupt));
+        if (combatEnemyState.Paralysis > 0)
+        {
+            int DamageUnderParalysis = (int)(enemy.DamageInterrupt * 0.75);
+            StartCoroutine(BattleSystem.EnemyTurn(enemy.unitName, DamageUnderParalysis));
+        }
+        else
+        {
+            StartCoroutine(BattleSystem.EnemyTurn(enemy.unitName, enemy.DamageInterrupt));
+        }
+
         combatEnemyState.focus = enemy.GainFocusInterrupt;
         combatEnemyState.block = enemy.BlockInterrupt;
 
@@ -72,7 +81,16 @@ public class EnemyTurnPattern : MonoBehaviour
     public void turn1()
     {
         Debug.Log("Turno 1");
-        StartCoroutine(BattleSystem.EnemyTurn(enemy.unitName, enemy.Damage1));
+        if (combatEnemyState.Paralysis > 0) 
+        {
+            int DamageUnderParalysis = (int)(enemy.Damage1 * 0.75);
+            StartCoroutine(BattleSystem.EnemyTurn(enemy.unitName, DamageUnderParalysis));
+            Debug.Log("damage under paralysis = " + DamageUnderParalysis);
+        }
+        else 
+        { 
+            StartCoroutine(BattleSystem.EnemyTurn(enemy.unitName, enemy.Damage1)); 
+        }
         combatEnemyState.focus = enemy.GainFocus1;
         combatEnemyState.block = enemy.Block1;
 
@@ -103,7 +121,15 @@ public class EnemyTurnPattern : MonoBehaviour
 
     public void turn2()
     {
-        StartCoroutine(BattleSystem.EnemyTurn(enemy.unitName, enemy.Damage2));
+        if (combatEnemyState.Paralysis > 0)
+        {
+            int DamageUnderParalysis = (int)(enemy.Damage2 * 0.75);
+            StartCoroutine(BattleSystem.EnemyTurn(enemy.unitName, DamageUnderParalysis));
+        }
+        else
+        {
+            StartCoroutine(BattleSystem.EnemyTurn(enemy.unitName, enemy.Damage2));
+        }
         combatEnemyState.focus = enemy.GainFocus2;
         combatEnemyState.block = enemy.Block2;
 
@@ -135,7 +161,15 @@ public class EnemyTurnPattern : MonoBehaviour
 
     public void turn3()
     {
-        StartCoroutine(BattleSystem.EnemyTurn(enemy.unitName, enemy.Damage3));
+        if (combatEnemyState.Paralysis > 0)
+        {
+            int DamageUnderParalysis = (int)(enemy.Damage3 * 0.75);
+            StartCoroutine(BattleSystem.EnemyTurn(enemy.unitName, DamageUnderParalysis));
+        }
+        else
+        {
+            StartCoroutine(BattleSystem.EnemyTurn(enemy.unitName, enemy.Damage3));
+        }
         combatEnemyState.focus = enemy.GainFocus3;
         combatEnemyState.block = enemy.Block3;
 
