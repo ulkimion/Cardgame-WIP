@@ -32,7 +32,15 @@ public class EnemyAITemplate
     }
     public int AffectedbyStatus()
     {
-        int damage = (Burn + Paralysis + Poison);
+        int damage = 0;
+        if (Poison > 0)
+        {
+            damage = (Burn + Paralysis + Poison) * 6;
+        }
+        else
+        {
+            damage = (Burn + Paralysis + Poison) * 3;
+        }
         LoseStatus(1);
         return damage;
     }
