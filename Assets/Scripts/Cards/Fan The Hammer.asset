@@ -15,8 +15,8 @@ MonoBehaviour:
   name: Fan the Hammer
   effectText: Shoot 6, damage x1/2, effects are halved (rounded down).
   artwork: {fileID: 0}
-  CardType: 0
-  shootType: 0
+  CardType: 1
+  shootType: 1
   cardTarget: 0
   condition: 0
   energyCost: 3
@@ -31,7 +31,7 @@ MonoBehaviour:
   poison: 0
   topdeck: 0
   cycle: 0
-  blockPlus: 0
+  DamageTakenModifier: 0
   blockMultiplier: 0
   damagePlus: 0
   damageMultiplier: 0

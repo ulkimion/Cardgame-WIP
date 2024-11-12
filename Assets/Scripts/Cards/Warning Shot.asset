@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Warning Shot
   m_EditorClassIdentifier: 
   name: Warning Shot
-  effectText: Cycle 1. all enemies do 5 less damage this turn.
+  effectText: Cycle 1. all enemies do 5 less damage this turn. Vanish
   artwork: {fileID: 0}
   CardType: 0
   shootType: 0
@@ -31,12 +31,12 @@ MonoBehaviour:
   poison: 0
   topdeck: 0
   cycle: 0
-  blockPlus: -5
+  DamageTakenModifier: -5
   blockMultiplier: 0
   damagePlus: 0
   damageMultiplier: 0
   perfectBlock: 0
-  vanishes: 0
+  vanishes: 1
   keepBlock: 0
   takeCover: 0
   destroyBullet: 0
