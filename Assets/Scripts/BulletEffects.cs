@@ -32,6 +32,11 @@ public class BulletEffects : MonoBehaviour
                 BattleSystem.cycle(bullet.cycle);
             }
 
+            if (bullet.draw > 0)
+            {
+                BattleSystem.draw(bullet.draw);
+            }
+
             if (enemy.currentHP < 0)
             {
                 enemy.currentHP = 0;

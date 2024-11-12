@@ -15,7 +15,6 @@ public class CardEffects : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-
         BattleSystem = GameObject.FindWithTag("CombatSystem").GetComponent<BattleSystem>();
         if (!isClicked)
         {
@@ -31,6 +30,12 @@ public class CardEffects : MonoBehaviour, IPointerClickHandler
                 this.gameObject.transform.position = new Vector3(0, 8, 0);
                 BattleSystem.playerHUD.energyText.text = BattleSystem.playerUnit.unitEnergy + "/3";
 
+                //efectos que se ejecutan tras descartarse
+                if (card.draw > 0)
+                {
+                    BattleSystem.draw(card.draw);
+                }
+                delay();
             }
             else { BattleSystem.dialogueText.text = "Not Enough Energy"; }
         }
@@ -73,6 +78,13 @@ public class CardEffects : MonoBehaviour, IPointerClickHandler
                 Debug.Log("se multidisparo");
             }
         }
-        BattleSystem.cycle(card.cycle);
+        if (card.cycle > 0)
+        {
+            BattleSystem.cycle(card.cycle);
+        }
     }   
+    private IEnumerator delay()
+    {
+        yield return new WaitForSeconds(1f);
+    }
 }

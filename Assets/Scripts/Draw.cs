@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DrawHand : MonoBehaviour
+public class Draw : MonoBehaviour
 {
     public GameObject Card;
     public BattleSystem battleSystem;
@@ -45,6 +45,48 @@ public class DrawHand : MonoBehaviour
             }
         }
 
+    }
+
+    public void draw(int drawAmmount) 
+    {
+        int quantity = battleSystem.hand.Count + drawAmmount;
+        cardPositions = new List<Vector3>();
+        float offset = (quantity - 1) * 1.75f / 2.0f;
+
+        for (int i = 0; i < quantity; i++)
+        {
+            float xPos = (i * 1.75f) - offset;
+            cardPositions.Add(new Vector3(xPos, -3.5f, 0f));
+        }
+
+        //sacar draw ammount
+        for (int i = 0; i < drawAmmount; i++)
+        {
+            ifDeckEmpty();
+            if (battleSystem.inFightDeck.Count > 0)
+            {
+                battleSystem.hand.Add(battleSystem.inFightDeck[0]);
+                battleSystem.inFightDeck.RemoveAt(0);
+            }
+            else
+            {
+                Debug.Log("Deck vacío");
+            }
+        }
+        //ordenar posiciones en mano
+        for (int i = 0; i < quantity; i++)
+        {
+            ifDeckEmpty();
+            if (battleSystem.inFightDeck.Count > 0)
+            {
+                battleSystem.hand[i].transform.position = cardPositions[i];
+                battleSystem.hand[i].transform.SetParent(GameObject.FindGameObjectWithTag("Hand").transform);
+            }
+            else
+            {
+                Debug.Log("Deck vacío");
+            }
+        }
     }
 
     void ifDeckEmpty() 

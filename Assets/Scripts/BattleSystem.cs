@@ -41,7 +41,7 @@ public class BattleSystem : MonoBehaviour
 
     public Text dialogueText;
     public BattleHUD playerHUD;
-    public DrawHand drawHand;
+    public Draw drawHand;
     public int cardsDrawnPerTurn = 5;
     public int extraCardsDrawn = 0;
     public Text TurnCounter;
@@ -353,7 +353,19 @@ public class BattleSystem : MonoBehaviour
         if (cleanHit) { return true; } else { return false; }
     }
 
-    public void shoot(int shootAmount)
+    public IEnumerator shoot(int shootAmmount)
+    {
+        shoot2(shootAmmount);
+        yield return new WaitForSeconds(1f);
+    }
+
+    public IEnumerator multiShot(int shootAmmount)
+    {
+        multiShot2(shootAmmount);
+        yield return new WaitForSeconds(1f);
+    }
+
+    public void shoot2(int shootAmount)
     {
         var alive = Enemies[CurrentTarget - 1].GetComponent<CombatEnemyState>();
         var bullet = inFightBullets[0].GetComponent<BulletEffects>();
@@ -399,7 +411,7 @@ public class BattleSystem : MonoBehaviour
     }
 
 
-    public void multiShot(int shootAmount)
+    public void multiShot2(int shootAmount)
     {
         Debug.Log("multishoot" + shootAmount);
         return;
@@ -448,4 +460,7 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    public void draw(int drawAmmount) {
+        drawHand.draw(drawAmmount); 
+    }
 }

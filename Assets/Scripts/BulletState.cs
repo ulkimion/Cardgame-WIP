@@ -17,6 +17,7 @@ public class BulletState : MonoBehaviour
     public int cycle;
     public int gainsEnergy;
     public int heal;
+    public int draw;
     public int extraDamagePerHeldTurns;
 
     public int heldTurns = 0;
@@ -49,6 +50,7 @@ public class BulletState : MonoBehaviour
             cycle = bullet.cycleLv2;
             gainsEnergy = bullet.gainsEnergyLv2;
             heal = bullet.healLv2;
+            draw = bullet.drawLv2;
         }
         else if (bullet.exp > 8)
         {
@@ -65,6 +67,7 @@ public class BulletState : MonoBehaviour
             cycle = bullet.cycleLv3;
             gainsEnergy = bullet.gainsEnergyLv3;
             heal = bullet.healLv3;
+            draw = bullet.drawLv3;
         }
         else
         {
@@ -82,6 +85,7 @@ public class BulletState : MonoBehaviour
             cycle = bullet.cycleLv1;
             gainsEnergy = bullet.gainsEnergyLv1;
             heal = bullet.healLv1;
+            draw = bullet.drawLv1;
         }
     }
 }

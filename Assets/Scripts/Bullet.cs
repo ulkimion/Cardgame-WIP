@@ -38,6 +38,9 @@ public class Bullet : ScriptableObject
     public int healLv1;
     public int healLv2;
     public int healLv3;
+    public int drawLv1;
+    public int drawLv2;
+    public int drawLv3;
     public int extraDamagePerHeldTurnsLv1;
     public int extraDamagePerHeldTurnsLv2;
     public int extraDamagePerHeldTurnsLv3;
