@@ -10,6 +10,7 @@ public class BulletDisplay : MonoBehaviour
 {
     public Bullet bullet;
     public TextMeshProUGUI bulletName;
+    public TextMeshProUGUI bulletDamage;
     public TextMeshProUGUI bulletEffect;
     public Image artwork;
 
@@ -21,14 +22,17 @@ public class BulletDisplay : MonoBehaviour
         if (bullet.exp is >= 3 and < 8)
         {
             bulletEffect.text = bullet.effectTextLv2;
+            bulletDamage.text = bullet.damageLv2.ToString();
         }
         else if (bullet.exp > 8)
         {
             bulletEffect.text = bullet.effectTextLv3;
+            bulletDamage.text = bullet.damageLv3.ToString();
         }
         else
         {
             bulletEffect.text = bullet.effectTextLv1;
+            bulletDamage.text = bullet.damageLv1.ToString();
         }
     }
 }

@@ -15,6 +15,7 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
     public CardEffects cardEffects;
 
     public BattleSystem battleSystem;
+    public bool codeEnabled = true;
 
     private void Start()
     {
@@ -34,7 +35,7 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
         float elapsedTime = 0f;
 
 
-        if (battleSystem.state == BattleState.PLAYERTURN)
+        if (battleSystem.state == BattleState.PLAYERTURN && codeEnabled == true)
         {
             while (elapsedTime < _moveTime)
             {

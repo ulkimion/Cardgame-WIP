@@ -35,7 +35,6 @@ public class CardEffects : MonoBehaviour, IPointerClickHandler
                 {
                     BattleSystem.draw(card.draw);
                 }
-                delay();
             }
             else { BattleSystem.dialogueText.text = "Not Enough Energy"; }
         }
@@ -83,8 +82,4 @@ public class CardEffects : MonoBehaviour, IPointerClickHandler
             BattleSystem.cycle(card.cycle);
         }
     }   
-    private IEnumerator delay()
-    {
-        yield return new WaitForSeconds(1f);
-    }
 }

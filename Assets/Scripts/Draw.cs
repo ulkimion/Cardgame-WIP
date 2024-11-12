@@ -49,6 +49,7 @@ public class Draw : MonoBehaviour
 
     public void draw(int drawAmmount) 
     {
+        //card selection handler codeEnabled = false;
         int quantity = battleSystem.hand.Count + drawAmmount;
         cardPositions = new List<Vector3>();
         float offset = (quantity - 1) * 1.75f / 2.0f;
@@ -87,6 +88,7 @@ public class Draw : MonoBehaviour
                 Debug.Log("Deck vacío");
             }
         }
+        //card selection handler codeEnabled = true;
     }
 
     void ifDeckEmpty() 

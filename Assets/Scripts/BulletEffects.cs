@@ -41,6 +41,7 @@ public class BulletEffects : MonoBehaviour
             {
                 enemy.currentHP = 0;
                 enemy.currentlyAlive = false;
+                BattleSystem.TargetAliveEnemy();
             }
         }
         Debug.Log("se hizo " + bullet.damage + " de dano");

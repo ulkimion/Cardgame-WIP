@@ -278,7 +278,7 @@ public class BattleSystem : MonoBehaviour
 
     }
 
-    void TargetAliveEnemy()
+    public void TargetAliveEnemy()
     {
         for (int i = 0; i < Enemies.Count; i++)
         {
@@ -353,19 +353,7 @@ public class BattleSystem : MonoBehaviour
         if (cleanHit) { return true; } else { return false; }
     }
 
-    public IEnumerator shoot(int shootAmmount)
-    {
-        shoot2(shootAmmount);
-        yield return new WaitForSeconds(1f);
-    }
-
-    public IEnumerator multiShot(int shootAmmount)
-    {
-        multiShot2(shootAmmount);
-        yield return new WaitForSeconds(1f);
-    }
-
-    public void shoot2(int shootAmount)
+    public void shoot(int shootAmount)
     {
         var alive = Enemies[CurrentTarget - 1].GetComponent<CombatEnemyState>();
         var bullet = inFightBullets[0].GetComponent<BulletEffects>();
@@ -411,7 +399,7 @@ public class BattleSystem : MonoBehaviour
     }
 
 
-    public void multiShot2(int shootAmount)
+    public void multiShot(int shootAmount)
     {
         Debug.Log("multishoot" + shootAmount);
         return;
@@ -457,6 +445,7 @@ public class BattleSystem : MonoBehaviour
             firstBullet.transform.position = new Vector3(-7.7f, 6, 0);
             inFightBullets.Add(inFightBullets[0]);
             inFightBullets.RemoveAt(0);
+            Debug.Log("cycle");
         }
     }
 
