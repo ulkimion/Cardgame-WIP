@@ -392,13 +392,7 @@ public class BattleSystem : MonoBehaviour
             {
                 Debug.Log("como terminamos aqui?");
             }
-
-        var firstBullet = inFightBullets[0];
-        var nextBullet = inFightBullets[1];
-        nextBullet.transform.position = new Vector3(-7.7f, 4.5f, 0);
-        firstBullet.transform.position = new Vector3(-7.7f, 6, 0);
-        inFightBullets.Add(firstBullet);
-        inFightBullets.RemoveAt(0);
+        cycle(1);
 
         Debug.Log("shoot" + shootAmount);
         return;
@@ -438,6 +432,19 @@ public class BattleSystem : MonoBehaviour
 
             state = BattleState.WON;
             EndBattle();
+        }
+    }
+
+    public void cycle(int cycleAmount)
+    {
+        for (int i = 0; i < cycleAmount; i++) 
+        {
+            var firstBullet = inFightBullets[0];
+            var nextBullet = inFightBullets[1];
+            nextBullet.transform.position = new Vector3(-7.7f, 4.5f, 0);
+            firstBullet.transform.position = new Vector3(-7.7f, 6, 0);
+            inFightBullets.Add(inFightBullets[0]);
+            inFightBullets.RemoveAt(0);
         }
     }
 

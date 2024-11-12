@@ -26,6 +26,8 @@ public class CardEffects : MonoBehaviour, IPointerClickHandler
 
                 BattleSystem.discardPile.Add(this.gameObject);
                 BattleSystem.hand.Remove(this.gameObject);
+
+                this.transform.SetParent(GameObject.FindGameObjectWithTag("DiscardPile").transform);
                 this.gameObject.transform.position = new Vector3(0, 8, 0);
                 BattleSystem.playerHUD.energyText.text = BattleSystem.playerUnit.unitEnergy + "/3";
 
@@ -52,7 +54,7 @@ public class CardEffects : MonoBehaviour, IPointerClickHandler
                 BattleSystem.shoot(card.shoot);
                 Debug.Log("se disparo");
             }
-            else if (card.shootType == shootType.Shoot)
+            else if (card.shootType == shootType.MultiShoot)
             {
                 BattleSystem.multiShot(card.shoot);
                 Debug.Log("se multidisparo");
@@ -65,11 +67,12 @@ public class CardEffects : MonoBehaviour, IPointerClickHandler
                 BattleSystem.shoot(card.shoot);
                 Debug.Log("se disparo");
             }
-            else if (card.shootType == shootType.Shoot)
+            else if (card.shootType == shootType.MultiShoot)
             {
                 BattleSystem.multiShot(card.shoot);
                 Debug.Log("se multidisparo");
             }
         }
+        BattleSystem.cycle(card.cycle);
     }   
 }

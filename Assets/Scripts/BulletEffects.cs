@@ -26,6 +26,12 @@ public class BulletEffects : MonoBehaviour
             enemy.Paralysis = enemy.Paralysis + bullet.paralysis;
             enemy.Poison = enemy.Poison + bullet.poison;
             enemy.currentHP = enemy.currentHP - bullet.damage;
+
+            if(bullet.cycle > 0)
+            {
+                BattleSystem.cycle(bullet.cycle);
+            }
+
             if (enemy.currentHP < 0)
             {
                 enemy.currentHP = 0;
