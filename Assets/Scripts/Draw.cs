@@ -49,17 +49,6 @@ public class Draw : MonoBehaviour
 
     public void draw(int drawAmmount) 
     {
-        //card selection handler codeEnabled = false;
-        int quantity = battleSystem.hand.Count + drawAmmount;
-        cardPositions = new List<Vector3>();
-        float offset = (quantity - 1) * 1.75f / 2.0f;
-
-        for (int i = 0; i < quantity; i++)
-        {
-            float xPos = (i * 1.75f) - offset;
-            cardPositions.Add(new Vector3(xPos, -3.5f, 0f));
-        }
-
         //sacar draw ammount
         for (int i = 0; i < drawAmmount; i++)
         {
@@ -74,7 +63,22 @@ public class Draw : MonoBehaviour
                 Debug.Log("Deck vacío");
             }
         }
-        //ordenar posiciones en mano
+        rearange();
+        //card selection handler codeEnabled = true;
+    }
+    
+    public void rearange() 
+    {
+        int quantity = battleSystem.hand.Count;
+        cardPositions = new List<Vector3>();
+        float offset = (quantity - 1) * 1.75f / 2.0f;
+
+        for (int i = 0; i < quantity; i++)
+        {
+            float xPos = (i * 1.75f) - offset;
+            cardPositions.Add(new Vector3(xPos, -3.5f, 0f));
+        }
+
         for (int i = 0; i < quantity; i++)
         {
             ifDeckEmpty();
@@ -88,9 +92,7 @@ public class Draw : MonoBehaviour
                 Debug.Log("Deck vacío");
             }
         }
-        //card selection handler codeEnabled = true;
     }
-
     void ifDeckEmpty() 
     {
         if (battleSystem.inFightDeck.Count == 0)

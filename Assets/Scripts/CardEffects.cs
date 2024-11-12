@@ -35,6 +35,7 @@ public class CardEffects : MonoBehaviour, IPointerClickHandler
                 {
                     BattleSystem.draw(card.draw);
                 }
+                BattleSystem.drawHand.rearange();
             }
             else { BattleSystem.dialogueText.text = "Not Enough Energy"; }
         }

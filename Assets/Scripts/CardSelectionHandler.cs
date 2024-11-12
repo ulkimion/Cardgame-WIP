@@ -92,6 +92,7 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
             transform.localScale = endScale;
         }
         yield return null;
+        isClicked = false;
     }
 
 
