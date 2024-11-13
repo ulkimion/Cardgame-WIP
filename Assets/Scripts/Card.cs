@@ -43,7 +43,13 @@ public class Card : ScriptableObject
     public bool Overdrive = false;
     public bool burningSpirit = false;
     public bool toxicEmotions = false;
-    public bool retain = false;
+    public bool retain;
+    
+    
+    public bool IsRetainable()
+    {
+        return retain;
+    }
 
     
 

@@ -31,15 +31,18 @@ public class CombatEnemyState : MonoBehaviour
         Paralysis = enemy.Paralysis;
         Poison = enemy.Poison;
         moneyDrop = enemy.moneyDrop;
+        enemyDisplay.HPSlider.value = 1;
     }
 
     public void TakeDamage(int dmg)
     {
         currentHP -= dmg;
-        enemyDisplay.HPSlider.value = currentHP / maxHP;
+        float slidervalue = (float)currentHP / (float)maxHP;
+        enemyDisplay.HPSlider.value = slidervalue;
         if (currentHP <= 0)
         {
-            currentlyAlive = false;
+            enemyDies();
+            currentHP = 0;
         }
         
 

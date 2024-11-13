@@ -418,7 +418,6 @@ GameObject:
   - component: {fileID: 4168713777613635740}
   - component: {fileID: 1282752025866197752}
   - component: {fileID: 4350509721536958074}
-  - component: {fileID: 5453802293198631645}
   - component: {fileID: 382679085648851223}
   - component: {fileID: 9007981347817011584}
   - component: {fileID: 1147350230116256228}
@@ -505,7 +504,9 @@ MonoBehaviour:
   _verticalMoveAmount: 0.7
   _moveTime: 0.1
   _scaleAmount: 1.5
+  cardEffects: {fileID: 0}
   battleSystem: {fileID: 0}
+  codeEnabled: 1
 --- !u!114 &1282752025866197752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589,21 +590,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &5453802293198631645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6876785180859665576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26c69699b6b7b9945a6d0925b1574342, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _combatSystem: {fileID: 0}
-  _player: {fileID: 0}
-  _button: {fileID: 1282752025866197752}
 --- !u!114 &382679085648851223
 MonoBehaviour:
   m_ObjectHideFlags: 0
