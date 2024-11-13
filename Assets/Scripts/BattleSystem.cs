@@ -333,16 +333,25 @@ public class BattleSystem : MonoBehaviour
 
         foreach (GameObject Card in Cards)
         {
-            bool retainable = Cards[0].GetComponent<CardEffects>().card.retain;
-            /*if (retainable == true)
+            bool retainable = Card.GetComponent<CardEffects>().card.IsRetainable();
+            /*if (retainable)
             {
                 hand.Add(Card);
                 hand.RemoveAt(0);
             }
             else
             {*/
+            Debug.Log("state" + retainable);
+            if (!retainable)
+            {
                 StartCoroutine(SlideCardDown(Card, duration));
                 yield return new WaitForSeconds(staggerTime);
+
+            }
+            else
+            {
+                Debug.Log("Carta retenida");
+            }
             //}
         }
         yield return new WaitForSeconds(duration + staggerTime);

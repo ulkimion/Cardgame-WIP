@@ -2314,18 +2314,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDeck:
   - {fileID: 11400000, guid: 280f18dfa2749fa4eb4003601736a6e3, type: 2}
+  - {fileID: 11400000, guid: 98b7f826759923344b114ccd717afad6, type: 2}
+  - {fileID: 11400000, guid: c71dcf5468812af4b8551eb1b2b5140d, type: 2}
+  - {fileID: 11400000, guid: ceb16fca362c9b745a6f4455814a53a8, type: 2}
+  - {fileID: 11400000, guid: 1c864314fad19a044a5de0fc556461d1, type: 2}
+  - {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}
   inFightDeck: []
   hand: []
   discardPile: []
   vanishPile: []
   cardBase: {fileID: 6876785180859665576, guid: cb12222561592dc4bac4ffb0a383fd67, type: 3}
   bullets:
-  - {fileID: 11400000, guid: b397567c75eca9743bbb9be8cbfafaad, type: 2}
-  - {fileID: 11400000, guid: b397567c75eca9743bbb9be8cbfafaad, type: 2}
-  - {fileID: 11400000, guid: b397567c75eca9743bbb9be8cbfafaad, type: 2}
-  - {fileID: 11400000, guid: b397567c75eca9743bbb9be8cbfafaad, type: 2}
-  - {fileID: 11400000, guid: b397567c75eca9743bbb9be8cbfafaad, type: 2}
-  - {fileID: 11400000, guid: b397567c75eca9743bbb9be8cbfafaad, type: 2}
+  - {fileID: 11400000, guid: fcd38a364bd1288429c46809b2a50b45, type: 2}
+  - {fileID: 11400000, guid: fcd38a364bd1288429c46809b2a50b45, type: 2}
+  - {fileID: 11400000, guid: fcd38a364bd1288429c46809b2a50b45, type: 2}
+  - {fileID: 11400000, guid: fcd38a364bd1288429c46809b2a50b45, type: 2}
+  - {fileID: 11400000, guid: fcd38a364bd1288429c46809b2a50b45, type: 2}
+  - {fileID: 11400000, guid: fcd38a364bd1288429c46809b2a50b45, type: 2}
   inFightBullets: []
   bulletBase: {fileID: 6831427741468293100, guid: 787722cdf229465448c6900db5bb7a7b, type: 3}
   emptyBullet: {fileID: 11400000, guid: c778c75493181ad40adf49df144d851c, type: 2}
