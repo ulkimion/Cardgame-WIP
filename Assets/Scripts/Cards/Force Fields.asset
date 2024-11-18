@@ -31,11 +31,11 @@ MonoBehaviour:
   poison: 0
   topdeck: 0
   cycle: 0
-  blockPlus: 0
+  DamageTakenModifier: 0
   blockMultiplier: 0
   damagePlus: 0
   damageMultiplier: 0
-  perfectBlock: 0
+  dodge: 0
   vanishes: 0
   keepBlock: 1
   takeCover: 0
@@ -43,5 +43,6 @@ MonoBehaviour:
   transformNextBullet: 0
   Overdrive: 0
   burningSpirit: 0
+  stormingPressure: 0
   toxicEmotions: 0
   retain: 0

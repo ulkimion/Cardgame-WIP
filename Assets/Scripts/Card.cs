@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public enum cardType { Tactic, Shoot }
 public enum shootType { None, Shoot, MultiShoot }
 public enum cardTarget { Enemy, Self, All }
-public enum condition { None, NoBlock, Debuff,  }
+public enum condition { None, NoBlock, Debuff, WhenTakingAHit  }
 [CreateAssetMenu(fileName = "new Card", menuName = "Card")]
 public class Card : ScriptableObject
 {
@@ -34,14 +34,15 @@ public class Card : ScriptableObject
     public int blockMultiplier;
     public int damagePlus;
     public int damageMultiplier;
-    public int perfectBlock;
+    public int dodge;
     public bool vanishes = false;
     public bool keepBlock = false;
-    public bool takeCover = false;
+    public bool takeCover = false;  
     public bool destroyBullet = false;
     public bool transformNextBullet = false;
     public bool Overdrive = false;
     public bool burningSpirit = false;
+    public bool stormingPressure = false;
     public bool toxicEmotions = false;
     public bool retain;
     

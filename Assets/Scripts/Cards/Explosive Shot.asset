@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7831f81fc5422e74abe1af24161435f3, type: 3}
-  m_Name: Dodge
+  m_Name: Explosive Shot
   m_EditorClassIdentifier: 
-  name: Dodge
-  effectText: Gain 10 block, draw 1, Vanishes, Retain.
+  name: Explosive Shot
+  effectText: Shoot 1, Damage x3, destroy Bullet
   artwork: {fileID: 0}
-  CardType: 0
-  shootType: 0
-  cardTarget: 1
+  CardType: 1
+  shootType: 1
+  cardTarget: 0
   condition: 0
-  energyCost: 0
+  energyCost: 2
   shoot: 0
-  block: 10
+  block: 0
   effectModifier: 1
-  bulletDamageModifier: 1
-  draw: 1
+  bulletDamageModifier: 3
+  draw: 0
   effectDuration: 0
   burn: 0
   paralysis: 0
@@ -36,13 +36,13 @@ MonoBehaviour:
   damagePlus: 0
   damageMultiplier: 0
   dodge: 0
-  vanishes: 1
+  vanishes: 0
   keepBlock: 0
   takeCover: 0
-  destroyBullet: 0
+  destroyBullet: 1
   transformNextBullet: 0
   Overdrive: 0
   burningSpirit: 0
   stormingPressure: 0
   toxicEmotions: 0
-  retain: 1
+  retain: 0

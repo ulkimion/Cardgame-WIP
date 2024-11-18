@@ -10,21 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7831f81fc5422e74abe1af24161435f3, type: 3}
-  m_Name: Dodge
+  m_Name: Laser Shot
   m_EditorClassIdentifier: 
-  name: Dodge
-  effectText: Gain 10 block, draw 1, Vanishes, Retain.
+  name: Laser Shot
+  effectText: "Shoot 1, ignores enemy\u2019s block. If enemy didn\u2019t have block:
+    draw 2."
   artwork: {fileID: 0}
-  CardType: 0
-  shootType: 0
-  cardTarget: 1
-  condition: 0
-  energyCost: 0
-  shoot: 0
-  block: 10
+  CardType: 1
+  shootType: 1
+  cardTarget: 0
+  condition: 1
+  energyCost: 1
+  shoot: 1
+  block: 0
   effectModifier: 1
   bulletDamageModifier: 1
-  draw: 1
+  draw: 2
   effectDuration: 0
   burn: 0
   paralysis: 0
@@ -36,7 +37,7 @@ MonoBehaviour:
   damagePlus: 0
   damageMultiplier: 0
   dodge: 0
-  vanishes: 1
+  vanishes: 0
   keepBlock: 0
   takeCover: 0
   destroyBullet: 0
@@ -45,4 +46,4 @@ MonoBehaviour:
   burningSpirit: 0
   stormingPressure: 0
   toxicEmotions: 0
-  retain: 1
+  retain: 0
