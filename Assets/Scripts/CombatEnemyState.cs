@@ -6,6 +6,7 @@ public class CombatEnemyState : MonoBehaviour
 {
     public Enemy enemy;
     public EnemyDisplay enemyDisplay;
+    public BattleSystem battleSystem;
 
     public bool currentlyAlive;
     public int maxHP;
@@ -20,6 +21,7 @@ public class CombatEnemyState : MonoBehaviour
 
     private void Start()
     {
+        battleSystem = GameObject.FindWithTag("CombatSystem").GetComponent<BattleSystem>();
         enemyDisplay = GetComponent<EnemyDisplay>();
         currentlyAlive = enemy.currentlyAlive;
         maxHP = enemy.maxHP;
@@ -86,5 +88,11 @@ public class CombatEnemyState : MonoBehaviour
     public void enemyDies()
     {
         currentlyAlive = false;
+        enemyDisplay.TargetIcon.enabled = false;
+        enemyDisplay.DeadIcon.enabled = true;
+        enemyDisplay.BurnIcon.enabled = false;
+        enemyDisplay.ParalysisIcon.enabled = false;
+        enemyDisplay.PoisonIcon.enabled = false;
+        battleSystem.checkIfEnemiesAreAlive();
     }
 }

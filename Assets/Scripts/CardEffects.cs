@@ -28,6 +28,7 @@ public class CardEffects : MonoBehaviour, IPointerClickHandler
                     BattleSystem.vanishPile.Add(this.gameObject);
                     this.transform.SetParent(GameObject.FindGameObjectWithTag("VanishZone").transform);
                     this.gameObject.transform.position = new Vector3(1, 8, 0);
+                    BattleSystem.hand.Remove(this.gameObject);
                 }
                 else
                 {
@@ -88,6 +89,18 @@ public class CardEffects : MonoBehaviour, IPointerClickHandler
         if (card.cycle > 0)
         {
             BattleSystem.cycle(card.cycle);
+        }
+        if (card.burningSpirit == true)
+        {
+            BattleSystem.burningSpirit = true;
+        }
+        if (card.stormingPressure == true)
+        {
+            BattleSystem.stormingPressure = true;
+        }
+        if (card.toxicEmotions == true)
+        {
+            BattleSystem.toxicEmotions = true;
         }
     }   
 }

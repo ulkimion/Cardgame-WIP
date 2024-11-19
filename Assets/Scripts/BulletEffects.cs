@@ -19,26 +19,49 @@ public class BulletEffects : MonoBehaviour
 
     public void activateEffects(int shootAmount, float bulletdamageModifier, float effectModifier)
     {
+        int bulletDamage = bullet.damage;
+        int bulletTotalBurn = bullet.burn;
+        int bulletTotalParalysis = bullet.paralysis;
+        int bulletTotalPoison = bullet.poison;
+
+        if (BattleSystem.burningSpirit == true)
+        {
+            bulletTotalBurn = bulletTotalBurn + 3;
+        }
+        if (BattleSystem.stormingPressure == true)
+        {
+            bulletDamage = (int)bulletDamage / 2;
+            bulletTotalParalysis = bulletTotalParalysis + 3;
+        }
+        if (BattleSystem.toxicEmotions == true)
+        {
+            bulletDamage = 0;
+            bulletTotalBurn = bulletTotalBurn *2;
+            bulletTotalParalysis = bulletTotalParalysis * 2;
+            bulletTotalPoison = bulletTotalPoison * 2;
+        }
+
+
         enemy = BattleSystem.Enemies[BattleSystem.CurrentTarget - 1].GetComponent<CombatEnemyState>();
         for (int i = 0; i < shootAmount; i++)
         {
-            if(enemy.Burn > 0)
+            if(enemy.Burn > 0 && BattleSystem.burningSpirit != true)
             {
-                int damageWhenHitByBurn = (int)((bullet.damage * bulletdamageModifier) * 1.5);
+                int damageWhenHitByBurn = (int)((bulletDamage * bulletdamageModifier) * 1.5);
                 Debug.Log("modifier = " + bulletdamageModifier);
                 enemy.TakeDamage(damageWhenHitByBurn);
             }
             else
             {
-                int damage = (int)((bullet.damage * bulletdamageModifier));
+                int damage = (int)((bulletDamage * bulletdamageModifier));
 
                 Debug.Log("modifier = " + bulletdamageModifier);
                 enemy.TakeDamage(damage);
             }
 
-            int totalBurn = (int)(bullet.burn * effectModifier);
-            int totalParalysis = (int)(bullet.paralysis * effectModifier);
-            int totalPoison = (int)(bullet.poison * effectModifier);
+            int totalBurn = (int)(bulletTotalBurn * effectModifier);
+            int totalParalysis = (int)(bulletTotalParalysis * effectModifier);
+            int totalPoison = (int)(bulletTotalPoison * effectModifier);
             enemy.Burn = enemy.Burn + totalBurn;
             enemy.Paralysis = enemy.Paralysis + totalParalysis;
             enemy.Poison = enemy.Poison + totalPoison;
@@ -62,6 +85,6 @@ public class BulletEffects : MonoBehaviour
                 BattleSystem.TargetAliveEnemy();
             }
         }
-        Debug.Log("se hizo " + bullet.damage + " de dano");
+        Debug.Log("se hizo " + bulletDamage + " de dano");
     }
 }

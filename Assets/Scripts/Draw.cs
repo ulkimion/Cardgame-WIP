@@ -82,16 +82,8 @@ public class Draw : MonoBehaviour
 
         for (int i = 0; i < quantity; i++)
         {
-            ifDeckEmpty();
-            if (battleSystem.inFightDeck.Count > 0)
-            {
-                battleSystem.hand[i].transform.position = cardPositions[i];
-                battleSystem.hand[i].transform.SetParent(GameObject.FindGameObjectWithTag("Hand").transform);
-            }
-            else
-            {
-                Debug.Log("Deck vacío");
-            }
+            battleSystem.hand[i].transform.position = cardPositions[i];
+            battleSystem.hand[i].transform.SetParent(GameObject.FindGameObjectWithTag("Hand").transform);
         }
     }
     void ifDeckEmpty() 

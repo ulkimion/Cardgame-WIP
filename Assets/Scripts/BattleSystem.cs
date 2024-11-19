@@ -12,7 +12,7 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using static UnityEngine.EventSystems.EventTrigger;
 
-public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOSS }
+public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOSS, CHECKING }
 public class BattleSystem : MonoBehaviour
 
 {
@@ -51,6 +51,12 @@ public class BattleSystem : MonoBehaviour
     public int CurrentTarget = 1;
     public Text playerBlock;
 
+    public bool burningSpirit;
+    public bool stormingPressure;
+    public bool toxicEmotions;
+
+
+
     public BattleState state;
     public int currentTurn = 0;
 
@@ -87,6 +93,9 @@ public class BattleSystem : MonoBehaviour
         discardPileSizeText.text = discardPile.Count.ToString();
         TurnCounter.text = ("Turn 0");
 
+        burningSpirit = false;
+        stormingPressure = false;
+        toxicEmotions = false;
 
         for (int i = 0; i < EncounterList.Count; i++)
         {
@@ -182,21 +191,30 @@ public class BattleSystem : MonoBehaviour
             //actualizar visual vida enemigo
             int enemyEffectDamage = alive.AffectedbyStatus();
             alive.TakeDamage(enemyEffectDamage);
-
             if (alive.currentlyAlive)
                 {
                     enemyTurnPattern.enemyTurn();
                     yield return new WaitForSeconds(1f);
-            }
+                }
             alive.LoseStatus(1);
         }
+        checking();
+    }
 
-
-
-        
-        checkIfEnemiesAreAlive();
-        state = BattleState.PLAYERTURN;
-        PlayerTurn();
+    void checking()
+    {
+        state = BattleState.CHECKING;
+        bool didWeWin = checkIfEnemiesAreAlive();
+        if (didWeWin == true)
+        {
+            state = BattleState.WON;
+            EndBattle();
+        }
+        else
+        {
+            state = BattleState.PLAYERTURN;
+            PlayerTurn();
+        }
     }
 
     public IEnumerator EnemyTurn(string unitName, int EnemyAttack)
@@ -236,6 +254,7 @@ public class BattleSystem : MonoBehaviour
     void PlayerTurn()
     {
         currentTurn++;
+        checkIfEnemiesAreAlive();
         TargetAliveEnemy();
         drawHand.drawHand(cardsDrawnPerTurn + extraCardsDrawn);
         extraCardsDrawn = 0;
@@ -260,6 +279,8 @@ public class BattleSystem : MonoBehaviour
             playerBlock.text = playerUnit.block.ToString();
         }
     }
+
+   
 
     public void OnEndTurnButton()
     {
@@ -399,7 +420,6 @@ public class BattleSystem : MonoBehaviour
                 enemyDisplay.BurnIcon.enabled = false;
                 enemyDisplay.ParalysisIcon.enabled = false;
                 enemyDisplay.PoisonIcon.enabled = false;
-                checkIfEnemiesAreAlive();
             }
             else
             {
@@ -423,7 +443,6 @@ public class BattleSystem : MonoBehaviour
                 Debug.Log("como terminamos aqui?");
             }
         cycle(1);
-
         Debug.Log("shoot" + shootAmount);
         return;
     }
@@ -435,7 +454,7 @@ public class BattleSystem : MonoBehaviour
         return;
     }
 
-    private void checkIfEnemiesAreAlive()
+    public bool checkIfEnemiesAreAlive()
     {
         int deadEnemies = 0;
         for(int i = 0; i < Enemies.Count; i++)
@@ -447,7 +466,7 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {
-                return;
+                return false;
             }
         }
 
@@ -460,9 +479,9 @@ public class BattleSystem : MonoBehaviour
                 playerUnit.money += money.moneyDrop;
             }
 
-            state = BattleState.WON;
-            EndBattle();
+            return true;
         }
+        else { return false; }  
     }
 
     public void cycle(int cycleAmount)
