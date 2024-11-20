@@ -23,6 +23,7 @@ public class EnemyDisplay : MonoBehaviour
     public Image PoisonIcon;
     public Image ParalysisIcon;
     public Slider HPSlider;
+    public TextMeshProUGUI HPValue;
 
     void Start()
     {
@@ -32,6 +33,8 @@ public class EnemyDisplay : MonoBehaviour
         BurnIcon.enabled = false;
         PoisonIcon.enabled = false;
         ParalysisIcon.enabled = false;
-
+        Burn.enabled = false;
+        Poison.enabled = false;
+        Paralysis.enabled = false;
 }
 }

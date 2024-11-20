@@ -34,6 +34,7 @@ public class CombatEnemyState : MonoBehaviour
         Poison = enemy.Poison;
         moneyDrop = enemy.moneyDrop;
         enemyDisplay.HPSlider.value = 1;
+        enemyDisplay.HPValue.text = currentHP.ToString();
     }
 
     public void TakeDamage(int dmg)
@@ -46,13 +47,57 @@ public class CombatEnemyState : MonoBehaviour
             enemyDies();
             currentHP = 0;
         }
-        
+        enemyDisplay.HPValue.text = currentHP.ToString();
+    }
 
+    public void updateStatus() 
+    { 
+        if (Burn <= 0)
+        {
+            enemyDisplay.BurnIcon.enabled = false;
+            enemyDisplay.Burn.enabled = false;
+        }
+        else
+        {
+            enemyDisplay.BurnIcon.enabled = true;
+            enemyDisplay.Burn.enabled = true;
+            enemyDisplay.Burn.text = Burn.ToString();
+        }
+
+        if (Paralysis <= 0)
+        {
+            enemyDisplay.ParalysisIcon.enabled = false;
+            enemyDisplay.Paralysis.enabled = false;
+        }
+        else
+        {
+            enemyDisplay.ParalysisIcon.enabled = true;
+            enemyDisplay.Paralysis.enabled = true;
+            enemyDisplay.Paralysis.text = Paralysis.ToString();
+        }
+
+        if (Poison <= 0)
+        {
+            enemyDisplay.PoisonIcon.enabled = false;
+            enemyDisplay.Poison.enabled = false;
+        }
+        else
+        {
+            enemyDisplay.PoisonIcon.enabled = true;
+            enemyDisplay.Poison.enabled = true;
+            enemyDisplay.Poison.text = Poison.ToString();
+        }
     }
 
     public int AffectedbyStatus()
     {
         int damage = 0;
+
+        if (Poison < 0) { Poison = 0; }
+        if (Burn < 0) { Burn = 0; }
+        if (Paralysis < 0) { Paralysis = 0; }
+
+
         if (Poison > 0)
         {
             damage = (Burn + Paralysis + Poison) * 6;
@@ -69,18 +114,24 @@ public class CombatEnemyState : MonoBehaviour
         Burn = Mathf.Max(0, Burn - statusLoss);
         Paralysis = Mathf.Max(0, Paralysis - statusLoss);
         Poison = Mathf.Max(0, Poison - statusLoss);
+        enemyDisplay.Burn.text = Burn.ToString();
+        enemyDisplay.Paralysis.text = Paralysis.ToString();
+        enemyDisplay.Poison.text = Poison.ToString();
         if (Burn == 0)
         {
             enemyDisplay.BurnIcon.enabled = false;
+            enemyDisplay.Burn.enabled = false;
         }
         if (Paralysis == 0)
         {
             enemyDisplay.ParalysisIcon.enabled = false;
+            enemyDisplay.Paralysis.enabled = false;
         }
         if (Poison == 0)
         {
 
             enemyDisplay.PoisonIcon.enabled = false;
+            enemyDisplay.Poison.enabled = false;
         }
         return;
     }
@@ -93,6 +144,9 @@ public class CombatEnemyState : MonoBehaviour
         enemyDisplay.BurnIcon.enabled = false;
         enemyDisplay.ParalysisIcon.enabled = false;
         enemyDisplay.PoisonIcon.enabled = false;
+        enemyDisplay.Poison.enabled = false;
+        enemyDisplay.Burn.enabled = false;
+        enemyDisplay.Paralysis.enabled = false;
         battleSystem.checkIfEnemiesAreAlive();
     }
 }

@@ -65,6 +65,7 @@ public class BulletEffects : MonoBehaviour
             enemy.Burn = enemy.Burn + totalBurn;
             enemy.Paralysis = enemy.Paralysis + totalParalysis;
             enemy.Poison = enemy.Poison + totalPoison;
+            enemy.updateStatus();
 
             if (bullet.cycle > 0)
             {
