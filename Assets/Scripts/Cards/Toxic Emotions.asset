@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7831f81fc5422e74abe1af24161435f3, type: 3}
   m_Name: Toxic Emotions
   m_EditorClassIdentifier: 
-  name: 
-  effectText: 
+  name: Toxic Emotions
+  effectText: Bullets damage = 0. Status applied twice.
   artwork: {fileID: 0}
   CardType: 0
   shootType: 0
   cardTarget: 0
   condition: 0
-  energyCost: 1
+  energyCost: 0
   shoot: 0
   block: 0
   effectModifier: 1
@@ -36,7 +36,7 @@ MonoBehaviour:
   damagePlus: 0
   damageMultiplier: 0
   dodge: 0
-  vanishes: 0
+  vanishes: 1
   keepBlock: 0
   takeCover: 0
   destroyBullet: 0
@@ -44,5 +44,5 @@ MonoBehaviour:
   Overdrive: 0
   burningSpirit: 0
   stormingPressure: 0
-  toxicEmotions: 0
+  toxicEmotions: 1
   retain: 0

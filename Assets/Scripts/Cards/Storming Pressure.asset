@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Storming Pressure
   m_EditorClassIdentifier: 
   name: Storming Pressure
-  effectText: All bullets apply Paralysis +3. Bullets do Half their damage.
+  effectText: Bullets Paralysis +3. Bullets damage x0.5.
   artwork: {fileID: 0}
   CardType: 0
   shootType: 0
   cardTarget: 0
   condition: 0
-  energyCost: 1
+  energyCost: 0
   shoot: 0
   block: 0
   effectModifier: 1
@@ -36,7 +36,7 @@ MonoBehaviour:
   damagePlus: 0
   damageMultiplier: 0
   dodge: 0
-  vanishes: 0
+  vanishes: 1
   keepBlock: 0
   takeCover: 0
   destroyBullet: 0

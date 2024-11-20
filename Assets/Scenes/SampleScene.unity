@@ -684,7 +684,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -182, y: -257}
+  m_AnchoredPosition: {x: -182, y: -85.39}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &577242603
@@ -1024,7 +1024,7 @@ Transform:
   m_GameObject: {fileID: 764379694}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.7, y: -2.3, z: 0.040701553}
+  m_LocalPosition: {x: -9.7, y: 0.42, z: 0.040701553}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1906,7 +1906,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -456, y: -33.286}
+  m_AnchoredPosition: {x: -397, y: 118.68}
   m_SizeDelta: {x: 210.5163, y: 66.5723}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1758215775
@@ -2313,24 +2313,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDeck:
-  - {fileID: 11400000, guid: 280f18dfa2749fa4eb4003601736a6e3, type: 2}
-  - {fileID: 11400000, guid: 98b7f826759923344b114ccd717afad6, type: 2}
-  - {fileID: 11400000, guid: c71dcf5468812af4b8551eb1b2b5140d, type: 2}
-  - {fileID: 11400000, guid: ceb16fca362c9b745a6f4455814a53a8, type: 2}
-  - {fileID: 11400000, guid: 1c864314fad19a044a5de0fc556461d1, type: 2}
-  - {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}
+  - {fileID: 11400000, guid: ca953d231df35ec4db12c75f6ac149c7, type: 2}
+  - {fileID: 11400000, guid: f27d5d783aab2844aa44d5ccccf3f545, type: 2}
+  - {fileID: 11400000, guid: 60724c5273607bd41aa4f76af46f35c9, type: 2}
+  - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
+  - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
   inFightDeck: []
   hand: []
   discardPile: []
   vanishPile: []
   cardBase: {fileID: 6876785180859665576, guid: cb12222561592dc4bac4ffb0a383fd67, type: 3}
   bullets:
-  - {fileID: 11400000, guid: fcd38a364bd1288429c46809b2a50b45, type: 2}
-  - {fileID: 11400000, guid: fcd38a364bd1288429c46809b2a50b45, type: 2}
-  - {fileID: 11400000, guid: fcd38a364bd1288429c46809b2a50b45, type: 2}
-  - {fileID: 11400000, guid: fcd38a364bd1288429c46809b2a50b45, type: 2}
-  - {fileID: 11400000, guid: fcd38a364bd1288429c46809b2a50b45, type: 2}
-  - {fileID: 11400000, guid: fcd38a364bd1288429c46809b2a50b45, type: 2}
+  - {fileID: 11400000, guid: b397567c75eca9743bbb9be8cbfafaad, type: 2}
+  - {fileID: 11400000, guid: e4438771652282a48953f2249c051579, type: 2}
+  - {fileID: 11400000, guid: dec7267d1b7af9b42b0ee1b35587b66c, type: 2}
   inFightBullets: []
   bulletBase: {fileID: 6831427741468293100, guid: 787722cdf229465448c6900db5bb7a7b, type: 3}
   emptyBullet: {fileID: 11400000, guid: c778c75493181ad40adf49df144d851c, type: 2}
@@ -2354,6 +2350,9 @@ MonoBehaviour:
   TurnCounter: {fileID: 182181157}
   CurrentTarget: 1
   playerBlock: {fileID: 1029925684}
+  burningSpirit: 0
+  stormingPressure: 0
+  toxicEmotions: 0
   state: 0
   currentTurn: 0
 --- !u!4 &1939771546

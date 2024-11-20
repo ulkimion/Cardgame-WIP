@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Burning Spirit
   m_EditorClassIdentifier: 
   name: Burning Spirit
-  effectText: All bullets apply Burn +3. Burn no longer increases damage done.
+  effectText: Bullets Burn +3. Burn no longer increases damage.
   artwork: {fileID: 0}
   CardType: 0
   shootType: 0
@@ -36,7 +36,7 @@ MonoBehaviour:
   damagePlus: 0
   damageMultiplier: 0
   dodge: 0
-  vanishes: 0
+  vanishes: 1
   keepBlock: 0
   takeCover: 0
   destroyBullet: 0
