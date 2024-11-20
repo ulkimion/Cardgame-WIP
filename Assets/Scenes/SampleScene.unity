@@ -2331,9 +2331,9 @@ MonoBehaviour:
   bulletBase: {fileID: 6831427741468293100, guid: 787722cdf229465448c6900db5bb7a7b, type: 3}
   emptyBullet: {fileID: 11400000, guid: c778c75493181ad40adf49df144d851c, type: 2}
   EncounterList:
-  - {fileID: 11400000, guid: 89c71e3ee6cc3ed449cc8a8bb085cd42, type: 2}
-  - {fileID: 11400000, guid: 89c71e3ee6cc3ed449cc8a8bb085cd42, type: 2}
-  - {fileID: 11400000, guid: 89c71e3ee6cc3ed449cc8a8bb085cd42, type: 2}
+  - {fileID: 11400000, guid: a0369f6736cdbdc4389c6f559ca87ee5, type: 2}
+  - {fileID: 11400000, guid: 3e64048cfcf309c49851d6d9cf3ab233, type: 2}
+  - {fileID: 11400000, guid: 36a17e649e7e7384f938fccbdf4672f7, type: 2}
   Enemies: []
   enemyBase: {fileID: 6876785180859665576, guid: 329bf640a06648645a7d14fef12476f6, type: 3}
   deckSizeText: {fileID: 1758215775}
@@ -2386,6 +2386,7 @@ MonoBehaviour:
   enemy: {fileID: 11400000, guid: 89c71e3ee6cc3ed449cc8a8bb085cd42, type: 2}
   combatEnemyState: {fileID: 0}
   BattleSystem: {fileID: 0}
+  EnemyDisplay: {fileID: 0}
 --- !u!1 &1942498814
 GameObject:
   m_ObjectHideFlags: 0
