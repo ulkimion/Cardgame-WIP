@@ -8,11 +8,11 @@ public class EnemyDisplay : MonoBehaviour
 {
     public Image look;
     public Enemy enemy;
-    public Sprite intent;
-    public Sprite Waiting;
-    public Sprite Attack;
-    public Sprite Attack_Debuff;
-    public Sprite Debuff;
+    public Image Waiting;
+    public Image Attack;
+    public TextMeshProUGUI AttackValue;
+    public Image Attack_Debuff;
+    public Image Debuff;
     public TextMeshProUGUI damage;
     public TextMeshProUGUI Burn;
     public TextMeshProUGUI Paralysis;
@@ -28,6 +28,11 @@ public class EnemyDisplay : MonoBehaviour
     void Start()
     {
         look.sprite = enemy.artwork;
+        Waiting.enabled = false;
+        Attack.enabled = false;
+        AttackValue.enabled = false;
+        Attack_Debuff.enabled = false;
+        Debuff.enabled = false;
         DeadIcon.enabled = false;
         TargetIcon.enabled = false;
         BurnIcon.enabled = false;
