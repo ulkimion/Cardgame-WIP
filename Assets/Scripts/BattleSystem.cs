@@ -172,6 +172,23 @@ public class BattleSystem : MonoBehaviour
         PlayerTurn();
     }
 
+    IEnumerator EnemyTurnIcon()
+    {
+        UnityEngine.Debug.Log("Se paso por enemy turn icon");
+        //mostrar iconos accion enemigos
+        for (int i = 0; i < Enemies.Count; i++)
+        {
+            UnityEngine.Debug.Log("Se paso por enemy turn icon " + i + " veces");
+            var enemyTurnPattern = Enemies[i].GetComponent<EnemyTurnPattern>();
+            var alive = Enemies[i].GetComponent<CombatEnemyState>();
+            if (alive.currentlyAlive)
+            {
+                enemyTurnPattern.enemyTurn("turnStart");
+                yield return new WaitForSeconds(0f);
+            }
+        }
+    }
+
     IEnumerator EnemiesTurn()
     {
         int playerEffectDamage = playerUnit.AffectedbyStatus();
@@ -193,7 +210,7 @@ public class BattleSystem : MonoBehaviour
             alive.TakeDamage(enemyEffectDamage);
             if (alive.currentlyAlive)
                 {
-                    enemyTurnPattern.enemyTurn();
+                    enemyTurnPattern.enemyTurn("attack");
                     yield return new WaitForSeconds(1f);
                 }
             alive.LoseStatus(1);
@@ -278,6 +295,7 @@ public class BattleSystem : MonoBehaviour
             playerUnit.block = 0;
             playerBlock.text = playerUnit.block.ToString();
         }
+        StartCoroutine(EnemyTurnIcon());
     }
 
    
@@ -362,7 +380,6 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {*/
-            Debug.Log("state" + retainable);
             if (!retainable)
             {
                 StartCoroutine(SlideCardDown(Card, duration));

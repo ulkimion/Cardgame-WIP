@@ -1277,8 +1277,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyId: 0
   enemy: {fileID: 11400000, guid: 89c71e3ee6cc3ed449cc8a8bb085cd42, type: 2}
-  combatEnemyState: {fileID: 0}
+  combatEnemyState: {fileID: 4381851025511766787}
   BattleSystem: {fileID: 0}
+  EnemyDisplay: {fileID: 5115444286819853046}
 --- !u!114 &4381851025511766787
 MonoBehaviour:
   m_ObjectHideFlags: 0
