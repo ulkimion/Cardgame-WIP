@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class CombatEnemyState : MonoBehaviour
@@ -147,6 +148,11 @@ public class CombatEnemyState : MonoBehaviour
         enemyDisplay.Poison.enabled = false;
         enemyDisplay.Burn.enabled = false;
         enemyDisplay.Paralysis.enabled = false;
+        enemyDisplay.Waiting.enabled = false;
+        enemyDisplay.Attack.enabled = false;
+        enemyDisplay.AttackValue.enabled = false;
+        enemyDisplay.Attack_Debuff.enabled = false;
+        enemyDisplay.Debuff.enabled = false;
         battleSystem.checkIfEnemiesAreAlive();
     }
 }
