@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180b4ba4a055ee24ca7cfc1e6dd14afc, type: 3}
+  m_Name: bulletPool
+  m_EditorClassIdentifier: 
+  bullets:
+  - {fileID: 11400000, guid: 0d4683ea5ea7bc244b550079590dc031, type: 2}
+  - {fileID: 11400000, guid: 3020ba575c4c4804d9e6b2f7191d4d8b, type: 2}
+  - {fileID: 11400000, guid: 3cab44a68441aeb4e870eda6eecb5478, type: 2}
+  - {fileID: 11400000, guid: d6f2fcfa690a24e4b96e2ce45ffc35e2, type: 2}
+  - {fileID: 11400000, guid: b397567c75eca9743bbb9be8cbfafaad, type: 2}
+  - {fileID: 11400000, guid: b602cc205b231214ebe24d2c4f7fcd82, type: 2}
+  - {fileID: 11400000, guid: 3aa176b99941bc3488f259c2129be24b, type: 2}
+  - {fileID: 11400000, guid: dec7267d1b7af9b42b0ee1b35587b66c, type: 2}
+  - {fileID: 11400000, guid: e4438771652282a48953f2249c051579, type: 2}
+  - {fileID: 11400000, guid: 3aeab35fe4581014ebe7c2ba9c8c8bcd, type: 2}
+  - {fileID: 11400000, guid: b27a1c692789f8b438a47de52391ad29, type: 2}
+  - {fileID: 11400000, guid: e4ac7f1c8073c4e4cb336aa0de61a7fa, type: 2}

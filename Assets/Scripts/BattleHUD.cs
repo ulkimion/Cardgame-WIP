@@ -10,7 +10,7 @@ public class BattleHUD : MonoBehaviour
     public Slider hpSlider;
     public Text energyText;
 
-    public void SetHUD(Unit unit)
+    public void SetHUD(CombatPlayerState unit)
     {
         nameText.text = unit.unitName;
         hpSlider.maxValue = unit.maxHP;

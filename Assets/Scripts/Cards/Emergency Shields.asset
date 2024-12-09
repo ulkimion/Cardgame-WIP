@@ -19,7 +19,7 @@ MonoBehaviour:
   shootType: 0
   cardTarget: 1
   condition: 0
-  energyCost: 0
+  energyCost: 1
   shoot: 0
   block: 5
   effectModifier: 1

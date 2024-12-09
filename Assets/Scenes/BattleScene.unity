@@ -2312,21 +2312,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1c66d87ab75c4e4ba16be1de0047a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDeck:
-  - {fileID: 11400000, guid: ca953d231df35ec4db12c75f6ac149c7, type: 2}
-  - {fileID: 11400000, guid: f27d5d783aab2844aa44d5ccccf3f545, type: 2}
-  - {fileID: 11400000, guid: 60724c5273607bd41aa4f76af46f35c9, type: 2}
-  - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
-  - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
   inFightDeck: []
   hand: []
   discardPile: []
   vanishPile: []
   cardBase: {fileID: 6876785180859665576, guid: cb12222561592dc4bac4ffb0a383fd67, type: 3}
-  bullets:
-  - {fileID: 11400000, guid: b397567c75eca9743bbb9be8cbfafaad, type: 2}
-  - {fileID: 11400000, guid: e4438771652282a48953f2249c051579, type: 2}
-  - {fileID: 11400000, guid: dec7267d1b7af9b42b0ee1b35587b66c, type: 2}
+  currentRun: {fileID: 11400000, guid: fa5e9f0b53b880140b6bf8950e83261f, type: 2}
   inFightBullets: []
   bulletBase: {fileID: 6831427741468293100, guid: 787722cdf229465448c6900db5bb7a7b, type: 3}
   emptyBullet: {fileID: 11400000, guid: c778c75493181ad40adf49df144d851c, type: 2}

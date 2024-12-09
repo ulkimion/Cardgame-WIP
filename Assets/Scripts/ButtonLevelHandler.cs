@@ -7,6 +7,7 @@ public class ButtonLevelHandler : MonoBehaviour
 {
     public string levelName;
     public GameHandler gameHandler;
+    public NewGame newgame;
 
     private void Start()
     {
@@ -16,6 +17,7 @@ public class ButtonLevelHandler : MonoBehaviour
     public void OnClickLoadLevel()
     {
         SceneManager.LoadScene(levelName);
+        newgame.StartnewGame();
         gameHandler.StartBattle();
     }
 

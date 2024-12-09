@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -17,15 +18,13 @@ public class BattleSystem : MonoBehaviour
 
 {
     private static readonly System.Random rng = new System.Random();
-    public List<Card> playerDeck = new List<Card>();
     public List<GameObject> inFightDeck = new List<GameObject>();
     public List<GameObject> hand = new List<GameObject>();
     public List<GameObject> discardPile = new List<GameObject>();
     public List<GameObject> vanishPile = new List<GameObject>();
     public GameObject cardBase;
-    public List<CurrentRun> currentRun = new List<CurrentRun>();
+    public CurrentRun currentRun;
 
-    public List<Bullet> bullets = new List<Bullet>();
     public List<GameObject> inFightBullets = new List<GameObject>();
     public GameObject bulletBase;
     public Bullet emptyBullet;
@@ -38,7 +37,7 @@ public class BattleSystem : MonoBehaviour
     public Text discardPileSizeText;
 
     public GameObject playerPrefab;
-    public Unit playerUnit;
+    public CombatPlayerState playerUnit;
 
     public Text dialogueText;
     public BattleHUD playerHUD;
@@ -89,7 +88,6 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.START;
         StartCoroutine(SetupBattle());
-        deckSizeText.text = playerDeck.Count.ToString();
         discardPileSizeText.text = discardPile.Count.ToString();
         TurnCounter.text = ("Turn 0");
 
@@ -117,12 +115,17 @@ public class BattleSystem : MonoBehaviour
             enemy.transform.localScale = Vector3.one * 60;
             Enemies.Add(enemy);
         }
+        deckSizeText.text = inFightDeck.Count.ToString();
     }
 
         IEnumerator SetupBattle()
     {
         GameObject playerGO = GameObject.FindGameObjectWithTag("Player"); //RM
-        playerUnit = playerGO.GetComponent<Unit>(); //RM
+        playerUnit = playerGO.GetComponent<CombatPlayerState>(); //RM
+
+        playerUnit.maxHP = currentRun.maxHP;
+        playerUnit.currentHP = currentRun.currentHP;
+
 
 
         dialogueText.text = "The fight Begins";
@@ -130,15 +133,18 @@ public class BattleSystem : MonoBehaviour
 
         currentTurn = 0;
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
-        for (int i = 0; i < playerDeck.Count; i++)
+
+
+
+        for (int i = 0; i < currentRun.playerDeck.Count; i++)
         {
             GameObject card = Instantiate(cardBase,new Vector3(-3, -8, 0), Quaternion.identity);
             CardDisplay cardDisplay = card.GetComponent<CardDisplay>();
-            cardDisplay.card = playerDeck[i];
+            cardDisplay.card = currentRun.playerDeck[i];
             CardEffects cardEffects = card.GetComponent<CardEffects>();
-            cardEffects.card = playerDeck[i];
+            cardEffects.card = currentRun.playerDeck[i];
 
             card.transform.SetParent(GameObject.FindGameObjectWithTag("Deck").transform);
             card.transform.localScale = Vector3.one * 60;
@@ -146,14 +152,14 @@ public class BattleSystem : MonoBehaviour
         }
 
         
-        for (int i = 0; i < bullets.Count ; i++)
+        for (int i = 0; i < currentRun.bullets.Count ; i++)
         {
             //GameObject bullet = Instantiate(bulletBase, new Vector3(-7.7f, 4.5f, 0), Quaternion.identity);
             GameObject bullet = Instantiate(bulletBase, new Vector3(-7.7f, 6, 0), Quaternion.identity);
             BulletState bulletState = bullet.GetComponent<BulletState>();
-            bulletState.bullet = bullets[i];
+            bulletState.bullet = currentRun.bullets[i];
             BulletDisplay bulletDisplay = bullet.GetComponent<BulletDisplay>();
-            bulletDisplay.bullet = bullets[i];
+            bulletDisplay.bullet = currentRun.bullets[i];
 
             bullet.transform.localScale = Vector3.one * 1;
             bullet.transform.SetParent(GameObject.FindGameObjectWithTag("BulletDeck").transform);
@@ -493,7 +499,8 @@ public class BattleSystem : MonoBehaviour
             for (int i = 0; i < Enemies.Count; i++)
             {
                 var money = Enemies[i].GetComponent<CombatEnemyState>();
-                playerUnit.money += money.moneyDrop;
+                currentRun.money += money.moneyDrop;
+                currentRun.currentHP = playerUnit.currentHP;
             }
 
             return true;
