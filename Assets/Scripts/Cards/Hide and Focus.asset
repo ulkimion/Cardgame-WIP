@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hide and Focus
   m_EditorClassIdentifier: 
   name: Hide and Focus
-  effectText: Gain 12 block, draw 2.
+  effectText: Gain 15 block, draw 2.
   artwork: {fileID: 0}
   CardType: 0
   shootType: 0
@@ -21,7 +21,7 @@ MonoBehaviour:
   condition: 0
   energyCost: 1
   shoot: 0
-  block: 12
+  block: 15
   effectModifier: 1
   bulletDamageModifier: 1
   draw: 2

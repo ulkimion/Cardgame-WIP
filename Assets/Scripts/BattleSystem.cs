@@ -23,7 +23,7 @@ public class BattleSystem : MonoBehaviour
     public List<GameObject> discardPile = new List<GameObject>();
     public List<GameObject> vanishPile = new List<GameObject>();
     public GameObject cardBase;
-
+    public List<CurrentRun> currentRun = new List<CurrentRun>();
 
     public List<Bullet> bullets = new List<Bullet>();
     public List<GameObject> inFightBullets = new List<GameObject>();
