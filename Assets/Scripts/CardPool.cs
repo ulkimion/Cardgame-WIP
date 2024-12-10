@@ -7,4 +7,8 @@ public class CardPool : ScriptableObject
 {
     [SerializeField]
     List<Card> poolOfCards = new List<Card>();
+    public List<Card> GetPoolOfCards()
+    {
+        return poolOfCards;
+    }
 }

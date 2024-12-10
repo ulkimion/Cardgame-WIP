@@ -35,7 +35,7 @@ public class BulletState : MonoBehaviour
         damagex2 = bullet.damagex2;
 
 
-        if (bullet.exp is >= 3 and < 8)
+        if (bullet.exp is >= 3 and < 10)
         {
             level = 2;
             if (bullet.effectTextLv2 != null)
@@ -52,7 +52,7 @@ public class BulletState : MonoBehaviour
             heal = bullet.healLv2;
             draw = bullet.drawLv2;
         }
-        else if (bullet.exp > 8)
+        else if (bullet.exp > 10)
         {
             level = 3;
             if (bullet.effectTextLv3 != null)

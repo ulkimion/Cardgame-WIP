@@ -19,12 +19,12 @@ public class BulletDisplay : MonoBehaviour
         bulletName.text = bullet.name;
         artwork.sprite = bullet.artwork;
 
-        if (bullet.exp is >= 3 and < 8)
+        if (bullet.exp is >= 3 and < 10)
         {
             bulletEffect.text = bullet.effectTextLv2;
             bulletDamage.text = bullet.damageLv2.ToString();
         }
-        else if (bullet.exp > 8)
+        else if (bullet.exp > 10)
         {
             bulletEffect.text = bullet.effectTextLv3;
             bulletDamage.text = bullet.damageLv3.ToString();
