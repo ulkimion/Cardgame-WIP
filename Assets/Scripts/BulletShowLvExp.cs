@@ -7,16 +7,34 @@ public class BulletShowLvExp : MonoBehaviour
 {
     public TextMeshProUGUI level;
     public TextMeshProUGUI experience;
-    public Bullet bullet;
+    public CurrentRun currentRun;
+    public int bulletNumber = 0;
 
     private void Start()
-    {
-        experience.text = bullet.exp.ToString();
-        if (bullet.exp > 10)
+    { 
+        experience.text = currentRun.exp[bulletNumber].ToString();
+        if (currentRun.exp[bulletNumber] > 10)
         {
             level.text = "3";
         }
-        else if (bullet.exp > 3)
+        else if (currentRun.exp[bulletNumber] > 3)
+        {
+            level.text = "2";
+        }
+        else
+        {
+            level.text = "1";
+        }
+    }
+
+    public void refreshValues()
+    {
+        experience.text = currentRun.exp[bulletNumber].ToString();
+        if (currentRun.exp[bulletNumber] > 10)
+        {
+            level.text = "3";
+        }
+        else if (currentRun.exp[bulletNumber] > 3)
         {
             level.text = "2";
         }

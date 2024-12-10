@@ -2317,7 +2317,7 @@ MonoBehaviour:
   discardPile: []
   vanishPile: []
   cardBase: {fileID: 6876785180859665576, guid: cb12222561592dc4bac4ffb0a383fd67, type: 3}
-  currentRun: {fileID: 11400000, guid: fa5e9f0b53b880140b6bf8950e83261f, type: 2}
+  currentRun: {fileID: 11400000, guid: 6d31ee70302d7224cb9d2f3377e90da8, type: 2}
   inFightBullets: []
   bulletBase: {fileID: 6831427741468293100, guid: 787722cdf229465448c6900db5bb7a7b, type: 3}
   emptyBullet: {fileID: 11400000, guid: c778c75493181ad40adf49df144d851c, type: 2}

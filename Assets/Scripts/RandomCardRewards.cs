@@ -60,6 +60,7 @@ public class RandomCardRewards : MonoBehaviour
         if (display != null)
         {
             display.card = cardData;
+            display.refresh();
         }
 
         if (rewards != null)

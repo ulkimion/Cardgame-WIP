@@ -691,7 +691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9686818363be8f4cbd440e6239bf23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: SampleScene
+  levelName: BattleScene
   gameHandler: {fileID: 0}
   newgame: {fileID: 1145114655}
 --- !u!114 &1145114652
@@ -800,7 +800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbb209efd317a4b478308fe67144368b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentRun: {fileID: 11400000, guid: fa5e9f0b53b880140b6bf8950e83261f, type: 2}
+  currentRun: {fileID: 11400000, guid: 6d31ee70302d7224cb9d2f3377e90da8, type: 2}
   startingDeck:
   - {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}
   - {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}

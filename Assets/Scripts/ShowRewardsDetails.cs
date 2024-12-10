@@ -22,8 +22,6 @@ public class ShowRewardsDetails : MonoBehaviour
     {
         img = GetComponent<Image>();
         img.sprite = tacticBig;
-        efecto.enabled = false;
-        img.sprite = tacticBig;
         efecto.enabled = true;
         sold.enabled = false;
 

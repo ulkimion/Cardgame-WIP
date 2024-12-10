@@ -10,27 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9280eb372bf8b4429c8b09f8be85583, type: 3}
-  m_Name: new run
+  m_Name: currentRun
   m_EditorClassIdentifier: 
-  maxHP: 80
-  currentHP: 80
-  money: 50
+  maxHP: 100
+  currentHP: 75
+  money: 945
   playerDeck:
   - {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}
   - {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}
   - {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}
   - {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}
-  - {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}
   - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
   - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
   - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
   - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
-  - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
+  - {fileID: 11400000, guid: c71dcf5468812af4b8551eb1b2b5140d, type: 2}
+  - {fileID: 11400000, guid: ceb16fca362c9b745a6f4455814a53a8, type: 2}
+  - {fileID: 11400000, guid: f4991193cc734304fb3744ec872d9c85, type: 2}
+  - {fileID: 11400000, guid: 6915bbed1b9cae54faf621ec8efd3319, type: 2}
   bullets:
   - {fileID: 11400000, guid: fcd38a364bd1288429c46809b2a50b45, type: 2}
-  - {fileID: 11400000, guid: fcd38a364bd1288429c46809b2a50b45, type: 2}
-  - {fileID: 11400000, guid: fcd38a364bd1288429c46809b2a50b45, type: 2}
   - {fileID: 11400000, guid: b397567c75eca9743bbb9be8cbfafaad, type: 2}
+  - {fileID: 11400000, guid: fcd38a364bd1288429c46809b2a50b45, type: 2}
   - {fileID: 11400000, guid: e4438771652282a48953f2249c051579, type: 2}
-  - {fileID: 11400000, guid: dec7267d1b7af9b42b0ee1b35587b66c, type: 2}
+  - {fileID: 11400000, guid: fcd38a364bd1288429c46809b2a50b45, type: 2}
+  - {fileID: 11400000, guid: fcd38a364bd1288429c46809b2a50b45, type: 2}
   exp: 000000000000000000000000000000000000000000000000

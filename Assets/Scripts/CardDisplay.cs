@@ -22,7 +22,12 @@ public class CardDisplay : MonoBehaviour
         artwork.sprite = card.artwork;
     }
 
-
-
+    public void refresh()
+    {
+        cardname.text = card.name;
+        effectText.text = card.effectText;
+        energyCost.text = card.energyCost.ToString();
+        artwork.sprite = card.artwork;
+    }
 
 }

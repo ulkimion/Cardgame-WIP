@@ -13,18 +13,10 @@ MonoBehaviour:
   m_Name: Basic Bullet
   m_EditorClassIdentifier: 
   name: Basic Bullet
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: 8497508f6ca1f6247905fd5b8ecd8e3a, type: 3}
   exp: 0
-  effectText: 
   level: 1
-  damage: 12
   condition: 0
-  burn: 0
-  paralysis: 0
-  poison: 0
-  cycle: 0
-  gainsEnergy: 0
-  heal: 0
   effectTextLv1: No effect
   effectTextLv2: No effect
   effectTextLv3: No effect
@@ -49,8 +41,12 @@ MonoBehaviour:
   healLv1: 0
   healLv2: 0
   healLv3: 0
-  heldTurns: 0
+  drawLv1: 0
+  drawLv2: 0
+  drawLv3: 0
+  extraDamagePerHeldTurnsLv1: 0
+  extraDamagePerHeldTurnsLv2: 0
+  extraDamagePerHeldTurnsLv3: 0
   becomesEmpty: 0
-  energyRefound: 0
   duplicating: 0
   damagex2: 0

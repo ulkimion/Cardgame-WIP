@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class NewGame : MonoBehaviour
 {
     public CurrentRun currentRun;
+    public ListOfScenes EventsBase;
+    public ListOfScenes EventsCurrentRun;
     public List<Card> startingDeck = new List<Card>();
     public List<Bullet> startingBullets = new List<Bullet>();
 
@@ -25,10 +28,79 @@ public class NewGame : MonoBehaviour
             currentRun.exp.Add(0);
         }
 
-        // Asignar valores
         for (int i = 0; i < 6; i++)
         {
             currentRun.exp[i] = 0;
+        }
+        PopulateWithRules();
+    }
+    public void PopulateWithRules()
+    {
+        // Asegurarse de que EventsCurrentRun esté inicializado
+        if (EventsCurrentRun == null)
+        {
+            Debug.LogError("EventsCurrentRun no está inicializado.");
+            return;
+        }
+
+        // Limpiar la lista interna de EventsCurrentRun
+        EventsCurrentRun.scenes.Clear();
+
+        // Crear una lista temporal para mezclar los valores de EventsBase.scenes
+        List<string> shuffledEvents = EventsBase.scenes.OrderBy(x => Random.value).ToList();
+
+        // Determinar el tamaño deseado de la lista (por ejemplo, 48)
+        int targetSize = 48;
+
+        // Asegurarse de que la lista tenga el tamaño correcto
+        for (int i = 0; i < targetSize; i++)
+        {
+            EventsCurrentRun.scenes.Add(null); // Inicializamos con `null` para rellenar después
+        }
+
+        // Insertar valores fijos en las posiciones específicas
+        EventsCurrentRun.scenes[0] = "RegularCombat";  // Bloque 1
+        EventsCurrentRun.scenes[1] = "RegularCombat";  // Bloque 1
+        EventsCurrentRun.scenes[2] = "RegularCombat";  // Bloque 1
+
+        EventsCurrentRun.scenes[18] = "Shop";           // Bloque 7
+        EventsCurrentRun.scenes[19] = "Shop";           // Bloque 7
+        EventsCurrentRun.scenes[20] = "Shop";           // Bloque 7
+
+        EventsCurrentRun.scenes[42] = "Shop";           // Bloque 15
+        EventsCurrentRun.scenes[43] = "Shop";           // Bloque 15
+        EventsCurrentRun.scenes[44] = "Shop";           // Bloque 15
+
+        EventsCurrentRun.scenes[45] = "RegularCombat";  // Bloque 16
+        EventsCurrentRun.scenes[46] = "RegularCombat";  // Bloque 16
+        EventsCurrentRun.scenes[47] = "RegularCombat";  // Bloque 16
+
+        // Obtener las posiciones vacías
+        var emptyPositions = EventsCurrentRun.scenes
+            .Select((value, index) => new { value, index })
+            .Where(item => item.value == null) // Detectar espacios vacíos
+            .Select(item => item.index)
+            .ToList();
+
+        // Rellenar los espacios vacíos con los valores aleatorios
+        for (int i = 0; i < emptyPositions.Count; i++)
+        {
+            // Verifica que hay suficientes eventos aleatorios
+            if (i < shuffledEvents.Count)
+            {
+                EventsCurrentRun.scenes[emptyPositions[i]] = shuffledEvents[i];
+            }
+            else
+            {
+                Debug.LogWarning($"No hay suficientes eventos para llenar la posición {emptyPositions[i]}.");
+            }
+        }
+
+        // Verificar el contenido final de la lista
+        Debug.Log("Contenido de EventsCurrentRun.scenes:");
+        foreach (var scene in EventsCurrentRun.scenes)
+        {
+            Debug.Log(scene);
         }
     }
 }
