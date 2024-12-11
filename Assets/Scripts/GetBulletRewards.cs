@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class GetBulletRewards : MonoBehaviour
+public class GetBulletRewards : MonoBehaviour, IPointerClickHandler
 {
     public Bullet bullet;
     public CurrentRun currentRun;
@@ -14,6 +14,7 @@ public class GetBulletRewards : MonoBehaviour
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        Debug.Log("Se llego hasta aqui");
         ShowBulletRewardsDetails = GetComponentInChildren<ShowBulletRewardsDetails>();
         if (!isClicked)
         {
