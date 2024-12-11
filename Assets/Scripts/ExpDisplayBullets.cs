@@ -10,10 +10,12 @@ public class ExpDisplayBullets : MonoBehaviour
     public GameObject bulletBase;
     public TextMeshProUGUI remainingExpText;
     public int remainingExp = 0;
-    public int extraexp = 0;
+    public ExtraExp extraexp;
+
     void Start()
     {
-        remainingExp = 1 + extraexp;
+        remainingExp = 1 + extraexp.extraExp;
+        extraexp.extraExp = 0;
         remainingExpText.text = remainingExp.ToString();
         for (int i = 0; i < currentRun.bullets.Count; i++)
         {

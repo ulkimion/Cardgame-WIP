@@ -6,5 +6,5 @@ using UnityEngine;
 public class BulletPool : ScriptableObject
 {
     [SerializeField]
-    List<Bullet> bullets = new List<Bullet>();
+    public List<Bullet> bullets = new List<Bullet>();
 }

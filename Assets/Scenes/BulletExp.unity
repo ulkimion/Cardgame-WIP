@@ -244,7 +244,7 @@ MonoBehaviour:
   bulletBase: {fileID: 6831427741468293100, guid: 18f68bf86f9c4a046995b962fe9846c4, type: 3}
   remainingExpText: {fileID: 728792478}
   remainingExp: 0
-  extraexp: 0
+  extraexp: {fileID: 11400000, guid: 58c57feccf041cd4eb4204d535726bae, type: 2}
 --- !u!1 &420575382
 GameObject:
   m_ObjectHideFlags: 0

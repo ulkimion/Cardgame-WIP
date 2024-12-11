@@ -10,7 +10,9 @@ public class NewGame : MonoBehaviour
     public ListOfScenes EventsCurrentRun;
     public List<Card> startingDeck = new List<Card>();
     public List<Bullet> startingBullets = new List<Bullet>();
-
+    public ExtraExp extraExp;
+    public RewardsBulletChosen rewardsBulletChosen;
+    public Bullet bullet;
     public void StartnewGame()
     {
         currentRun.maxHP = 100;
@@ -19,6 +21,8 @@ public class NewGame : MonoBehaviour
         currentRun.playerDeck.Clear();
         currentRun.bullets.Clear();
         currentRun.exp.Clear();
+        extraExp.extraExp = 0;
+        rewardsBulletChosen.bullet = bullet;
 
         currentRun.playerDeck = startingDeck;
         currentRun.bullets = startingBullets;
