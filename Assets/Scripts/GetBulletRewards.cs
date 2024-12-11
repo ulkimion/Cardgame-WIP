@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class GetBulletRewards : MonoBehaviour, IPointerClickHandler
 {
@@ -27,6 +28,10 @@ public class GetBulletRewards : MonoBehaviour, IPointerClickHandler
                     ShowBulletRewardsDetails.sold.enabled = true;
                     currentRun.money = currentRun.money - price;
                 }
+            }
+            if (price == 0)
+            {
+                SceneManager.LoadScene("BulletExp");
             }
             else
             {

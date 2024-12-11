@@ -9,6 +9,7 @@ using Unity.Collections.LowLevel.Unsafe;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using static UnityEngine.EventSystems.EventTrigger;
@@ -260,15 +261,31 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    public IEnumerator WonFight()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("Card Rewards");
+        Debug.Log("Win");
+    }
+
+    public IEnumerator LostFight()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("MainMenu");
+    }
+
     void EndBattle()
     {
         if(state == BattleState.WON)
         {
             dialogueText.text = "YOU WON!";
+            StartCoroutine(WonFight());
         }
         else if (state == BattleState.LOSS)
         {
             dialogueText.text = "YOU WERE DEFEATED...";
+            StartCoroutine(LostFight());
+            Debug.Log("GameOver");
         }
 
     }

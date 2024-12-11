@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ExpDisplayBullets : MonoBehaviour
 {
@@ -39,5 +40,9 @@ public class ExpDisplayBullets : MonoBehaviour
     {
         remainingExp--;
         remainingExpText.text = remainingExp.ToString();
+        if (remainingExp <= 0)
+        {
+            SceneManager.LoadScene("Events");
+        }
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class GetRewards : MonoBehaviour, IPointerClickHandler
 {
@@ -23,6 +24,11 @@ public class GetRewards : MonoBehaviour, IPointerClickHandler
                     showRewardsDetails.sold.enabled = true;
                     currentRun.money = currentRun.money - price;
                 }
+            }
+
+            if (price == 0)
+            {
+                SceneManager.LoadScene("Bullet Rewards 1");
             }
             else
             {
