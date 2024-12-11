@@ -923,7 +923,7 @@ MonoBehaviour:
   currentRun: {fileID: 11400000, guid: 6d31ee70302d7224cb9d2f3377e90da8, type: 2}
   rewardsBulletChosen: {fileID: 11400000, guid: 56249ded1f7c6ed45977325834acba62, type: 2}
   ShowBulletRewardsDetails: {fileID: 0}
-  price: 10
+  price: 0
 --- !u!1 &8543924909654955169
 GameObject:
   m_ObjectHideFlags: 0
