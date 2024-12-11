@@ -16,5 +16,8 @@ public class SpecialEventsOptions : MonoBehaviour
         specialEventButton2.option = "Gain 5 Exp for your Bullets";
         SpecialEventButton specialEventButton3 = option3.GetComponent<SpecialEventButton>();
         specialEventButton3.option = "Heal for 15 HP";
+        specialEventButton1.refresh();
+        specialEventButton2.refresh();
+        specialEventButton3.refresh();
     }
 }

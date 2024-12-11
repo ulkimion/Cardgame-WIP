@@ -11,4 +11,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BattleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Special Events.unity
+    guid: 660fb4da1e6301e44a46ae548ee996d5
+  - enabled: 1
+    path: Assets/Scenes/Bullet Rewards 1.unity
+    guid: e35e27a03bbe1ec42bfe701ec58640b4
+  - enabled: 1
+    path: Assets/Scenes/BulletExp.unity
+    guid: 08d4f46430694f14b85619bbdf823dc3
+  - enabled: 1
+    path: Assets/Scenes/Card Rewards.unity
+    guid: 14b4951d97d081a49878b5b228273171
+  - enabled: 1
+    path: Assets/Scenes/Events.unity
+    guid: 2cb4a761b4fd92f44a320e5f67a16efb
   m_configObjects: {}

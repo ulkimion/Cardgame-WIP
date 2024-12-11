@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: currentRun
   m_EditorClassIdentifier: 
   maxHP: 100
-  currentHP: 75
-  money: 945
+  currentHP: 100
+  money: 100
   playerDeck:
   - {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}
   - {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}

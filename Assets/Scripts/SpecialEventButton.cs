@@ -47,8 +47,13 @@ public class SpecialEventButton : MonoBehaviour, IPointerClickHandler
             }
             else
             {
-
+                SceneManager.LoadScene("MainMenu");
             }
         }
+    }
+
+    public void refresh()
+    {
+            optionText.text = option;
     }
 }

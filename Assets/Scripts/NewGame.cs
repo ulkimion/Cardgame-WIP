@@ -6,6 +6,7 @@ using UnityEngine;
 public class NewGame : MonoBehaviour
 {
     public CurrentRun currentRun;
+    public FloorCounter floorCounter;
     public ListOfScenes EventsBase;
     public ListOfScenes EventsCurrentRun;
     public List<Card> startingDeck = new List<Card>();
@@ -26,6 +27,7 @@ public class NewGame : MonoBehaviour
 
         currentRun.playerDeck = startingDeck;
         currentRun.bullets = startingBullets;
+        floorCounter.floorcounter = 0;
 
         while (currentRun.exp.Count < 6)
         {
