@@ -6,22 +6,31 @@ using UnityEngine.SceneManagement;
 
 public class GameHandler : MonoBehaviour
 {
-    public GameHandler instance;
+    public static GameHandler instance;
     public BattleSystem battleSystem;
+    public int floorCounter;
+    public int experience; 
 
-    
+    public void IncreaseCounter()
+    {
+        floorCounter++;
+    }
+
+
+
     public void Start()
     {
         Singleton();
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(this.gameObject);
     }
+
 
 
     public void Singleton()
     {
         if (instance != null)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
         else
         {

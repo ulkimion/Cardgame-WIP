@@ -16,6 +16,7 @@ public class NewGame : MonoBehaviour
     public Bullet bullet;
     public void StartnewGame()
     {
+        
         currentRun.maxHP = 100;
         currentRun.currentHP = 100;
         currentRun.money = 50;
