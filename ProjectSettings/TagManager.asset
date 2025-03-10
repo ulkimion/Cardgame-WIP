@@ -14,6 +14,7 @@ TagManager:
   - CurrentBullet
   - BulletDeck
   - VanishZone
+  - GameHandler
   layers:
   - Default
   - TransparentFX

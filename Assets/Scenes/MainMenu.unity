@@ -604,7 +604,7 @@ GameObject:
   - component: {fileID: 1040163090}
   m_Layer: 0
   m_Name: GameSetup
-  m_TagString: Untagged
+  m_TagString: GameHandler
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

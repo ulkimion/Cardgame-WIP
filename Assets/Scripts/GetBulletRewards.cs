@@ -10,12 +10,15 @@ public class GetBulletRewards : MonoBehaviour, IPointerClickHandler
     public CurrentRun currentRun;
     public RewardsBulletChosen rewardsBulletChosen;
     public ShowBulletRewardsDetails ShowBulletRewardsDetails;
+    public GameHandler gameHandler;
     private bool isClicked = false;
     public int price = 10;
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Se llego hasta aqui");
+        Debug.Log("Se llego hasta aqui"); 
+        gameHandler = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
+
         ShowBulletRewardsDetails = GetComponentInChildren<ShowBulletRewardsDetails>();
         if (!isClicked)
         {
@@ -31,7 +34,8 @@ public class GetBulletRewards : MonoBehaviour, IPointerClickHandler
             }
             if (price == 0)
             {
-                SceneManager.LoadScene("BulletExp");
+                gameHandler.bullet = bullet;
+                SceneManager.LoadScene("BulletReplace");
             }
             else
             {

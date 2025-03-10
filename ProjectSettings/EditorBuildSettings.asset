@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Events.unity
     guid: 2cb4a761b4fd92f44a320e5f67a16efb
+  - enabled: 1
+    path: Assets/Scenes/BulletReplace.unity
+    guid: 1ee00524050f83e498402e4d7d4832ef
   m_configObjects: {}
