@@ -8,8 +8,16 @@ public class GameHandler : MonoBehaviour
 {
     public GameHandler instance;
     public BattleSystem battleSystem;
+    public CurrentRun currentRun;
+    public FloorCounter floorCounter;
+    public ListOfScenes EventsBase;
+    public ListOfScenes EventsCurrentRun;
+    public List<Card> startingDeck = new List<Card>();
+    public List<Bullet> startingBullets = new List<Bullet>();
+    public ExtraExp extraExp;
+    public RewardsBulletChosen rewardsBulletChosen;
+    public Bullet bullet;
 
-    
     public void Start()
     {
         Singleton();

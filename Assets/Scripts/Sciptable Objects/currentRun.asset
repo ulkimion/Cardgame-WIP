@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 100
   currentHP: 100
-  money: 100
+  money: 50
   playerDeck:
   - {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}
   - {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}
@@ -26,8 +26,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
   - {fileID: 11400000, guid: c71dcf5468812af4b8551eb1b2b5140d, type: 2}
   - {fileID: 11400000, guid: ceb16fca362c9b745a6f4455814a53a8, type: 2}
-  - {fileID: 11400000, guid: f4991193cc734304fb3744ec872d9c85, type: 2}
-  - {fileID: 11400000, guid: 6915bbed1b9cae54faf621ec8efd3319, type: 2}
   bullets:
   - {fileID: 11400000, guid: fcd38a364bd1288429c46809b2a50b45, type: 2}
   - {fileID: 11400000, guid: b397567c75eca9743bbb9be8cbfafaad, type: 2}

@@ -43,11 +43,11 @@ public class SpecialEventButton : MonoBehaviour, IPointerClickHandler
                     currentRun.currentHP = currentRun.currentHP + 15;
                 }
 
-                SceneManager.LoadScene("MainMenu");
+                SceneManager.LoadScene("Events");
             }
             else
             {
-                SceneManager.LoadScene("MainMenu");
+                SceneManager.LoadScene("Events");
             }
         }
     }

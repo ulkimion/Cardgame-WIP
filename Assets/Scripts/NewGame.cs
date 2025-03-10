@@ -29,6 +29,8 @@ public class NewGame : MonoBehaviour
         currentRun.bullets = startingBullets;
         floorCounter.floorcounter = 0;
 
+
+
         while (currentRun.exp.Count < 6)
         {
             currentRun.exp.Add(0);
@@ -49,19 +51,13 @@ public class NewGame : MonoBehaviour
             return;
         }
 
-        // Limpiar la lista interna de EventsCurrentRun
         EventsCurrentRun.scenes.Clear();
-
-        // Crear una lista temporal para mezclar los valores de EventsBase.scenes
         List<string> shuffledEvents = EventsBase.scenes.OrderBy(x => Random.value).ToList();
-
-        // Determinar el tamaño deseado de la lista (por ejemplo, 48)
         int targetSize = 48;
 
-        // Asegurarse de que la lista tenga el tamaño correcto
         for (int i = 0; i < targetSize; i++)
         {
-            EventsCurrentRun.scenes.Add(null); // Inicializamos con `null` para rellenar después
+            EventsCurrentRun.scenes.Add(null);
         }
 
         // Insertar valores fijos en las posiciones específicas
@@ -81,17 +77,14 @@ public class NewGame : MonoBehaviour
         EventsCurrentRun.scenes[46] = "RegularCombat";  // Bloque 16
         EventsCurrentRun.scenes[47] = "RegularCombat";  // Bloque 16
 
-        // Obtener las posiciones vacías
         var emptyPositions = EventsCurrentRun.scenes
             .Select((value, index) => new { value, index })
-            .Where(item => item.value == null) // Detectar espacios vacíos
+            .Where(item => item.value == null) 
             .Select(item => item.index)
             .ToList();
 
-        // Rellenar los espacios vacíos con los valores aleatorios
         for (int i = 0; i < emptyPositions.Count; i++)
         {
-            // Verifica que hay suficientes eventos aleatorios
             if (i < shuffledEvents.Count)
             {
                 EventsCurrentRun.scenes[emptyPositions[i]] = shuffledEvents[i];
@@ -102,7 +95,6 @@ public class NewGame : MonoBehaviour
             }
         }
 
-        // Verificar el contenido final de la lista
         Debug.Log("Contenido de EventsCurrentRun.scenes:");
         foreach (var scene in EventsCurrentRun.scenes)
         {
