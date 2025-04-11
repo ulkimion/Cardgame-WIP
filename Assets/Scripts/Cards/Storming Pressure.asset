@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Storming Pressure
   effectText: Bullets Paralysis +3. Bullets damage x0.5.
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: 49eb402af4c98f447a3178377836cec0, type: 3}
   CardType: 0
   shootType: 0
   cardTarget: 0

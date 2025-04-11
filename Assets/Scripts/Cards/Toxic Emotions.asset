@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Toxic Emotions
   effectText: Bullets damage = 0. Status applied twice.
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: df912d55226190041accec7cd7ce54a5, type: 3}
   CardType: 0
   shootType: 0
   cardTarget: 0

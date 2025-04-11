@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Warning Shot
   effectText: Cycle 1. all enemies do 5 less damage this turn. Vanish
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: 8449a5a3451f5034bb2d0f6d03c574bb, type: 3}
   CardType: 0
   shootType: 0
   cardTarget: 2

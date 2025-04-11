@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Overheat
   effectText: Draw 2, You get applied 2 Burn
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: 6de5e684478fe2c478fbff8bba3e1ae4, type: 3}
   CardType: 0
   shootType: 0
   cardTarget: 1

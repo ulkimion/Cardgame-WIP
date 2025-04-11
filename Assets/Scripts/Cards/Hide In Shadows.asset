@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Hide in Shadows
   effectText: Take cover. Vanishes
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: a3edf8b2257290a469e1ee8f8a813cf6, type: 3}
   CardType: 0
   shootType: 0
   cardTarget: 0
@@ -38,7 +38,7 @@ MonoBehaviour:
   dodge: 0
   vanishes: 1
   keepBlock: 0
-  takeCover: 0
+  takeCover: 1
   destroyBullet: 0
   transformNextBullet: 0
   Overdrive: 0

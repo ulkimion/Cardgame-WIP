@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Preparations
   effectText: Gain 12 Block, Cycle 1
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: a6993722723842b4a805af6a5dd3c729, type: 3}
   CardType: 0
   shootType: 0
   cardTarget: 0

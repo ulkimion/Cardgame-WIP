@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Reload
   effectText: Cycle 1. Draw 1. Retain.
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: 8449a5a3451f5034bb2d0f6d03c574bb, type: 3}
   CardType: 0
   shootType: 0
   cardTarget: 1
@@ -35,7 +35,7 @@ MonoBehaviour:
   blockMultiplier: 0
   damagePlus: 0
   damageMultiplier: 0
-  perfectBlock: 0
+  dodge: 0
   vanishes: 0
   keepBlock: 0
   takeCover: 0
@@ -43,5 +43,6 @@ MonoBehaviour:
   transformNextBullet: 0
   Overdrive: 0
   burningSpirit: 0
+  stormingPressure: 0
   toxicEmotions: 0
   retain: 1

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Piercing Shot
   effectText: Shot 1. Attack all enemies
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: 61c8ab88b7304ab4083c6517e1a36e69, type: 3}
   CardType: 1
   shootType: 1
   cardTarget: 2
