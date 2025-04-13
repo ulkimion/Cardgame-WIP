@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: currentRun
   m_EditorClassIdentifier: 
   maxHP: 100
-  currentHP: 100
-  money: 50
+  currentHP: 89
+  money: 700
   playerDeck:
   - {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}
   - {fileID: 11400000, guid: 2147f0f3681cc094b9fd2434ac589398, type: 2}
@@ -26,11 +26,27 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
   - {fileID: 11400000, guid: c71dcf5468812af4b8551eb1b2b5140d, type: 2}
   - {fileID: 11400000, guid: ceb16fca362c9b745a6f4455814a53a8, type: 2}
+  - {fileID: 11400000, guid: 60724c5273607bd41aa4f76af46f35c9, type: 2}
+  - {fileID: 11400000, guid: 5df255319392bbc40ab41f6069b66292, type: 2}
+  - {fileID: 11400000, guid: 8e58c76ec0293e944937f16fdc193704, type: 2}
+  - {fileID: 11400000, guid: 9c9eb54b2d9bf2245aaba50378b0421a, type: 2}
+  - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
+  - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
+  - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
+  - {fileID: 11400000, guid: 8e58c76ec0293e944937f16fdc193704, type: 2}
+  - {fileID: 11400000, guid: 6aeb6326532b7b04fb7679a0a53aef50, type: 2}
+  - {fileID: 11400000, guid: 5df255319392bbc40ab41f6069b66292, type: 2}
+  - {fileID: 11400000, guid: 266a9235d616d8b4488a3e12df7af06a, type: 2}
+  - {fileID: 11400000, guid: 5df255319392bbc40ab41f6069b66292, type: 2}
+  - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
+  - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
+  - {fileID: 11400000, guid: 8e58c76ec0293e944937f16fdc193704, type: 2}
+  - {fileID: 11400000, guid: e9b5c0c8a5366be41b06d9ba4455baf1, type: 2}
   bullets:
   - {fileID: 11400000, guid: fcd38a364bd1288429c46809b2a50b45, type: 2}
-  - {fileID: 11400000, guid: b397567c75eca9743bbb9be8cbfafaad, type: 2}
   - {fileID: 11400000, guid: fcd38a364bd1288429c46809b2a50b45, type: 2}
   - {fileID: 11400000, guid: e4438771652282a48953f2249c051579, type: 2}
   - {fileID: 11400000, guid: fcd38a364bd1288429c46809b2a50b45, type: 2}
   - {fileID: 11400000, guid: fcd38a364bd1288429c46809b2a50b45, type: 2}
+  - {fileID: 11400000, guid: dec7267d1b7af9b42b0ee1b35587b66c, type: 2}
   exp: 000000000000000000000000000000000000000000000000

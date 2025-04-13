@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
@@ -11,18 +13,21 @@ public class GetRewards : MonoBehaviour, IPointerClickHandler
     public ShowRewardsDetails showRewardsDetails;
     private bool isClicked = false;
     public int price = 10;
+    public Text PlayerMoney;
 
     public void OnPointerClick(PointerEventData eventData)
     {
         if (!isClicked)
         {
-            if (currentRun.money > price)
+            if (currentRun.money >= price)
             {
                 currentRun.playerDeck.Add(card);
                 if (price > 0)
                 {
                     showRewardsDetails.sold.enabled = true;
                     currentRun.money = currentRun.money - price;
+                    PlayerMoney.text = "Money = " + currentRun.money.ToString();
+                    isClicked = false;
                 }
             }
 
