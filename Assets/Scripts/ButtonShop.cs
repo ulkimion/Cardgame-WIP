@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
-public class ButtonSjop : MonoBehaviour
+
+public class ButtonShop : MonoBehaviour, IPointerClickHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    public string levelName;
+    private bool isClicked = false;
+    public GameHandler gameHandler;
+    private void Start()
     {
-        
+        gameHandler = GameObject.FindObjectOfType<GameHandler>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPointerClick(PointerEventData eventData)
     {
-        
+        Debug.Log("Se llego hasta aqui");
+        if (!isClicked)
+        {
+            SceneManager.LoadScene("Events");
+        }
     }
 }

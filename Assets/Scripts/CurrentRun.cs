@@ -12,4 +12,5 @@ public class CurrentRun : ScriptableObject
     public List<Card> playerDeck = new List<Card>();
     public List<Bullet> bullets = new List<Bullet>();
     public List<int> exp;
+    public int extraEXP = 0;
 }

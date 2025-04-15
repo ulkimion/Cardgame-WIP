@@ -15,8 +15,8 @@ public class ExpDisplayBullets : MonoBehaviour
 
     void Start()
     {
-        remainingExp = 1 + extraexp.extraExp;
-        extraexp.extraExp = 0;
+        remainingExp = 1 + currentRun.extraEXP;
+        currentRun.extraEXP = 0;
         remainingExpText.text = remainingExp.ToString();
         for (int i = 0; i < currentRun.bullets.Count; i++)
         {

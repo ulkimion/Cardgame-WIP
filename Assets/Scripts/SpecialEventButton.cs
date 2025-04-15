@@ -25,7 +25,7 @@ public class SpecialEventButton : MonoBehaviour, IPointerClickHandler
             if (option == "Gain 50 Gold, Fight a combat")
             {
                 currentRun.money = currentRun.money + 50;
-                SceneManager.LoadScene("BattleScene");
+                SceneManager.LoadScene("BattleScenePolice");
             }
             else if (option == "Gain 5 Exp for your Bullets")
             {
@@ -43,6 +43,22 @@ public class SpecialEventButton : MonoBehaviour, IPointerClickHandler
                     currentRun.currentHP = currentRun.currentHP + 15;
                 }
 
+                SceneManager.LoadScene("Events");
+            }
+            else if (option == "Skip card and Gain 2 Exp")
+                {
+                currentRun.extraEXP = currentRun.extraEXP + 2;
+                SceneManager.LoadScene("Bullet Rewards 1");
+            }
+
+            else if (option == "Skip bullet and Gain 2 Exp")
+            {
+                currentRun.extraEXP = currentRun.extraEXP + 2;
+                SceneManager.LoadScene("BulletExp");
+            }
+            else if (option == "Leave store")
+            {
+                currentRun.extraEXP = currentRun.extraEXP + 2;
                 SceneManager.LoadScene("Events");
             }
             else

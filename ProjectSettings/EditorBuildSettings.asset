@@ -29,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BulletReplace.unity
     guid: 1ee00524050f83e498402e4d7d4832ef
+  - enabled: 1
+    path: Assets/Scenes/Shop.unity
+    guid: e4ab48f491b0a5b428ad2f60298ec6cd
+  - enabled: 1
+    path: Assets/Scenes/BattleScenePolice.unity
+    guid: ca832b2f2ff7cf44080480ddbcf83512
   m_configObjects: {}

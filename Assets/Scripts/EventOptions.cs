@@ -30,7 +30,7 @@ public class EventOptions : MonoBehaviour, IPointerClickHandler
             }
             else if (option == "Shop")
             {
-                SceneManager.LoadScene("MainMenu");
+                SceneManager.LoadScene("Shop");
             }
             else
             {
