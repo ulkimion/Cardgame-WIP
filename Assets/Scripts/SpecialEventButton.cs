@@ -14,7 +14,7 @@ public class SpecialEventButton : MonoBehaviour, IPointerClickHandler
     private bool isClicked = false;
     void Start()
     {
-        optionText.text = option;
+        optionText.text = option.ToString();
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -22,7 +22,7 @@ public class SpecialEventButton : MonoBehaviour, IPointerClickHandler
         Debug.Log("Se llego hasta aqui");
         if (!isClicked)
         {
-            if (option == "Gain 50 Gold, Fight a combat")
+            if (option == "Gain 50 Gold, Start a combat")
             {
                 currentRun.money = currentRun.money + 50;
                 SceneManager.LoadScene("BattleScenePolice");

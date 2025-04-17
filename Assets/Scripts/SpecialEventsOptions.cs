@@ -11,7 +11,7 @@ public class SpecialEventsOptions : MonoBehaviour
     private void Start()
     {
         SpecialEventButton specialEventButton1 = option1.GetComponent<SpecialEventButton>();
-        specialEventButton1.option = "Gain 50 Gold, Fight a combat";
+        specialEventButton1.option = "Gain 50 Gold, Start a combat";
         SpecialEventButton specialEventButton2 = option2.GetComponent<SpecialEventButton>();
         specialEventButton2.option = "Gain 5 Exp for your Bullets";
         SpecialEventButton specialEventButton3 = option3.GetComponent<SpecialEventButton>();

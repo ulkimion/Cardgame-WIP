@@ -685,7 +685,13 @@ PlayerSettings:
   XboxOneOverrideIdentityName: 
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    Build: 0
+    Game Performance: 0
+    Legacy Analytics: 0
+    Purchasing: 0
+    UDP: 0
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -705,11 +711,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: b97444cb-1e1a-4165-856c-d8f04a8f4cd4
+  cloudProjectId: 068f84d7-da47-4e88-a119-15d0abe3f291
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: Cardgame1.3
-  organizationId: biancagonzalezfredes
+  organizationId: biancagonzalez
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

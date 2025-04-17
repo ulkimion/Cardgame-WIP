@@ -69,9 +69,9 @@ public class ShopCode : MonoBehaviour, IPointerClickHandler
         AssignCardValues(card1Display, card1Rewards, selectedCards[0]);
         AssignCardValues(card2Display, card2Rewards, selectedCards[1]);
         AssignCardValues(card3Display, card3Rewards, selectedCards[2]);
-        AssignCardValues(card1Display, card1Rewards, selectedCards[3]);
-        AssignCardValues(card2Display, card2Rewards, selectedCards[4]);
-        AssignCardValues(card3Display, card3Rewards, selectedCards[5]);
+        AssignCardValues(card4Display, card4Rewards, selectedCards[3]);
+        AssignCardValues(card5Display, card5Rewards, selectedCards[4]);
+        AssignCardValues(card6Display, card6Rewards, selectedCards[5]);
     }
 
     private List<Card> GetRandomCards(List<Card> cards, int count)

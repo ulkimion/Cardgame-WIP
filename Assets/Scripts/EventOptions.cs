@@ -12,7 +12,7 @@ public class EventOptions : MonoBehaviour, IPointerClickHandler
     private bool isClicked = false;
     void Start()
     {
-       optionText.text = "Error";
+        refresh();
     }
 
     public void OnPointerClick(PointerEventData eventData)
