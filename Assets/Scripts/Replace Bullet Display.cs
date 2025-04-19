@@ -14,7 +14,7 @@ public class ReplaceBulletDisplay : MonoBehaviour
     {
         for (int i = 0; i < currentRun.bullets.Count; i++)
         {
-            GameObject bullet = Instantiate(bulletBase, new Vector3(100, 420 - (i * 75), 0), Quaternion.identity);
+            GameObject bullet = Instantiate(bulletBase, new Vector3(150, 420 - ((i * 150) - 400), 0), Quaternion.identity);
             BulletState bulletState = bullet.GetComponent<BulletState>();
             bulletState.bullet = currentRun.bullets[i];
             BulletDisplay bulletDisplay = bullet.GetComponent<BulletDisplay>();
@@ -25,7 +25,7 @@ public class ReplaceBulletDisplay : MonoBehaviour
             buttonReplaceBullet.bulletNumber = i;
 
             bullet.transform.SetParent(GameObject.FindGameObjectWithTag("BulletDeck").transform);
-            bullet.transform.localScale = Vector3.one * 3000;
+            bullet.transform.localScale = Vector3.one * 2600;
         }
     }
 
