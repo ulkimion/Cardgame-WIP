@@ -42,4 +42,12 @@ public class ShowBulletRewardsDetails : MonoBehaviour
                     price.enabled = false;
                 }
             }
+
+    public void refresh()
+    {
+        bulletName.text = bullet.name.ToString();
+        bulletEffect.text = bullet.effectTextLv1.ToString();
+        artwork.sprite = bullet.artwork;
+        bulletDamage.text = bullet.damageLv1.ToString();
     }
+}

@@ -18,7 +18,6 @@ public class GetBulletRewards : MonoBehaviour, IPointerClickHandler
     {
         Debug.Log("Se llego hasta aqui"); 
         gameHandler = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
-
         ShowBulletRewardsDetails = GetComponentInChildren<ShowBulletRewardsDetails>();
         if (!isClicked)
         {

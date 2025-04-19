@@ -13,9 +13,6 @@ public class ShopCode : MonoBehaviour, IPointerClickHandler
     public GameObject card1;
     public GameObject card2;
     public GameObject card3;
-    public GameObject card4;
-    public GameObject card5;
-    public GameObject card6;
     public Text PlayerMoney;
     public CurrentRun currentRun;
 
@@ -28,14 +25,14 @@ public class ShopCode : MonoBehaviour, IPointerClickHandler
     private CardDisplay card3Display;
     private GetRewards card3Rewards;
 
-    private CardDisplay card4Display;
-    private GetRewards card4Rewards;
 
-    private CardDisplay card5Display;
-    private GetRewards card5Rewards;
+    public BulletPool bulletPool;
+    public GameObject bulletBase;
 
-    private CardDisplay card6Display;
-    private GetRewards card6Rewards;
+    public GameObject bullet1;
+    public GameObject bullet2;
+    public GameObject bullet3;
+
 
     void Start()
     {
@@ -49,29 +46,57 @@ public class ShopCode : MonoBehaviour, IPointerClickHandler
         card3Display = card3.GetComponent<CardDisplay>();
         card3Rewards = card3.GetComponent<GetRewards>();
 
-        card4Display = card4.GetComponent<CardDisplay>();
-        card4Rewards = card4.GetComponent<GetRewards>();
-
-        card5Display = card5.GetComponent<CardDisplay>();
-        card5Rewards = card5.GetComponent<GetRewards>();
-
-        card6Display = card6.GetComponent<CardDisplay>();
-        card6Rewards = card6.GetComponent<GetRewards>();
-
-        if (cardpool == null || cardpool.GetPoolOfCards().Count < 6)
+        if (cardpool == null || cardpool.GetPoolOfCards().Count < 3)
         {
             Debug.LogError("No hay suficientes cartas en CardPool para seleccionar 6 únicas.");
             return;
         }
 
-        List<Card> selectedCards = GetRandomCards(cardpool.GetPoolOfCards(), 6);
+        if (bulletPool == null || bulletPool.bullets.Count < 3)
+        {
+            Debug.LogError("No hay suficientes balas en la BulletPool para seleccionar 3 únicas.");
+            return;
+        }
+
+        List<Bullet> selectedBullets = GetRandomBullets(bulletPool.bullets, 3);
+
+        List<Card> selectedCards = GetRandomCards(cardpool.GetPoolOfCards(), 3);
 
         AssignCardValues(card1Display, card1Rewards, selectedCards[0]);
         AssignCardValues(card2Display, card2Rewards, selectedCards[1]);
         AssignCardValues(card3Display, card3Rewards, selectedCards[2]);
-        AssignCardValues(card4Display, card4Rewards, selectedCards[3]);
-        AssignCardValues(card5Display, card5Rewards, selectedCards[4]);
-        AssignCardValues(card6Display, card6Rewards, selectedCards[5]);
+
+        ShowBulletRewardsDetails showBulletRewardsDetails1 = bullet1.GetComponentInChildren<ShowBulletRewardsDetails>();
+        showBulletRewardsDetails1.bullet = selectedBullets[0];
+        GetBulletRewards getBulletRewards1 = bullet1.GetComponent<GetBulletRewards>();
+        getBulletRewards1.bullet = selectedBullets[0];
+        if (getBulletRewards1 != null)
+        {
+            getBulletRewards1.bullet = selectedBullets[0];
+        }
+
+        ShowBulletRewardsDetails showBulletRewardsDetails2 = bullet2.GetComponentInChildren<ShowBulletRewardsDetails>();
+        showBulletRewardsDetails2.bullet = selectedBullets[1];
+        GetBulletRewards getBulletRewards2 = bullet1.GetComponent<GetBulletRewards>();
+        getBulletRewards2.bullet = selectedBullets[1];
+        if (getBulletRewards2 != null)
+        {
+            getBulletRewards2.bullet = selectedBullets[1];
+        }
+
+        ShowBulletRewardsDetails showBulletRewardsDetails3 = bullet3.GetComponentInChildren<ShowBulletRewardsDetails>();
+        showBulletRewardsDetails3.bullet = selectedBullets[2];
+        GetBulletRewards getBulletRewards3 = bullet3.GetComponent<GetBulletRewards>();
+        getBulletRewards3.bullet = selectedBullets[2];
+        if (getBulletRewards3 != null)
+        {
+            getBulletRewards3.bullet = selectedBullets[2];
+        }
+
+
+        AssignBulletValues(showBulletRewardsDetails1, getBulletRewards1, selectedBullets[0]);
+        AssignBulletValues(showBulletRewardsDetails2, getBulletRewards2, selectedBullets[1]);
+        AssignBulletValues(showBulletRewardsDetails3, getBulletRewards3, selectedBullets[2]);
     }
 
     private List<Card> GetRandomCards(List<Card> cards, int count)
@@ -107,6 +132,36 @@ public class ShopCode : MonoBehaviour, IPointerClickHandler
         if (!isClicked) { 
           isClicked = false;
           SceneManager.LoadScene("Events");
+        }
+    }
+
+    private List<Bullet> GetRandomBullets(List<Bullet> bullets, int count)
+    {
+        List<Bullet> randomBullets = new List<Bullet>();
+        List<Bullet> tempPool = new List<Bullet>(bullets);
+
+        for (int i = 0; i < count; i++)
+        {
+            int randomIndex = Random.Range(0, tempPool.Count);
+            randomBullets.Add(tempPool[randomIndex]);
+            tempPool.RemoveAt(randomIndex);
+        }
+
+        return randomBullets;
+    }
+
+
+    private void AssignBulletValues(ShowBulletRewardsDetails display, GetBulletRewards rewards, Bullet bulletData)
+    {
+        if (display != null)
+        {
+            display.bullet = bulletData;
+            display.refresh();
+        }
+
+        if (rewards != null)
+        {
+            rewards.bullet = bulletData;
         }
     }
 }

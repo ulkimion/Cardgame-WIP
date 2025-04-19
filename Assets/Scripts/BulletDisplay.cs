@@ -35,4 +35,12 @@ public class BulletDisplay : MonoBehaviour
             bulletDamage.text = bullet.damageLv1.ToString();
         }
     }
+
+    public void refresh()
+    {
+        bulletName.text = bullet.name.ToString();
+        bulletEffect.text = bullet.effectTextLv1.ToString();
+        artwork.sprite = bullet.artwork;
+        bulletDamage.text = bullet.damageLv1.ToString();
+    }
 }

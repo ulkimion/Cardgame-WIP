@@ -9,6 +9,10 @@ public class BulletRewardsShowBullets : MonoBehaviour
     public BulletPool bulletPool;
     public GameObject bulletBase;
 
+    public GameObject bullet1;
+    public GameObject bullet2;
+    public GameObject bullet3;
+
     void Start()
     {
         if (bulletPool == null || bulletPool.bullets.Count < 3)
@@ -19,7 +23,7 @@ public class BulletRewardsShowBullets : MonoBehaviour
 
         List<Bullet> selectedBullets = GetRandomBullets(bulletPool.bullets, 3);
 
-        for (int i = 0; i < selectedBullets.Count; i++)
+        /*for (int i = 0; i < selectedBullets.Count; i++)
         {
             GameObject bullet = Instantiate(bulletBase, new Vector3(170 + (i * 300), 300, 0), Quaternion.identity);
             ShowBulletRewardsDetails showBulletRewardsDetails = bullet.GetComponentInChildren<ShowBulletRewardsDetails>();
@@ -32,7 +36,39 @@ public class BulletRewardsShowBullets : MonoBehaviour
             }
             bullet.transform.SetParent(GameObject.FindGameObjectWithTag("BulletDeck").transform);
             bullet.transform.localScale = Vector3.one * 3000;
+        }*/
+
+        ShowBulletRewardsDetails showBulletRewardsDetails1 = bullet1.GetComponentInChildren<ShowBulletRewardsDetails>();
+        showBulletRewardsDetails1.bullet = selectedBullets[0];
+        GetBulletRewards getBulletRewards1 = bullet1.GetComponent<GetBulletRewards>();
+        getBulletRewards1.bullet = selectedBullets[0];
+        if (getBulletRewards1 != null)
+        {
+            getBulletRewards1.bullet = selectedBullets[0];
         }
+
+        ShowBulletRewardsDetails showBulletRewardsDetails2 = bullet2.GetComponentInChildren<ShowBulletRewardsDetails>();
+        showBulletRewardsDetails2.bullet = selectedBullets[1];
+        GetBulletRewards getBulletRewards2 = bullet1.GetComponent<GetBulletRewards>();
+        getBulletRewards2.bullet = selectedBullets[1];
+        if (getBulletRewards2 != null)
+        {
+            getBulletRewards2.bullet = selectedBullets[1];
+        }
+
+        ShowBulletRewardsDetails showBulletRewardsDetails3 = bullet3.GetComponentInChildren<ShowBulletRewardsDetails>();
+        showBulletRewardsDetails3.bullet = selectedBullets[2];
+        GetBulletRewards getBulletRewards3 = bullet3.GetComponent<GetBulletRewards>();
+        getBulletRewards3.bullet = selectedBullets[2];
+        if (getBulletRewards3 != null)
+        {
+            getBulletRewards3.bullet = selectedBullets[2];
+        }
+
+        AssignBulletValues(showBulletRewardsDetails1, getBulletRewards1, selectedBullets[0]);
+        AssignBulletValues(showBulletRewardsDetails2, getBulletRewards2, selectedBullets[1]);
+        AssignBulletValues(showBulletRewardsDetails3, getBulletRewards3, selectedBullets[2]);
+
     }
 
     private List<Bullet> GetRandomBullets(List<Bullet> bullets, int count)
@@ -48,5 +84,20 @@ public class BulletRewardsShowBullets : MonoBehaviour
         }
 
         return randomBullets;
+    }
+
+
+    private void AssignBulletValues(ShowBulletRewardsDetails display, GetBulletRewards rewards, Bullet bulletData)
+    {
+        if (display != null)
+        {
+            display.bullet = bulletData;
+            display.refresh();
+        }
+
+        if (rewards != null)
+        {
+            rewards.bullet = bulletData;
+        }
     }
 }
